@@ -9,6 +9,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    zsh/zsh.nix
   ];
 
   nixpkgs = {
@@ -51,7 +52,15 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userEmail = "karolochmanmilarski@gmail.com";
+    userName = "zmrocze";
+    # TODO
+    # editor = pkgs.micro;
+    defaultBranch = "main";
+    difftastic.enable = true;
+  };
 
   # https://discourse.nixos.org/t/home-manager-nerdfonts/11226
   fonts.fontconfig.enable = true;
