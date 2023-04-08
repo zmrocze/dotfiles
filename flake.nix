@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nur.url = github:nix-community/NUR;
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -28,9 +29,9 @@
     nixosConfigurations = {
       # FIXME replace with your hostname
       ${hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; inherit username hotname; }; # Pass flake inputs to our config
+        specialArgs = { inherit inputs username hotname; }; # Pass flake inputs to our config
         # > Our main nixos configuration file <
-        modules = [ ./nixos/configuration.nix ];
+        modules = [./nixos/configuration.nix];
       };
     };
 

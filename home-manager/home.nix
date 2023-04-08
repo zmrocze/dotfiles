@@ -44,6 +44,50 @@
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
     meslo-lgs-nf
+    bash
+    bear
+    cabal-plan
+    code
+    # dconf-editor
+    # direnv
+    docker
+    # efibootmgr
+    # exa
+    firefox
+    gedit
+    # gimp
+    glava
+    gparted
+    grep
+    gzip
+    htop
+    inxi
+    jupyter-notebook
+    less
+    lsof
+    # man-pages
+    # micro
+    monero-cli
+    # npm
+    # opam
+    netcat-openbsd
+    # opendoas
+    refind
+    sed
+    tar
+    # texinfo
+    # texlive-bibtexextra
+    tldr
+    tor
+    # torsocks
+    traceroute
+    tree
+    vim
+    wget
+    which
+    xz
+    yq
+    jq
   ];
 
   # home.file = {
@@ -60,6 +104,12 @@
     # editor = pkgs.micro;
     defaultBranch = "main";
     difftastic.enable = true;
+    extraConfig = {
+      credential = {
+        credentialStore = "secretservice";
+        helper = "${pkgs.git-credential-manager}/bin/git-credential-manager-core";
+      };
+    };
   };
 
   # https://discourse.nixos.org/t/home-manager-nerdfonts/11226

@@ -11,7 +11,7 @@
     # option definitions
     programs.zsh = {
       enable = true;
-      initExtra = lib.readfile ./.zshrc
+      initExtra = lib.readfile ./zshrc
       # initExtraFirst
       # initExtraBeforeCompInit
     }
