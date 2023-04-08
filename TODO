@@ -2,3 +2,5 @@
  - git credentials
  - nixconf
  - micro (or else)
+ - modern coreutils
+ - gnome

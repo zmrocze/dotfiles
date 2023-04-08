@@ -10,6 +10,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     zsh/zsh.nix
+    inputs.nur.nixosModules.nur
   ];
 
   nixpkgs = {
@@ -46,23 +47,23 @@
     meslo-lgs-nf
     bash
     bear
-    cabal-plan
-    code
+    haskellPackages.cabal-plan
+    vscode
     # dconf-editor
     # direnv
     docker
     # efibootmgr
     # exa
     firefox
-    gedit
+    # gnome-gedit
     # gimp
     glava
     gparted
-    grep
+    gnugrep
     gzip
     htop
     inxi
-    jupyter-notebook
+    jupyter
     less
     lsof
     # man-pages
@@ -73,8 +74,8 @@
     netcat-openbsd
     # opendoas
     refind
-    sed
-    tar
+    gnused
+    gnutar
     # texinfo
     # texlive-bibtexextra
     tldr
@@ -100,14 +101,13 @@
     enable = true;
     userEmail = "karolochmanmilarski@gmail.com";
     userName = "zmrocze";
-    # TODO
-    # editor = pkgs.micro;
-    defaultBranch = "main";
     difftastic.enable = true;
     extraConfig = {
+      init.defaultBranch = "main";
+      # core.editor = pkgs.micro;
       credential = {
         credentialStore = "secretservice";
-        helper = "${pkgs.git-credential-manager}/bin/git-credential-manager-core";
+        helper = "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
       };
     };
   };

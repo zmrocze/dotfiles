@@ -28,8 +28,8 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       # FIXME replace with your hostname
-      ${hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs username hotname; }; # Pass flake inputs to our config
+      "${hostname}" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs username hostname; }; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [./nixos/configuration.nix];
       };
@@ -41,7 +41,7 @@
       # FIXME replace with your username@hostname
       "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs; inherit username; }; # Pass flake inputs to our config
+        extraSpecialArgs = { inherit inputs username; }; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
         modules = [ ./home-manager/home.nix ];
       };
