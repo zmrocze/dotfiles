@@ -1,0 +1,25 @@
+% Vulnerability Macro
+\vuln
+    { %title
+      Collector validator not tested.
+    }
+    { % CVSS RATING
+      4.2
+    }
+    { % CVSS Calculator Link
+      https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:A/AC:H/PR:L/UI:N/S:U/C:L/I:H/A:H&version=3.1
+    }
+    { % vulnerability types
+    \item datum-overflow
+    \item other-redeemer
+    }
+    { % Description 
+    There are currently no tests that attempt to run the protocol with a non zero fee. The collector logic bypasses all checks in this case, thus the fee collection logic of the protocol is never tested. Simply changing the fee seems to make tests using depositTx fail.
+    }
+    { % Recommended Fix
+      
+    }
+    { % Links
+    \item\href{github.com}{\#1}
+    \item\href{github.com}{Some Other Link}
+    }

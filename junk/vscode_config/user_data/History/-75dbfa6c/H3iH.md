@@ -1,0 +1,7 @@
+Profiling capabilities right now exist in the form of uplc evaluate executable (https://plutus-apps.readthedocs.io/en/latest/plutus/howtos/profiling-scripts.html ).
+
+Only whats inconvenient is the journey from the written validator through serialization to the viewable output of flamegraph. 
+Small quality of life improvement would be to provide helper function that goes immedietely from `CompiledCode` to the svg viewable file.
+User would need still to fully apply his validator (provide ScriptContext, Redeemer, Datum), before being able to profile it.
+
+A profiling ability could be built into plutip (most likely possible), to get profiling info for scripts as they are executed on chain. For user this means that 

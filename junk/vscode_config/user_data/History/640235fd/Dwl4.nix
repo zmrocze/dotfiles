@@ -1,0 +1,72 @@
+{ system ? builtins.currentSystem
+, enableHaskellProfiling ? false
+, sourcesOverride ? { }
+, sources ? import ./nix/sources.nix { inherit system; } // sourcesOverride
+, packages ? import ./. { inherit system enableHaskellProfiling sources sourcesOverride; }
+}:
+let
+  # inherit (packages) pkgs plutus-apps plutus-playground pab-nami-demo docs webCommon;
+  inherit (pkgs) stdenv lib utillinux python3 nixpkgs-fmt glibcLocales;
+  inherit (plutus-apps) haskell stylish-haskell sphinxcontrib-haddock sphinx-markdown-tables sphinxemoji nix-pre-commit-hooks cabal-fmt;
+
+  # build inputs from nixpkgs ( -> ./nix/default.nix )
+  nixpkgsInputs = with pkgs; [
+    zlib
+  ];
+
+  # local build inputs ( -> ./nix/pkgs/default.nix )
+  localInputs = (with plutus-apps; [
+    cabal-install
+    cardano-node.cardano-cli
+    cardano-node.cardano-node
+    cardano-wallet.packages.${pkgs.system}.cardano-wallet
+    cardano-repo-tool
+    docs.build-and-serve-docs
+    fixPngOptimization
+    fix-purs-tidy
+    fixCabalFmt
+    fixStylishHaskell
+    haskell-language-server
+    haskell-language-server-wrapper
+    hie-bios
+    hlint
+    pab-nami-demo.start-backend
+    plutus-playground.start-backend
+    psa
+    purescript-language-server
+    purs
+    purs-tidy
+    spago
+    spago2nix
+    stylish-haskell
+    updateClientDeps
+  ]);
+
+in
+haskell.project.shellFor {
+  nativeBuildInputs = nixpkgsInputs ++ localInputs ++ [ sphinxTools ];
+  # We don't currently use this, and it's a pain to materialize, and otherwise
+  # costs a fair bit of eval time.
+  withHoogle = false;
+
+  shellHook = ''
+    ${pre-commit-check.shellHook}
+  ''
+  # Work around https://github.com/NixOS/nix/issues/3345, which makes
+  # tests etc. run single-threaded in a nix-shell.
+  # Sets the affinity to cores 0-1000 for $$ (current PID in bash)
+  # Only necessary for linux - darwin doesn't even expose thread
+  # affinity APIs!
+  + lib.optionalString stdenv.isLinux ''
+    ${utillinux}/bin/taskset -pc 0-1000 $$
+  ''
+  + ''
+    export WEB_COMMON_SRC=${webCommon.cleanSrc}
+  '';
+
+  # This is no longer set automatically as of more recent `haskell.nix` revisions,
+  # but is useful for users with LANG settings.
+  LOCALE_ARCHIVE = lib.optionalString
+    (stdenv.hostPlatform.libc == "glibc")
+    "${glibcLocales}/lib/locale/locale-archive";
+}

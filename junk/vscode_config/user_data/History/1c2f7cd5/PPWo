@@ -1,0 +1,41 @@
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' auto-description '%d'
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' expand suffix
+zstyle ':completion:*' insert-unambiguous false
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' verbose true
+zstyle :compinstall filename '/home/zmrocze/other/tmp_zsh_home/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+#export EDITOR=/usr/bin/nano
+#export VISUAL=/usr/bin/nano
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+
+# setopt correct                                                  # Auto correct mistakes
+setopt nocaseglob                                               # Case insensitive globbing
+setopt rcexpandparam                                            # Array expension with parameters
+setopt nocheckjobs                                              # Don't warn about running processes when exiting
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt appendhistory                                            # Immediately append history instead of overwriting
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+setopt histignorespace                                          # Don't save commands that start with space
+setopt nomatch
+unsetopt autocd # if only directory path is entered, cd there.
+unsetopt beep
+unsetopt extendedglob # Extended globbing. Allows using regular expressions with *
+
+bindkey -e  # emacs keybindings

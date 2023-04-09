@@ -1,0 +1,8 @@
+f()
+{
+    return 1;
+    x = 1
+}
+
+//@PRACOWNIA
+//@stop_after parser

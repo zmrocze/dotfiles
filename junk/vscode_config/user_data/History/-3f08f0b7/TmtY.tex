@@ -1,0 +1,402 @@
+\documentclass[final]{beamerikz}
+\usepackage{polski}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\newcommand{\art}{\textit{artst}}
+\newcommand{\adm}{\textit{podz}}
+\newcommand{\bkpr}{\textit{pszczarz}}
+\newcommand{\env}{\textit{zazdr}}
+\definecolor{colone}{RGB}{205,133,63}
+\newcommand{\colonecmd}{colone}
+\newcommand{\hlone}[1]{\textcolor{\colonecmd}{#1}}
+\definecolor{coltwo}{RGB}{100,149,237}
+\newcommand{\coltwocmd}{coltwo}
+\newcommand{\hltwo}[1]{\textcolor{\coltwocmd}{#1}}
+\definecolor{colthree}{RGB}{34,139,34}
+\newcommand{\colthreecmd}{colthree}
+\newcommand{\hlthree}[1]{\textcolor{\colthreecmd}{#1}}
+\definecolor{colfour}{RGB}{219,112,147}
+\newcommand{\colfourcmd}{colfour}
+\newcommand{\hlfour}[1]{\textcolor{\colfourcmd}{#1}}
+\newcommand{\hlfive}[1]{\hl{#1}}
+\newcommand{\Logic}[1]{\ensuremath{\mathsf{#1}}} % a Logic
+\newcommand{\logicL}{\Logic{L}} % some logic L
+\newcommand{\Linf}{\Logic{L}_{\mathsf{inf}}}   % L_infix
+\newcommand{\Lsuf}{\Logic{L}_{\mathsf{suf}}} % L_suffix
+\newcommand{\Lpref}{\Logic{L}_{\mathsf{pre}}} % L_prefix
+\newcommand{\Ginf}{\Logic{G}_{\mathsf{inf}}}   % G_infix
+\newcommand{\Gsuf}{\Logic{G}_{\mathsf{suf}}} % G_suffix
+\newcommand{\Gpref}{\Logic{G}_{\mathsf{pre}}} % G_prefix
+\input{macros}
+% MODES: ready, final, draft, short, brief
+% FONTS: small, basic, large
+% OTHER: plain, wide
+
+% packages --------------------------------------------------------------------
+
+% \usepackage{}
+
+% document data ---------------------------------------------------------------
+
+\sBzTitle{Rezolucja dla Fragmentu Strzeżonego Przedniego}
+
+\sBzAuthor{Karol Ochman-Milarski}
+
+% macros ----------------------------------------------------------------------
+
+% \newcommand{\w}{\omega}
+
+% =============================================================================
+
+\begin{document}
+
+\begin{bzPlainFrame}%[show]
+\bzOn{
+	\iBzH[3]
+	\bzCenter[scale=3.0] {}
+	
+	\iBzH[1]
+	\bzCenter[bzEB, scale=1.4] {\bzTitle}
+
+	\iBzH[0.5]
+	\bzCenter{\bzAuthor}
+
+	\bzCenter[scale=0.8] {\sc Uniwersytet Wrocławski}
+}
+\end{bzPlainFrame}
+
+% =============================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Kontekst}
+	
+}
+
+\iBzH[3]
+
+\bzOn{
+	\bzItem{Szukamy rozstrzygalnych fragmentów logiki pierwszego rzędu}
+}
+
+\bzOn{
+	\bzItem{Konkretnie: rozszerzenia logiki modalnej pozwalającego na relacje dowolnej arności}
+}
+
+\end{bzFrame}
+
+% =============================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Fragment Strzeżony [Andreka et al. 1998]}
+}
+\iBzH[1.5]
+
+\bzOn{
+	\bzItem{Nieograniczona liczba zmiennych i zagnieżdżenie kwantyfikatorów}
+}
+
+% \bzOn{
+% 	\bzItem{Relatywizowanie kwantyfikacji przez atomy}
+% }
+
+\bzOn{
+	\bzItem{Dostajemy z $\FO$ poprzez \hlone{relatywizacje kwantyfikatorów przez atomy}.}
+}
+
+
+\bzOn{
+	\bzItem{$\exists{\vartupley} \; \hltwo{\alpha}(\vartuplex, \vartupley) {\land} \varphi(\vartuplex, \vartupley), \forall{\vartupley} \; \hltwo{\alpha}(\vartuplex, \vartupley) {\to} \varphi(\vartuplex, \vartupley)$ -- \hltwo{strażnik} pokrywa zmienne wolne z $\varphi$.  }
+}
+
+\bzOn{
+	\bzLeft{\hlthree{Przykład} 1. Niektórzy artyści podziwiają tylko pszczelarzy }
+	\bzCenter{$\exists{x} \; \hltwo{\art(x)} \land \forall{y} \; \left( \hltwo{\adm(\varx,\vary)} \to \bkpr(\vary) \right) $}
+}
+
+    \bzOn{
+        \bzLeft{\hlthree{Przykład} 2. Każdy artysta zazdrości każdemu pszczelarzowi, którego podziwia}
+        \bzCenter{$\forall{x}\; \hltwo{\art(x)} \to \forall{y}\;[\hltwo{\adm(\varx,\vary)} \to (\bkpr(y) \to \env(x, y))]$}
+    }
+
+    \bzOn{
+        \bzLeft{\hl{Anty-Przykład} 3. Każdy artysta podziwia każdego pszczelarza}
+        \bzCenter{$\forall{x}\;(\hltwo{\art(x)} \to \forall{y}\;(\bkpr(y) \to \adm(x, y)))$}
+        \bzLine
+    }
+	\bzOn{
+		\bzTheorem{Gradel}{Problem spełnialności dla $\GF$ jest \TwoExpTime-zupełny}
+	}
+
+\end{bzFrame}
+
+\newcommand{\student}{\textit{stud}}
+\newcommand{\admires}{\textit{podz}}
+\newcommand{\prof}{\textit{prof}}
+\newcommand{\intro}{\textit{przeds}}
+\newcommand{\lecturer}{\textit{wykł}}
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{$\FF$ i fragmenty uporządkowane [Herzig, Quine, B.]}
+		}
+	\iBzH[1.5]
+    \bzOn{
+        \bzItem{Fragmenty \hlone{uporządkowane} logiki pierwszego rzędu }
+    }
+
+    \bzOn{
+        \bzItem{Zmienne w atomach występują w porządku kwantyfikacji}
+    }
+
+    \bzOn{
+        \bzItem{jako sufiks/prefiks/infiks ciągu skwantyfikowanych zmiennych}
+    }
+
+    \bzOn{
+        \bzLeft{\hlthree{Przykład} 1. Żaden student nie podziwia każdego profesora}
+        \bzCenter{$\forall{x_1}(\student(x_1) \to \neg \forall x_2(\prof(x_2) \to \admires(x_1, x_2)))$}
+    }
+
+    \bzOn{
+        \bzLeft{\hlthree{Przykład} 2. Żaden wykładowca nie przedstawia każdego profesora każdemu studentowi}
+        \bzCenter{$\forall{x_1}(\lecturer(x_1) \to \neg \exists{x_2}(\prof(x_2) \land \forall{x_3}(\student(x_3) \to \intro(x_1, x_2, x_3))))$}
+    }
+
+    \bzOn{
+        \bzLeft{\hl{Anty-Przykład} 1. $\forall{x_1} r(\hl{x_1, x_1})$}
+    }
+    \bzOn{
+        \bzLeft{\hl{Anty-Przykład} 2. $\forall{x_1}\forall{x_2} r(x_1, x_2) \to s(\hl{x_2, x_1})$}
+    }
+    \bzOn{
+        \bzLeft{\hl{Anty-Przykład} 3. $\forall{x_1}\forall{x_2}\forall{x_3} r(x_1, x_2) \land r(x_2, x_3) \to r(\hl{x_1, x_3})$}
+        \bzLine
+    }
+
+    \iBzH[0.25]
+
+\end{bzFrame}
+
+\newcommand{\parent}{\textit{rodz}}
+\newcommand{\child}{\textit{dziecko}}
+\newcommand{\good}{\textit{dobre}}
+\newcommand{\love}{\textit{koch}}
+% \newcommand{\prof}{\textit{prof}}
+% \newcommand{\intro}{\textit{przeds}}
+% \newcommand{\lecturer}{\textit{wykł}}
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{$\FGF$ [Bednarczyk] - Fragment Strzeżony Przedni }
+		}
+	\iBzH[1.5]
+    \bzOn{
+        \bzItem{Przecięcie $\GF$ i $\FF$}
+    }
+
+	\bzOn{
+		\bzLeft{\hlthree{Przykład} 1. Wszyscy rodzice mają nie grzeczne dziecko}
+        \bzCenter{$\forall{x_1, x_2}(\parent(x_1, x_2) \to \exists{x_3} (\child(x_1,x_2,x_3) \land \neg \good(x_3))$}
+    }
+
+	\bzOn{
+		\bzLeft{\hlthree{Przykład} 1. Wszystkie dzieci mają rodziców}
+        \bzCenter{$\forall{x_1, x_2, x_3}(\child(x_1, x_2, x_3) \to \parent(x_1, x_2))$}
+    }
+
+
+	% \bzOn{
+	% 	\bzLeft{\hlthree{Przykład} 1. Niektórzy rodzice mają wnuka}
+    %     \bzCenter{$\exists{x_1, x_2}(\parent(x_1, x_2) \land \exists{x_3} (\child(x_1,x_2,x_3) \land \neg \good(x_3))$}
+    % }
+
+	\bzOn{
+		\bzLeft{\hl{Anty-Przykład} 1. Wszyscy rodzice kochają swoje dzieci}
+        \bzCenter{$\forall{x_1, x_2}(\parent(x_1, x_2) \to \forall{x_3}(\child(x_1,x_2,x_3) \land \love(\hl{x_1,x_3}) \land \love(x_2,x_3))$}
+    }
+
+	\bzOn{
+        \bzItem{Dobre własności teorio modelowe}
+    }
+
+	\bzOn{
+		\bzTheorem{Bednarczyk}{Problem spełnialności dla $\FGF$ jest w \ExpTime}
+	}
+
+	\bzOn{
+		\bzItem{Mało praktyczny algorytm}
+	}
+
+
+\end{bzFrame}
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{Motywacja}
+		}
+	\iBzH[1.5]
+
+	\bzOn{
+		\bzItem{$\GF$ można rozstrzygać rezolucyjnie [Nivelle]}
+	}
+
+	\bzOn{
+		\bzItem{Jak z $\FGF$?}
+	}
+
+\end{bzFrame}
+
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{Nasz wkład}
+		}
+	\iBzH[1.5]
+
+	\bzOn{
+		\bzItem{Adaptujemy rezolucyjną procedurę dla $\GF$ do wykorzystania dla $\FGF$}
+	}
+
+	\bzOn{
+		\bzItem{... przy czym algorytm nie potrzebuje żadnej adaptacji}
+	}
+
+	\bzOn{
+		\bzItem{Pokazujemy, że rezolucyjna procedura dla $\GF$ nakarmiona formułą $\FGF$ zadziała w czasie pojedynczo wykładniczym}
+	}
+
+\end{bzFrame}
+
+\newcommand{\Rrel}{\textit{R}}
+\newcommand{\Qrel}{\textit{Q}}
+\newcommand{\Srel}{\textit{S}}
+\newcommand{\Prel}{\textit{P}}
+% \newcommand{\good}{\textit{dobre}}
+% \newcommand{\love}{\textit{koch}}
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{Jak działa procedura?}
+		}
+	\iBzH[1.5]
+
+    % \bzOn{
+    %     \bzLeft{\hlthree{Przykład}}
+    %     \bzCenter{$\forall{x_1,x_2}(\Rrel(x_1, x_2) \to \neg \forall{x_3,x_4} (\Qrel(x_1,x_2,x_3,x_4) \land (\Rrel(x_2,x_3) \lor \Rrel(x_3,x_4))))$}
+    % }
+
+    % \bzOn{
+    %     \bzLeft{\hlthree{w postaci NNF}}
+    %     \bzCenter{$\forall{x_1,x_2}(\Rrel(x_1, x_2) \to \exists{x_3,x_4} (\neg\Qrel(x_1,x_2,x_3,x_4) \lor (\neg \Rrel(x_2,x_3) \land \neg\Rrel(x_3,x_4))))$}
+    % }
+
+	% \bzOn{
+    %     \bzLeft{\hlthree{dalej}}
+    %     \bzCenter{$\{\forall{x_1,x_2}(\Rrel(x_1, x_2) \to \exists{x_3,x_4} (\neg\Qrel(x_1,x_2,x_3,x_4) \lor (\neg \Rrel(x_2,x_3) \land \neg\Rrel(x_3,x_4))))\}$}
+    % }
+
+	\bzOn{
+        \bzLeft{\hlthree{Przykład}}
+        \bzCenter{$\forall{x_1}(\Prel(x_1) \to \neg \forall{x_2} (\Rrel(x_1,x_2) \to (\exists{x_3} \Srel(x_1,x_2,x_3) \land \Qrel(x_1,x_2,x_3))))$}
+    }
+
+    \bzOn{
+        \bzLeft{\hlthree{w postaci NNF}}
+        \bzCenter{$\forall{x_1}(\Prel(x_1) \to \exists{x_2} (\Rrel(x_1,x_2) \land (\forall{x_3} \Srel(x_1,x_2,x_3) \to \neg\Qrel(x_1,x_2,x_3))))$}
+    }
+
+
+\end{bzFrame}
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{Jak działa procedura?}
+		}
+	\iBzH[1.5]
+
+	\bzOn{
+        \bzLeft{\hlthree{Przykład}}
+        \bzCenter{$\forall{x_1}(\Prel(x_1) \to \neg \forall{x_2} (\Rrel(x_1,x_2) \to (\exists{x_3} \Srel(x_1,x_2,x_3) \land \Qrel(x_1,x_2,x_3))))$}
+    }
+
+    \bzOn{
+        \bzLeft{\hlthree{w postaci NNF}}
+        \bzCenter{$\forall{x_1}(\Prel(x_1) \to \exists{x_2} (\Rrel(x_1,x_2) \land (\hltwo{\forall{x_3} \Srel(x_1,x_2,x_3) \to \neg\Qrel(x_1,x_2,x_3)})))$}
+    }
+
+	\bzOn{
+        \bzLeft{\hlthree{dalej}}
+        \bzCenter{$\bzEq{
+			\forall{x_1}(\Prel(x_1) \to \exists{x_2} (\Rrel(x_1,x_2) \land (\hltwo{\mathit{A}(x_1,x_2)}))) \\
+			\land \forall{x_1,x_2, x_3} \mathit{A}(x_1,x_2) \to \hltwo{\Srel(x_1,x_2,x_3) \to \neg\Qrel(x_1,x_2,x_3)}
+		}$}
+    }
+\end{bzFrame}
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{Jak działa procedura?}
+		}
+	\iBzH[1.5]
+
+	\bzOn{
+        \bzLeft{\hlthree{Przykład}}
+        \bzCenter{$\forall{x_1}(\Prel(x_1) \to \neg \forall{x_2} (\Rrel(x_1,x_2) \to (\exists{x_3} \Srel(x_1,x_2,x_3) \land \Qrel(x_1,x_2,x_3))))$}
+    }
+
+    \bzOn{
+        \bzLeft{\hlthree{w postaci NNF}}
+        \bzCenter{$\forall{x_1}(\Prel(x_1) \to \exists{x_2} (\Rrel(x_1,x_2) \land (\forall{x_3} \Srel(x_1,x_2,x_3) \to \neg\Qrel(x_1,x_2,x_3))))$}
+    }
+
+	\bzOn{
+        \bzLeft{\hlthree{dalej}}
+        \bzCenter{$\bzEq{
+			\forall{x_1}(\Prel(x_1) \to \hltwo{\exists{x_2}} (\Rrel(x_1,\hltwo{x_2}) \land (\mathit{A}(x_1,\hltwo{x_2})))) \\
+			\land \forall{x_1,x_2, x_3} (\mathit{A}(x_1,x_2) \to (\Srel(x_1,x_2,x_3) \to \neg\Qrel(x_1,x_2,x_3))) \\
+		}$}
+    }
+	\iBzH[1]
+	\bzOn{
+        \bzLeft{\hlthree{skolemizacja:}}
+        \bzCenter{$\bzEq{
+			\forall{x_1}(\Prel(x_1) \to (\Rrel(x_1,\hltwo{x_2(x_1)}) \land (\mathit{A}(x_1,\hltwo{x_2(x_1)})))) \\
+			\land \forall{x_1,x_2, x_3} (\mathit{A}(x_1,x_2) \to (\Srel(x_1,x_2,x_3) \to \neg\Qrel(x_1,x_2,x_3)))
+		}$}
+    }
+	\bzOn{
+		\bzItem{
+			Na końcu zamieniamy na postać koniunkji klauzul
+		}
+	}
+\end{bzFrame}
+
+\begin{bzFrame}
+	\bzOn{
+			\bzCenter[bzEB]{Rezolucja}
+		}
+	\iBzH[1.5]
+
+	\bzOn{
+		\bzItem{Zaczynamy od zbioru klazul otrzymanego z wyjściowej formuły}
+	}
+
+	\bzOn{
+		\bzItem{Wyprowadzamy nowe, wynikające klauzule}
+	}
+	\bzOn{
+		\bzResolution{}{Two clauses: $c_1=\{A_1\} \cup R_1$ and $c_2=\{\lnot A_2\} \cup R_1$.
+		Resolvent would be $R_1\theta \cup R_2\theta$.}
+	}
+	\bzOn{
+		\bzFactoring{}{A clause: $c_1=\{A_1, A_2\} \cup R$.
+		Factor would be $R_1\theta \cup R_2\theta$.}
+	}
+	
+\end{bzFrame}
+% =============================================================================
+
+\end{document}

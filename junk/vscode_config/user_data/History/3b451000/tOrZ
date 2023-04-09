@@ -1,0 +1,244 @@
+pick 50290ad1b SCP-3855: update node dep (#449)
+squash 5fb99da7b [chain-index]: export all servant client functions (#492)
+squash b8a7a5167 Add TimeValidity emulator test for different protocol versions (#466)
+squash 700c58222 plutus-pab: Set response timeout to 60 sec of HTTP requests
+squash 4792047f9 Fix flakey CertifyingAndWithdrawingPlutus test with longer waits for Linux (#477)
+squash 7d067a425 Add default definition for initialInstances (#478)
+squash 83d677efa Export full PABEnvironment (#421)
+squash c4cc9ee1a plutus-contract emulator: Modifying addOutputs to replicate what cardano-wallet and cardano-node do, i.e., new outputs due to balancing are append to the list and not prepend (#474)
+squash 1d89b1ef6 [chain-index]: export all servant client functions (#485)
+squash 3f76a9706 Add plutus-streaming package (#476)
+squash 7d3e7b01c Initial DatumHash -> Datum index implementation. (#480)
+squash 83594e4cd ContractModel: Report symbolic values as their symbolic names (#452)
+squash 2d0942738 Add AdjustUnbalancedTx effect (#419)
+squash 5ce50ab0a chore(deps): bump nixbuild/nix-quick-install-action from 13 to 14 (#491)
+squash 4998465e2 Move typeable further downstream of StateModel (#494)
+squash 61de89d33 Updated Github pull request template (#495)
+squash 4e668155b Fix playground client
+squash 33d8fd6ee Fix streaming
+squash 85762268e Fix purescript
+squash 50cd37043 Create separate directories for v1 and v2 plutus scripts (#486)
+squash 32b26b019 Add PlutusV2 minting and staking scripts (#528)
+squash c2b310968 [chain-index]: add inline datums support and update cardano-node (#488)
+squash 3d37daf40 PLT-484 Upgraded cardano-node version to the official 1.35.0 release. (#551)
+squash 7cc060361 PLT-45: plutus-tx-constraints (#490)
+squash c848b36a7 PLT-255 Fixed plutus-pab integration test (#496)
+squash c03a72abb [PLT-87] marconi: Log progress of synced blocks (#489)
+squash c3139a766 Comment MustSatisfyAnyOf. (#497)
+squash 6e560c862 Static analysis to find unnecessary locations (#458)
+squash ed54a2b7f Remove acidental change (#506)
+squash 87aa3b8d4 chore(deps): bump nixbuild/nix-quick-install-action from 14 to 15 (#508)
+squash ea10bbfa3 Utxo indexer (#493)
+squash 6a6f8c443 PLT-381 Fix the value of epochSlots and add a comment (#509)
+squash a61ba8f69 PLT-380 Replace TChan with bounded queue (#502)
+squash 43b73aca2 PLT-271: Use of pure cardano-api transaction in emulator (#503)
+squash b307823da PLT-42 Added cabal-fmt to pre-commit hooks & reformatted all existing… (#505)
+squash f20efc3f1 A story of two indexers (#511)
+squash e59a21a0b simplify cabal-fmt.nix and update docs (#515)
+squash 629fe3923 chore(deps): bump nixbuild/nix-quick-install-action from 15 to 16 (#518)
+squash bebf788a1 Add pre-commit to shell.nix (#514)
+squash 597290650 Fix PAB CliSpec with conflicting ports between two test cases (#520)
+squash ae8102213 don't take collateral if validation doesn't fail in phase 2 (#510)
+squash 29c2c5ba1 ContractModel: Detect Double Satisfaction Problems (#501)
+squash dee441146 Script for uploading an event dump file to S3 (#530)
+squash 5035d131d Script for running a local node in buildkite (#531)
+squash 6b0e88be1 Script for running local node and dump job (#532)
+squash f0548d7ef Remove gratuitous log file (#525)
+squash 358fb5faf Buildkite pipeline for script dump job (#533)
+squash 2e3cb1198 Make quickcheck-dynamic compatible with ghc-9.2 (#527)
+squash 2bbf0f8d0 Contract model tutorial cosmetics (#523)
+squash e793cbcd9 Fix quickcheck-dynamic registry model test #516. (#541)
+squash df9ce7d4f Bootstrap Architectural Design Records (ADR) in our documentation (#512)
+squash 5c4647157 Create README_marconi.md (#513)
+squash ca0fb3592 PLT-47 Add tutorial for using tx constraint API (#529)
+squash db318b4e5 deleted Marlowe content, updated project name and copyright year (#534)
+squash 0be7f0fce Marconi remove unnecessary dependencies (#536)
+squash 530c68c01 Simplify and format plutus-example.cabal (#522)
+squash 2632020e5 Fix module name in Quantify docs (#540)
+squash 3f2f86a40 PLT-340: test minting policy issue (#542)
+squash 9ee23f719 Coverage: Static Analysis Bugfix/Improvement (#548)
+squash 13e7b6686 Fix code location (#549)
+squash 3377926c9 Updated version of components to 1.0.0 with cardano-node (#560)
+squash 9cfbf3a91 PLT-40 Apply changes from Djed which optimize SQL queries of utxoSetAtAddress and utxoSetWithCurrency chain-index queries. (#547)
+squash 7c3b88658 PLT-83: Move the typed validators to plutus-script-utils (#526)
+squash 379d8f99e PLT-313 Add ownAddresses request in Contract API which will replace ownPaymentPubKeyHash. (#544)
+squash 2235c7a4c Use one derivingVar line (#552)
+squash a55dcf290 [emulator]: fix waitUntilSlot memory consumption (#543)
+squash 42cc704f5 Make quickcheck-dynamic an external dependency (#555)
+squash 90f307eab Remove reference to non-existing CHANGELOG for `plutus-streaming` (#558)
+squash 2e21867eb fixed stylish-haskell and ci test issue (#521)
+squash f444364a6 Enhance devx when modifying readthedocs documentation locally (#562)
+squash 9848e3f4f [chain-index]: Handle rollback and resume events properly. (#557)
+squash 0c379232c Comment out broken `plutus-playground.vmTest`  (#566)
+squash aa9149f2e ADR: Document decision to standardize the repository using `divnix/std` (#564)
+squash 73e5f5ea6 PLT-84: make transaction body auto balance (#556)
+squash 22f21a513 PLT-361 Provide a flake to install the Marconi executable (#569)
+squash e26500cf0 PLT-482 ADR: Document decision to move Marconi in a separate repository #572
+squash e2acd3acc [plutus-ledger]: show CekError in CekEvaluationFailure error. (#573)
+squash 38265470c Remove old tutorial section (#574)
+squash 50b7bb5a2 Reorganized the dependencies (build-depends) in the cabal files (#575)
+squash aeac33d72 Update cardano-node dependency to 1.35.1
+squash 91b71a728 Add script equivalence context test for the V2 context. (#588)
+squash 02ae267c0 PLT-308: Add UnspentTxOutsAt query (#567)
+squash 0c2b6ad38 Issue #580 - Build create-script-context with Nix (#581)
+squash 28bbb7bab PLT-502 Added missing local information to nix shell
+squash 455f4c2b3 Fix utxo sync delay. (#590)
+squash fe47249e5 Small revision to ADR 3 (Move Marconi into a separate repository) (#579)
+squash da0f45649 Raduom/fix utxo sync time (#592)
+squash 30bc53336 Fix plutus-streaming-example-2 (#554)
+squash 4cc6c84c9 Create README_alpha-release_Marconi.md (#591)
+squash de954bc0d Add build-and-serve-docs to CONTRIBUTING... (#595)
+squash b7c773c50 Replace `Set TxIn` with `[TxIn]` to fix `StateMachine.getInput` (#594)
+squash 4e1dcd15a Require markdown 3.3.7 (#601)
+squash 139c0429f Added precision on the meaning of the first-major version of plutus-apps (#597)
+squash 6e81cd87d Add note to `checkPredicateGenOptions` (#603)
+squash 29c3dc7b2 Fix the swagger with CardanoBuildTx's OpenApi stub schema (#599)
+squash cb6b8c91f Buildkite will now generate the docker devcontainer with the `vX.Y.Z` tag name instead of `plutus-starter-devcontainer-v*` (#598)
+squash 6866224e1 PLT-515 Improve DevX for `plutus-playground-server/client` and `pab-nami` users (#559)
+squash 6fa1bc52f Remove withIsCardanoEra workaround. (#607)
+squash 434e36da7 Increase the delay of awaiting in plutus-pab-executables tests (#565)
+squash 0eb87b0d5 [PLT-81] plutus-chain-index: support inline scripts when querying TxOut of a TxOutRef (#613)
+squash b003175a3 Add minting context equivalent test plutus script (#631)
+squash 808d7ecaa Add missing record field `localTxMonitoringClient` (#617)
+squash 1a7047989 PLT-568: Switch to Babbage era (#614)
+squash 202c97114 Add zero ada to mint and fee fields to match cardano-ledger behaviour (#608)
+squash 6d1600f08 feat: replace allowBigTransactions function with increaseTransactionL… (#606)
+squash 69988b041 Fix Plutus Plauground Nightly E2E Test (#615)
+squash aa8cc12bc Fix a typo of PubKeyTxOut (#621)
+squash 848f44f80 Merge subtree raduom/hysterical screams into plutus-hysterical-screams (#620)
+squash 58d1729a3 Absorb hysterical-screams into plutus-apps (#627)
+squash 8ae4b99e6 Moved datum and redeemer hash computation functions in plutus-script-utils in another module which does not depend on a specific version of Plutus. (#628)
+squash e0f2ab82d Raduom/marconi initiative (#585)
+squash fb8a39645 PLT-309: Rename 'currentSlot' to 'currentPABSlot' and add 'currentChainIndexSlot'. (#619)
+squash 5269cdb3e Replace `#!/bin/bash` with `#!/usr/bin/env bash` (#618)
+squash 2e2d50e90 Fix typo in plutus-hysterical-streams README (#630)
+squash a71280230 PLT-359 ADR regarding problem with PAB's integration with indexing solutions (#550)
+squash a5ab40d6b Refactored the tx constraints library to prepare for PlutusV2 (#625)
+squash cadf74ced [next-node]: Bump wallet, plutus, ledger, node (#616)
+squash 98ad189bf Use '[TxIn]' instead of 'Set TxIn' in 'data Tx' (#623)
+squash e49614f5c PLT-445 Add `mustReferencePubKeyOutput` in constraints library (#640)
+squash 566323c6b Update cardano-node to 1.35.3-rc1 with deps (#647)
+squash 8d59cef33 Update Cardano node et al. dependencies for the Vasil HF
+squash ee8cebd50 Solve some compile issues
+squash bec23997d wip: recovering instances for types from plutus-ledger-api
+squash e24ba25b4 wip
+squash 036e64a60 plutus-ledger compiles
+squash 239eefe65 plutus-ledger-constraints compiles
+squash 28f0ff0a8 Fixed warnings in Ledger.Tx.CardanoAPI for fields introduced by the Babbage era. Also adapted hashing functions for PlutusV1 scripts to work on PlutusV2
+squash f7e640c67 Fixed warnings in Ledger.Tx.CardanoAPITemp and added implementation to undefined value
+squash 530aee9e1 plutus-contract compiles
+squash d9f976283 Added alonzoGenesisDefaults implementation (copied from cardano-node because it was deleted over there) to Ledger.Validation
+squash 99a058065 plutus-chain-index-core compiles
+squash 9a8751d9a Fixed compilation errors in playground-common and plutus-contract
+squash a72ff4cc1 Fix compile errors in plutus-example
+squash 1b80dfecf Fix compile errors in plutus-pab
+squash 9f1903578 Fix compile errors in plutus-playground-server
+squash 0de0d02b0 WIP on plutus-use-cases
+squash f88e9a634 Split Tx.Orphans into multiple Orphans
+squash 12d4b60e2 Fix compilation errors on plutus-use-cases
+squash a10a78c21 fix compilation issues
+squash e0055dc6a Update nix
+squash 0abcbe920 fix formatting
+squash dff62a823 Remove wrongly commited files
+squash 920caf677 Update purescript modules
+squash c12a8e51f Commented test on plutus-ledger temporarely until cardano-node is updated
+squash dcc81cdd8 Update cardano-wallet with fixes for haddock
+squash 77d11e0a6 Fix plutus-playground-client purescript imports
+squash 5942ca3d9 Fix warnings in plutus-example
+squash f8e7fd0df Fix plutus-uniswap cabal
+squash 3025e3caf Try to turn-off haddock for cardano-wallet
+squash 09602a02e [plutus-contract]: fix golden tests and commented test until cardano-node is updated
+squash 8e86e8809 Add & Move fields in Tx - wip.
+squash 6eb2cdb17 Translate withdrawals in toCardanoTxBody.
+squash e1248a02d Fix compiling.
+squash c353c0d0f Fix `genValidTransaction`.
+squash 6a2b51633 Compile plutus-ledger-constraints.
+squash e6dcc5e61 Update pab to use modified Tx.
+squash 47decc040 Split up Tx.Internal module.
+squash 14cc8d446 Re-Add Ledger.Tx.Internal.
+squash f61e2d73b Regenerate purescript.
+squash afd5ab275 Regenerate purescript 2.
+squash 83f219ee5 Purescript make added types.
+squash 4132f908e Regenerate purescript 3.
+squash e56ccab6c Update purescript to Ledger.
+squash fd15dbcec Fix Unused-import.
+squash cadfc7a74 Export reward and certificate redeemers.
+squash 68606d5d4 Reorganize Tx types.
+squash e7637bfd2 Fixes.
+squash fa2e219ec Extract redemeers with ScriptPurpose from Tx.
+squash 5cfc80c3b Upgraded to a cardano-wallet compatible with node 1.35.3-rc1
+squash b2d992b46 Fix auto conflict resolution.
+squash 7a1d589e1 Everything compiles.
+squash 777f89d23 Remove obsolete purescript.
+squash 3b79125be Fix import.
+squash af566dd13 Upgraded to a cardano-wallet compatible with node 1.35.3-rc1 (#657)
+squash 035b43617 Remove old references to hysterical-screams (#635)
+squash 6e69848ba ADR-0004 Common PAB API document (#586)
+squash d7423d309 cardano-ledger validation rules are prioritized over our custom validation rules when validating transaction in the emulator (#639)
+squash d098bfab2 PLT-80: Fix "Output doesn't have the minimum required Ada" error while balancing (#600)
+squash 77ac3c7e1 Fix static-site.nix formatting (#646)
+squash 5d0da72d7 Fix onchain MustPayToPubKeyAddress check (#648)
+squash 96c450842 Made the functions `Ledger.Constraints.TxConstraints.collectFromPlutusV1ScriptFilter` and `Ledger.Constraints.TxConstraints.collectFromTheScript` as unrelated functions. (#644)
+squash 0a35ed593 Add mustSpendAtLeast Constraint tests (#641)
+squash 52b0a47ff Add plutus-contract tests for required signer and... (#624)
+squash dc37b7d0d PLT-682 ADR for the constraint interface change in order to support reference inputs (#654)
+squash bcadb839a Remove unused import.
+squash a3cde6a30 Update testing trace outputs.
+squash e626008bf Fix testing trace output.
+squash 882a72470 Restore previous inputs to RedeemerPtr's assignment.
+squash 8a155fd34 Fix imports.
+squash 00783a69d Correct to use maxMinAdaTxOut.
+squash 339de6b8d Pretty print if non-empty.
+squash ff3e877ad Correct to use maxMinAdaTxOut. 2
+squash e608ff0c9 Small fixes.
+squash 96aa39cdf Remove unnecessary comments.
+squash 9f3ebd2c9 Move TxOutTx back to Ledger.Tx.Internal.
+squash 43a72aa7b Undo refactor.
+squash 40fcc64b2 Fix.
+squash fc76aef04 Fix import.
+squash 61ad6132e Simplify MustReferencePubKeyOutput to MustReferenceOutput (#661)
+squash ed8ff2c68 Replace LedgerPlutusVersion with Language type (#662)
+squash 2b950d988 PLT-494: PlutusV2 TypedValidators (#666)
+squash 721aa3186 Update cardano-node 1.35.3-rc1 -> 1.35.3 (#669)
+squash f03743d48 PLT-448: inline scripts in constraint libraries (#678)
+squash 6a76427da PLT-682 ADR for the constraint interface change for supporting inline datums (#660)
+squash eb69d69cb PLT-684 ADR for the constraint interface change for supporting reference scripts (#663)
+squash 252574b26 Transaction state indexer. (#524)
+squash 66ba2974f new doc title and revised intro (#638)
+squash 8213da07b PLT-618: Rename hysterical-screams to rewindable-index (#673)
+squash 749f23173 PLT-670 Add  MustValidateIn to tx constraints (#665)
+squash f3963e23a Fix indentation of freer-extras reexported modules (#656)
+squash db553a4ee chore(deps): bump nixbuild/nix-quick-install-action from 16 to 17 (#670)
+squash f5cf12263 ADR - 0010 - Marconi Indexer (#649)
+squash 254445ca9 very minor edit to Tools Intro (#677)
+squash 4497333cb Add event channel to certification function (#672)
+squash 708290b35 Add tests for MustMint tx constraint (#668)
+squash 5e274cba4 PLT-738: Include plutus language versions with scripts (#681)
+squash 7d18892fb PLT-454: mustUseOutputAsCollateral (#690)
+squash Rebase 37c54aac5..116ca5039 onto 37c54aac5 (217 commands)
+squash
+squash Commands:
+squash p, pick <commit> = use commit
+squash r, reword <commit> = use commit, but edit the commit message
+squash e, edit <commit> = use commit, but stop for amending
+squash s, squash <commit> = use commit, but meld into previous commit
+squash f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+squash                    commit's log message, unless -C is used, in which case
+squash                    keep only this commit's message; -c is same as -C but
+squash                    opens the editor
+squash x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified); use -c <commit> to reword the commit message
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#

@@ -1,0 +1,7 @@
+producer() : { foo : int, bar : bool[] } {    return { foo = 42, bar = { true } }}
+test()
+{
+  
+}
+//@PRACOWNIA
+//@stop_after typechecker

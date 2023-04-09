@@ -1,0 +1,27 @@
+Strip down plutip to plutip-core
+
+Add cluster startup tests
+Fix imports
+Move modules
+Rename moved modules
+Move modules
+Remove Contract tests
+Refactor plutip-server executable
+Remove Wallet module
+Refactor local-cluster executable
+Add withFundedCluster
+Refactor KeyPair functionality
+wip
+Split PoolConfigs into module
+Remove Contract.Init
+Fix
+WIP simplify cluster launch
+Restore withLoggingNamed
+Compile executables
+Remove Plutip.Contract
+Cluster module build
+Deps build, plutip doesn't yet
+Nix builds (stops in plutip), cabal wrong deps (?)
+Unlist removed cardano-wallet modules
+Add cardano-wallet for 1.35.4 and cardano-addresses
+Beginning: Empty deps.

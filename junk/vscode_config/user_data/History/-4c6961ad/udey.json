@@ -1,0 +1,58 @@
+{
+    "activeSlotsCoeff": 5.0e-2,
+    "epochLength": 432000,
+    "genDelegs": {
+        "1329b890202e5d08651329a2c1b4c1503684a2815abc8e9b45d2b285": {
+            "delegate": "37ec5394d3993e9003ca8523cb00f3815ed314f47783716579ddce68",
+            "vrf": "c1dcb7de1ba7137d90bba1e2a96fc0f62451664095d3f8afb60940a2847a14d9"
+        },
+        "14296eaa25ed314352b220084e7360043aff31a04fa794ad296d6498": {
+            "delegate": "0f29be517191909fb544be00ec59b64220907f9d1cef78ae06dec02f",
+            "vrf": "d7f259e26da4418752eab385af522c760c051bdbd1107153890dc8af448ebdaf"
+        },
+        "549758ae727fbfa219d05931fc1f79d3e68da3c52097e2a088857d4e": {
+            "delegate": "8fb8df0553b05f014b3371b4a3ed3b96d7e16d227d98707de6ba2799",
+            "vrf": "24afd95095f6317b87b2c922dc6d12dc93a7fc7040639388bdb7537832d1040b"
+        }
+    },
+    "initialFunds": {
+        "616e498ba87f09dbd6b744d264b4b3eb8d423269ebc8d56a789b96484e": 900000000000000000
+    },
+    "maxKESEvolutions": 60,
+    "maxLovelaceSupply": 1000000000000000000,
+    "networkId": "Testnet",
+    "networkMagic": 764824073,
+    "protocolParams": {
+        "a0": 0.0,
+        "decentralisationParam": 1.0,
+        "eMax": 18,
+        "extraEntropy": {
+            "tag": "NeutralNonce"
+        },
+        "keyDeposit": 0,
+        "maxBlockBodySize": 65536,
+        "maxBlockHeaderSize": 1100,
+        "maxTxSize": 16384,
+        "minFeeA": 1,
+        "minFeeB": 0,
+        "minPoolCost": 0,
+        "minUTxOValue": 0,
+        "nOpt": 100,
+        "poolDeposit": 0,
+        "protocolVersion": {
+            "major": 0,
+            "minor": 0
+        },
+        "rho": 0.0,
+        "tau": 0.0
+    },
+    "securityParam": 2160,
+    "slotLength": 1,
+    "slotsPerKESPeriod": 129600,
+    "staking": {
+        "pools": {},
+        "stake": {}
+    },
+    "systemStart": "2022-07-13T14:58:31.285828362Z",
+    "updateQuorum": 5
+}

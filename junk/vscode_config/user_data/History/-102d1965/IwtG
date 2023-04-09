@@ -1,0 +1,14 @@
+# Schnorr signatures
+
+## Intro
+
+My aim with is to explain Schnorr signatures, but in a way that doesn't make it look like an arbitral scheme. 
+We are going to split the explanation into modular parts.
+
+ - discrete logarithm
+ - zero knowledge protocols
+ - fiat-shamir heurestic
+
+## Discrete logarithm
+
+We are going to do calculations in 

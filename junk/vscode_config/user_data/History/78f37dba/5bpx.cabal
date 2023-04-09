@@ -1,0 +1,42 @@
+cabal-version:      2.4
+name:               resolution
+version:            0.1.0.0
+
+author:             zmrocze
+maintainer:         karolochmanmilarski@gmail.com
+
+-- A copyright notice.
+-- copyright:
+-- category:
+extra-source-files: CHANGELOG.md
+
+library
+  exposed-modules:
+      GF
+      NNF
+  other-modules:
+      Paths_resolution
+  hs-source-dirs:
+      ./src
+  default-extensions: DerivingStrategies DerivingFunctor LambdaCase OverloadedStrings
+  ghc-options: -Wall -O2 -fwarn-incomplete-patterns -fwarn-unused-binds -fwarn-unused-imports
+  build-depends:
+    base
+  default-language: Haskell2010
+    
+
+executable resolution
+    main-is:          Main.hs
+
+    -- Modules included in this executable, other than Main.
+    -- other-modules:
+    other-modules:
+      Paths_resolution
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    
+        base ^>=4.16.3.0
+        , resolution
+    hs-source-dirs:   app
+    default-language: Haskell2010

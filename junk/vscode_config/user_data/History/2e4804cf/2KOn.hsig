@@ -1,0 +1,12 @@
+                [ hang 2 (vsep ("inputs:" : fmap pretty txInputs))
+                , hang 2 (vsep ("collateral inputs:" : fmap pretty txCollateral))
+                , hang 2 (vsep ("outputs:" : fmap pretty txOutputs))
+                , "mint:" <+> pretty txMint
+                , "fee:" <+> pretty txFee
+                , hang 2 (vsep ("mps:": fmap pretty (Map.assocs txMintingScripts)))
+                , hang 2 (vsep ("signatures:": fmap (pretty . fst) (Map.toList txSignatures)))
+                , "validity range:" <+> viaShow txValidRange
+                , hang 2 (vsep ("data:": fmap (pretty . snd) (Map.toList txData)))
+                , hang 2 (vsep ("attached scripts:": fmap pretty (Map.keys txScripts)))
+                , hang 2 (vsep ("withdrawals:": fmap pretty txWithdrawals))
+                , hang 2 (vsep ("certificates:": fmap pretty txCertificates))

@@ -1,0 +1,8 @@
+
+class Interface
+{
+    
+}
+
+int main() {
+}

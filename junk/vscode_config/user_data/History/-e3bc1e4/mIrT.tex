@@ -1,0 +1,71 @@
+\documentclass[]{beamerikz}
+% MODES: ready, final, draft, short, brief
+% FONTS: small, basic, large
+% OTHER: plain, wide
+
+% packages --------------------------------------------------------------------
+
+% \usepackage{}
+
+% document data ---------------------------------------------------------------
+
+\sBzTitle{put the title here}
+
+\sBzAuthor{put your name here}
+
+% macros ----------------------------------------------------------------------
+
+% \newcommand{\w}{\omega}
+
+% =============================================================================
+
+\begin{document}
+
+\begin{bzPlainFrame}%[show]
+\bzOn{
+	\iBzH[3]
+	\bzCenter[scale=3.0] {\beamerikz}
+	
+	\iBzH[1]
+	\bzCenter[bzEB, scale=1.4] {\bzTitle}
+
+	\iBzH[0.5]
+	\bzCenter{\bzAuthor}
+
+	\bzCenter[scale=0.8] {\sc affiliation}
+}
+\end{bzPlainFrame}
+
+% =============================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Frame title}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzList{content}
+}
+
+\bzOn{
+	\bzList{more}
+}
+
+\bzOn{
+	\bzList{and yet\ldots}
+}
+\end{bzFrame}
+
+% =============================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Summary}
+}
+\end{bzFrame}
+
+% =============================================================================
+
+\end{document}

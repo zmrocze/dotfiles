@@ -1,0 +1,1 @@
+nix-build --arg plutus-apps { outPath = /plutus-apps/source; rev = "bc1724c5e88197d3416fdf33190a52e916414993"; shortRev = "bc1724c"; revCount = ; } -I plutus-apps=/plutus-apps/source --arg pr "637" --option extra-binary-caches https://hydra.iohk.io/ --option system x86_64-linux /plutus-apps/source/release.nix -A

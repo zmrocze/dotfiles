@@ -1,0 +1,197 @@
+%!TEX root = main.tex
+
+% Logics
+% Description logics:
+\newcommand{\DL}[1]{\ensuremath{\mathcal{#1}}}  % Description Logics
+
+% The ALC family of DLs
+\newcommand{\ALC}{\DL{ALC}}                     % DL ALC
+\newcommand{\ALCI}{\DL{ALCI}}                   % DL ALCI
+\newcommand{\ALCO}{\DL{ALCO}}                   % DL ALCO
+\newcommand{\ALCHQ}{\DL{ALCHQ}}                 % DL ALCHQ
+\newcommand{\Self}{\mathsf{Self}}
+\newcommand{\ALCHbself}{\DL{ALCH}\textit{b}_{\Self}}  % DL ALCIHbself
+\newcommand{\ALCSelf}{\DL{ALC}_{\Self}}  % DL ALCIHbself
+\newcommand{\ZOI}{\DL{ZOI}} 
+\newcommand{\Z}{\DL{Z}} 
+
+\newcommand{\ALCHbselfreg}{\DL{ALCH}\textit{b}^{\Self}_{\mathsf{reg}}}
+
+
+
+\newcommand{\FO}{\DL{FO}}     % First-Order Logic
+\newcommand{\GF}{\DL{GF}}     % Guarded Fragment
+\newcommand{\FF}{\DL{FF}}     % Forward Fragment
+\newcommand{\FL}{\DL{FL}}     % Fluted Fragment
+\newcommand{\OF}{\DL{OF}}     % Ordered Fragment
+\newcommand{\FGF}{\DL{FGF}}   % Forward Guarded Fragment
+\newcommand{\UNFO}{\DL{UNFO}} % Unary Negation Fragment
+
+% Complexity classses:
+\newcommand{\complexityclass}[1]{\textsc{#1}} % any complexity class
+\newcommand{\NP}{\complexityclass{NP}}
+\newcommand{\coNP}{\text{co}\complexityclass{NP}}
+\newcommand{\PTime}{\complexityclass{PTime}}
+\newcommand{\PSpace}{\complexityclass{PSpace}}
+\newcommand{\APSpace}{\complexityclass{APSpace}}
+\newcommand{\ExpTime}{\complexityclass{ExpTime}} % exponential time
+\newcommand{\ExpSpace}{\complexityclass{ExpSpace}} % exponential space
+\newcommand{\NExpTime}{\complexityclass{NExpTime}} % nondeterministic exponential time
+\hyphenation{Exp-Time} % prevent "Ex-PTime" (see, e.g. Tobies'01, Glimm'07 ;-)
+\hyphenation{NExp-Time} % prevent "NEx-PTime" (see, e.g. Tobies'01, Glimm'07 ;-)
+\newcommand{\TwoExpTime}{\complexityclass{2ExpTime}} % doubly-exponential time
+\newcommand{\Tower}{\complexityclass{Tower}} % Tower
+\newcommand{\AExpSpace}{\complexityclass{AExpSpace}}
+
+% Others
+\newcommand{\str}[1]{{\mathfrak{#1}}}
+\newcommand{\deff}{\; \stackrel{\text{def}}{=} \;}
+\newcommand{\arity}{\mathsf{ar}}
+
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Q}{{\mathbb{Q}}} 
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\sigSigma}{\Sigma}
+
+% Rel symbols
+\newcommand{\relsymbol}[1]{\mathrm{#1}}
+\newcommand{\relsymbolP}{\relsymbol{P}}
+\newcommand{\relsymbolR}{\relsymbol{R}}
+\newcommand{\relsymbolS}{\relsymbol{S}}
+\newcommand{\relsymbolQ}{\relsymbol{Q}}
+\newcommand{\relsymbolT}{\relsymbol{T}}
+\newcommand{\relsymbolU}{\relsymbol{U}}
+\newcommand{\relsymbolA}{\relsymbol{A}}
+\newcommand{\relsymbolB}{\relsymbol{B}}
+\newcommand{\relsymbolC}{\relsymbol{C}}
+\newcommand{\relsymbolD}{\relsymbol{D}}
+\newcommand{\relsymbolE}{\relsymbol{E}}
+
+% Domain elements
+\newcommand{\domelem}[1]{\mathrm{#1}}                           % domain element
+\newcommand{\domelemc}{\domelem{c}}                             % domain element c
+\newcommand{\domelemd}{\domelem{d}}                             % domain element d
+\newcommand{\domeleme}{\domelem{e}}                             % domain element e
+
+\newcommand{\domelemtuplec}{\vec{\domelemc}}                         % tuple of domain element c
+\newcommand{\domelemtupled}{\vec{\domelemd}}                         % tuple of domain element d
+\newcommand{\domelemtuplee}{\vec{\domeleme}}                         % tuple of domain element e
+
+\newcommand{\domelemtupledfromto}[2]{\vec{\domelemd}_{#1\ldots#2}}  % tuple of domelements d from #1 to #2
+\newcommand{\domelemtupleefromto}[2]{\vec{\domeleme}_{#1\ldots#2}}  % tuple of domelements e from #1 to #2
+
+% Variables:
+\newcommand{\var}[1]{\mathit{#1}}       % variable
+\newcommand{\varx}{\var{x}}             % variable x
+\newcommand{\vary}{\var{y}}             % variable y
+\newcommand{\varz}{\var{z}}             % variable z
+\newcommand{\varv}{\var{v}}             % variable v
+\newcommand{\varu}{\var{u}}             % variable u
+\newcommand{\varw}{\var{w}}             % variable w
+\newcommand{\varh}{\var{h}}             % variable h
+\newcommand{\vartuplex}{\vec{\varx}}    % tuple of variables x
+\newcommand{\vartuplexomega}{\vec{\varx_{\omega}}}      % tuple of variables x_omega
+\newcommand{\vartupley}{\vec{\vary}}                    % tuple of variables y
+\newcommand{\vartupleyone}{\vec{\vary_1}}                    % tuple of variables y_1
+\newcommand{\vartupleytwo}{\vec{\vary_2}}                    % tuple of variables y_2
+\newcommand{\vartuplez}{\vec{\varz}}                    % tuple of variables z
+\newcommand{\vartuplev}{\vec{\varv}}                    % tuple of variables v
+\newcommand{\vartupleu}{\vec{\varu}}                    % tuple of variables u
+\newcommand{\vartuplew}{\vec{\varw}}                    % tuple of variables w
+\newcommand{\vartupleh}{\vec{\varh}}                    % tuple of variables h
+
+\newcommand{\vartuplexfromto}[2]{\vec{\varx}_{#1\ldots#2}}  % tuple of variables x from #1 to #2
+\newcommand{\vartuplevfromto}[2]{\vec{\varv}_{#1\ldots#2}}  % tuple of variables v from #1 to #2
+
+% Knowledge bases
+\newcommand{\kb}[1]{\mathcal{#1}}   % knowledge base
+\newcommand{\kbK}{\kb{K}}           % knowledge base K
+\newcommand{\kbKsimplied}{\kbK_{\textit{smpl}}}           % simplified knowledge base K
+
+% Theory
+\newcommand{\theory}[1]{\mathcal{#1}}   % theory
+\newcommand{\theoryT}{\theory{T}}       % theory T
+\newcommand{\db}[1]{\mathcal{#1}}       % database
+\newcommand{\dbD}{\db{D}}               % database D
+\newcommand{\theoryC}{\mathcal{C}}   % inv-constraints C
+
+% Queries:
+\newcommand{\queryatom}{\alpha}      % query atom
+\newcommand{\query}[1]{\mathit{#1}}  % query
+\newcommand{\queryq}{\query{q}}      % query q
+\newcommand{\match}[1]{#1}          % query match
+\newcommand{\matchpi}{\match{\pi}}  % query match pi
+\newcommand{\matcheta}{\match{\eta}}  % query match eta
+\newcommand{\modelsmatch}[1]{\models_{#1}} % |=_match
+
+% Languages:
+\newcommand{\lang}[1]{\mathbf{#1}}  % any "language" name
+\newcommand{\Ilang}{\lang{N_I}}     % the set of all individual names
+\newcommand{\Rlang}{\lang{N_R}}     % the set of all relational symbols
+\newcommand{\Vlang}{\lang{N_V}}     % the set of all variable names
+
+% Individuals:
+\newcommand{\indv}[1]{\mathtt{#1}}  % individual name
+\newcommand{\indva}{\indv{a}}       % individual name a
+\newcommand{\indvb}{\indv{b}}       % individual name b
+\newcommand{\indvc}{\indv{c}}       % individual name c
+\newcommand{\indvd}{\indv{d}}       % individual name d
+\newcommand{\indvtuplea}{\vec{\indva}}
+\newcommand{\indvtupleb}{\vec{\indvb}}
+\newcommand{\indvtuplec}{\vec{\indvc}}
+\newcommand{\indfromdb}{\mathsf{ind}}
+
+% Types
+\newcommand{\tp}[3]{\mathsf{tp}^{#1}_{#2}(#3)}
+
+% Restrictions
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
+\newcommand{\restr}[2]{#1\restriction_{#2}} % the restriction of #1 to #2
+
+% Query graphs: 
+\newcommand{\queryVar}[1]{\mathrm{Var}{(#1)}}   % Variables from a query
+\newcommand{\queryVarq}{\queryVar{\queryq}}     % Variables from a query q
+
+% Rolling-up technique
+
+\newcommand{\clos}{\mathsf{cl}}
+\newcommand{\hist}{\mathsf{hist}} % history of a tuple
+\newcommand{\subtreePredicate}[2]{\relsymbol{Subt}_{#1}^{#2}}  % subtree of a query #1 rooted at var #2
+\newcommand{\matchPredicate}[1]{\relsymbol{Match}_{#1}}          % match of a query #1s
+
+% Fork rewritings
+
+\newcommand{\eliminateforkto}{\leadsto_{\mathsf{fe}}}        % eliminate fork relation rewritting
+\newcommand{\maximalforkrew}[1]{\mathsf{maxfr}{(#1)}}  % Maximal fork rewritting
+
+
+% morphisms
+\newcommand{\homo}[1]{\mathfrak{#1}}    % homomorphism
+\newcommand{\homof}{\homo{f}}           % homomorphism f
+\newcommand{\homog}{\homo{g}}           % homomorphism g
+\newcommand{\homoh}{\homo{h}}           % homomorphism h
+\newcommand{\ishomoto}{\vartriangleleft} % is homomorhic to
+\newcommand{\homeq}{\rightleftarrows} % homomorphically equivalent
+\newcommand{\isoeq}{\cong} % isomorphic
+
+% Splittings
+
+\newcommand{\splittingof}[1]{\Pi_{#1}}                          % Splitting of a query #1
+\newcommand{\splittingofq}{\splittingof{\queryq}}                               % splitting of query q
+\newcommand{\splittingtrees}{\mathrm{Trees}}                    % Splitting component: Trees
+\newcommand{\splittingroots}{\mathrm{Roots}}                    % Splitting component: Roots
+\newcommand{\splittingithsubtree}[1]{\mathrm{SubTree}_{#1}}     % Splitting component: #1-th Subtree
+\newcommand{\splittingname}{\mathrm{name}}                      % Splitting component: naming function
+\newcommand{\splittingrootof}{\mathrm{root}\text{-}\mathit{of}} % Splitting component: root-of function
+
+% Spoilers
+
+\newcommand{\spoil}{\text{\lightning}}
+\newcommand{\superspoil}{{\spoil}^{*}}
+
+\newcommand{\spoilerKBof}[1]{\kbK_{#1}^{\spoil}}
+\newcommand{\spoilerKBofq}{\spoilerKBof{\queryq}}
+\newcommand{\spoilerTheoryof}[1]{\theoryT_{#1}^{\spoil}}
+\newcommand{\spoilerDBof}[1]{\dbD_{#1}^{\spoil}}
+\newcommand{\superspoilerKBof}[1]{\kbK_{#1}^{\superspoil}}
+

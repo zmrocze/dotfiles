@@ -1,0 +1,33 @@
+% Vulnerability Macro
+\vuln
+    { %title
+      Documentation enhancements
+    }
+    { % CVSS RATING
+      TODO
+    }
+    { % CVSS Calculator Link
+      TODO
+    }
+    { % vulnerability types
+    \item documentation
+    }
+    { % Description 
+    Proper documentation is crucial to avoid introducing new bugs in the future.
+Codebase generally contains little comments, but the consistent namings and module structure together with self-commenting validator checks make it a lesser problem.
+Following are issues that could be improved still:
+\begin{itemize}
+    \item RecordEpochToScaleToSum endpoint is missing from the yellowpaper
+    \item Minimal collateral ratio is passed in code as a percentage. This is undocumented both in the types and functions using it.
+    \item `sessSnapshot` field is confusingly named. Elsewhere "snapshot" refers to values with `StabilityPoolSnapshot` type.
+    \item Implemention of the tests is poorly documented.
+  \end{itemize}
+  
+    }
+    { % Recommended Fix
+      Fix listed issues.
+    }
+    { % Links
+    \item\href{https://github.com/IndigoProtocol/smart-contracts/issues/478}{Audit - Documentation enhancements. #478}
+    \item\href{github.com}{Some Other Link}
+    }

@@ -1,0 +1,32 @@
+{-|
+
+Defines type for transaction inputs.
+
+-}
+module Ledger.Tx.TxInput where
+
+-- | The type of a transaction input. Contains redeemer if consumes a script.
+data TxInputType =
+      TxConsumeScriptAddress !Redeemer !ValidatorHash !DatumHash -- ^ A transaction input that consumes a script address with the given validator, redeemer, and datum.
+    | TxConsumePublicKeyAddress -- ^ A transaction input that consumes a public key address.
+    | TxConsumeSimpleScriptAddress -- ^ Consume a simple script
+    deriving stock (Show, Eq, Ord, Generic)
+    deriving anyclass (ToJSON, FromJSON, Serialise, NFData)
+
+-- | A transaction input, consisting of a transaction output reference and an input type. 
+-- Differs with TxIn by: TxIn *maybe* contains *full* data witnesses, TxInput always contains redeemer witness, but datum/validator hashes.
+data TxInput = TxInput {
+    txInputRef  :: !TxOutRef,
+    txInputType :: !TxInputType
+    }
+    deriving stock (Show, Eq, Ord, Generic)
+    deriving anyclass (ToJSON, FromJSON, Serialise, NFData)
+
+instance Pretty TxInput where
+    pretty TxInput{txInputRef,txInputType} =
+        let rest =
+                case txInputType of
+                    TxConsumeScriptAddress redeemer _ _ ->
+                        pretty redeemer
+                    _ -> mempty
+        in hang 2 $ vsep ["-" <+> pretty txInputRef, rest]

@@ -1,0 +1,8 @@
+f()
+{
+    y : { } = 5
+    x.bar = 17;
+}
+
+//@PRACOWNIA
+//@stop_after parser

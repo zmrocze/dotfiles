@@ -1,0 +1,111 @@
+user=zmrocze
+# Use powerline
+USE_POWERLINE="true"
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+ source /usr/share/zsh/manjaro-zsh-prompt
+fi
+
+NIX_BUILD_SHELL=zsh
+source /home/$user/.local/source/zsh-nix-shell/nix-shell.plugin.zsh
+
+export PATH=$PATH:$HOME/.ghcup/bin/
+
+export PATH=$PATH:$HOME/.local/share/coursier/bin/
+fpath=(~/.zsh/completion $fpath)
+
+export SCRIPTS=$HOME/code/op_scripts
+
+# nix zsh autocompletion
+# source /home/zmrocze/.local/source/nix-zsh-completions/nix-zsh-completions.plugin.zsh
+# fpath=(/home/zmrocze/.local/source/nix-zsh-completions $fpath)
+autoload -U compinit && compinit
+
+# coursier autocomplete wants that:
+# autoload -Uz compinit ; compinit
+
+# stack autocomplete wants these 2:
+# autoload -U +X compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit
+
+# eval "$(stack --bash-completion-script stack)"
+
+eval "$(direnv hook zsh)"
+
+alias -g mi="micro"
+alias sudo="doas"
+alias -g json="python3 -m json.tool"
+alias -g mapapply="xargs -L1"
+alias hs="hsh"
+alias -g grep="grep -E"
+alias py=python
+
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
+
+map () {
+    while read line;
+    do 
+        $@ <<< $line;
+    done
+}
+
+cl () {
+	cd $1
+	ls
+}
+
+cdir () {
+	mkdir $1
+	cd $1
+}
+
+stev () {
+	stack eval $1
+}
+
+status2add () {
+	echo "$1" | hsh 'unwords . map last'
+}
+
+findgrep () {
+    args=()
+    for x; do
+        shift
+        [[ $x == ::: ]] && break
+        args+=("$x")
+    done
+    find "${args[@]}" -exec grep -Hn "$@" {} \;
+}
+
+line() {
+	if [ "$2" = '_' ]; then 
+		xargs -I $1 ${@[3,-1]}
+	else 
+		echo "expected '_'" && false
+	fi
+}
+
+# 
+# cipher='-aes-256-cbc -pbkdf2 -iter 2000000'
+encrypt() {
+	openssl enc -e -aes-256-cbc -pbkdf2 -iter 5000000 $@
+}
+
+decrypt() {
+	openssl enc -d -aes-256-cbc -pbkdf2 -iter 5000000 $@
+}
+
+gitclonebare() {
+	mkdir $2
+	git clone --bare $1 $2/.bare
+	echo "gitdir: ./.bare" > $2/.git
+}
+
+if [ -e /home/$user/.nix-profile/etc/profile.d/nix.sh ]; then . /home/zmrocze/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# opam configuration
+[[ ! -r /home/zmrocze/.opam/opam-init/init.zsh ]] || source /home/zmrocze/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

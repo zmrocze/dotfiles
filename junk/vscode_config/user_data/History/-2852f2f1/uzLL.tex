@@ -1,0 +1,83 @@
+% \documentclass[brief]{beamerikz}
+\documentclass[final, wide]{beamerikz}
+
+% packages --------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern} % For higher quality fonts
+
+\usetikzlibrary{arrows, decorations.markings, shapes, calc}
+\usepackage{nicolas-markey-expose}
+\usepackage{pdfpages}
+
+% document data ---------------------------------------------------------------
+
+\sBzTitle{Towards a Model Theory of Ordered Logics}
+
+\sBzAuthor{Bartosz ``Bart'' Bednarczyk}
+
+% macros ----------------------------------------------------------------------
+
+\usepackage{xcolor}
+\usepackage{svg}
+
+\definecolor{colone}{RGB}{205,133,63}
+\newcommand{\colonecmd}{colone}
+\newcommand{\hlone}[1]{\textcolor{\colonecmd}{#1}}
+\definecolor{coltwo}{RGB}{100,149,237}
+\newcommand{\coltwocmd}{coltwo}
+\newcommand{\hltwo}[1]{\textcolor{\coltwocmd}{#1}}
+\definecolor{colthree}{RGB}{34,139,34}
+\newcommand{\colthreecmd}{colthree}
+\newcommand{\hlthree}[1]{\textcolor{\colthreecmd}{#1}}
+\definecolor{colfour}{RGB}{219,112,147}
+\newcommand{\colfourcmd}{colfour}
+\newcommand{\hlfour}[1]{\textcolor{\colfourcmd}{#1}}
+\newcommand{\hlfive}[1]{\hl{#1}}
+
+\input{macros}
+
+\newcommand{\Logic}[1]{\ensuremath{\mathsf{#1}}} % a Logic
+\newcommand{\logicL}{\Logic{L}} % some logic L
+\newcommand{\Linf}{\Logic{L}_{\mathsf{inf}}}   % L_infix
+\newcommand{\Lsuf}{\Logic{L}_{\mathsf{suf}}} % L_suffix
+\newcommand{\Lpref}{\Logic{L}_{\mathsf{pre}}} % L_prefix
+\newcommand{\Ginf}{\Logic{G}_{\mathsf{inf}}}   % G_infix
+\newcommand{\Gsuf}{\Logic{G}_{\mathsf{suf}}} % G_suffix
+\newcommand{\Gpref}{\Logic{G}_{\mathsf{pre}}} % G_prefix
+\begin{document}
+
+\begin{bzPlainFrame}
+	\bzOn{
+		\iBzH[1.0]
+
+		\iBzH[0.2]\bzCenter[bzEB, scale=1.5] {Towards a Model Theory of Ordered Logics}
+
+		\iBzH[0.25]\bzCenter[bzEB, scale=1.5] {Expressivity and Interpolation}
+
+		\iBzH[0.25]\bzCenter[bzEB, scale=0.75] {August 23rd 2022, Vienna, MFCS 2022}
+
+		\iBzH[0.75]\bzCenter{Bartosz ``Bart'' Bednarczyk \; \; \; \; \; \; \; \; \; \;  \; \; \; \; \; \; \; \; \; \; \;\; \;  \; \;  \; \; \; \;\; \; \; \;\; \; \; \; \; \; \;  \; \;\; \;Reijo Jaakkola}
+		\iBzH[0.25]\bzCenter[scale=0.8] {\sc TU Dresden \& University of Wroc\l{}aw \; \; \; \; \; \; \; \; \; \; \; \; \;  \; \;  \; \; \; \;\; \; \; \;\; \; \; \; \; \; \; Tampere University}
+
+		\iBzH[1.4]
+		\node[bzG] at (-9, \bzH) {\includegraphics[scale=0.25]{img/logo_TU_Dresden} };
+		\node[bzG] at (-1, \bzH) {\includegraphics[scale=0.65]{img/logo_UWr} };
+		\iBzH[3.5]
+		\node[bzG] at (-5, \bzH) {\includegraphics[scale=0.09]{img/erc.png} }; 
+		\node[bzG] at (11, \bzH+1.5) {\includegraphics[scale=0.35]{img/Tampere_University_logo_0.png} };
+
+
+	}
+\end{bzPlainFrame}
+
+\input{slides/slide-motivation} 
+\input{slides/slide-gf}
+\input{slides/slide-fluted} 
+\input{slides/slide-purdy}
+\input{slides/slide-our-results}
+\input{slides/slide-our-results-ii}
+\input{slides/slide-conclusions}
+
+\end{document}

@@ -1,0 +1,8 @@
+allRedeemers Tx{txWithdrawals, txCertificates, txMintingScripts, txInputs} =
+    zipWith (Withdrawing,) (mapMaybe withdrawalRedeemer txWithdrawals)
+    <> zipWith (Certifying,) (mapMaybe certificateRedeemer txCertificates)
+    <> zipWith (Minting,) (Map.elems txMintingScripts)
+    <> zipWith (Spending,) (mapMaybe (
+        (\case
+            TxConsumeScriptAddress rd _ _ -> Just rd
+            _                             -> Nothing) . txInputType) txInputs)

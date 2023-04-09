@@ -1,0 +1,1 @@
+{"version":1,"resource":"file:///home/zmrocze/mlabs/plutus-apps/main_now/plutus-ledger/src/Ledger/Tx/Internal.hs","entries":[{"id":"27L5.hs","timestamp":1660085371211},{"id":"3qLj.hs","source":"import Plutus.Script.Utils.Scripts (datumHash)","timestamp":1660085389215}]}

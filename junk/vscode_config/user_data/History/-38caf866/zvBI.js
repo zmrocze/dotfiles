@@ -1,0 +1,2 @@
+
+allScripts = {"alwaysSucceed" : "some script" }

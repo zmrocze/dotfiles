@@ -1,0 +1,14 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "editor.fontSize": 18,
+    "clangd.path": "/home/zaabson/.config/Code - OSS/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/13.0.0/clangd_13.0.0/bin/clangd",
+    "agdaMode.connection.agdaPath": "/home/zaabson/.local/bin/agda",
+    "files.associations": {
+        "*.psql": "sql"
+    },
+    "haskell.plugin.ghcide-completions.config.autoExtendOn": false,
+    "window.zoomLevel": 1,
+    "hoogle-vscode.url": "http://localhost:8007/",
+    "hoogle-vscode.verbose": true,
+    "haskell.manageHLS": "PATH"
+}

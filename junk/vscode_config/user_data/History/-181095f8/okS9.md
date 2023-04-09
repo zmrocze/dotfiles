@@ -1,0 +1,6 @@
+- \emph 
+- $\mathit$
+- section inference ref
+- aligned equation
+- myslnik 
+- relational symbol ? relation symbol

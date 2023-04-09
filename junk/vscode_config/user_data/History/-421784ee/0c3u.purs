@@ -1,0 +1,2 @@
+
+foreign import alwaysSucceed :: String

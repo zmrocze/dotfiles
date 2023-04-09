@@ -1,0 +1,21 @@
+(library
+    (name mod_student)
+    (public_name mod_student)
+    (libraries ocamlgraph zi_lib)
+    (modes byte)
+)
+(menhir 
+    (flags (--explain --dump))
+    (modules parser)
+)
+(ocamllex
+    lexer
+)
+(env
+    (dev
+        (flags (:standard -g -w -39-33-26-27-32-21))
+    )
+    (release
+        (flags (:standard -w -39-33-26-27))
+    )
+)

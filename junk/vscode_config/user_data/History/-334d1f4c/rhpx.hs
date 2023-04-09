@@ -1,0 +1,33 @@
+module HshPrelude (
+    module Prelude,
+    module HshPrelude,
+    module Data.Foldable,
+    module Data.Traversable,
+    module Data.Either,
+    module Data.Maybe,
+    module Control.Arrow,
+    module Control.Monad,
+    module Data.Bifunctor,
+    module Data.List,
+    module Numeric,
+    module Data.Char,
+) where
+
+import Prelude
+import Data.Foldable
+import Data.Traversable
+import Data.Either
+import Data.Maybe
+import Control.Arrow hiding (first, second) -- we will get them (but different) from bifunctor
+import Control.Monad
+import Data.Bifunctor
+import Data.List
+import Data.Char
+import Numeric
+-- import GHC.Utils.Misc (nTimes)
+
+type Lines = [String]
+
+nTimes 0 _ = id
+nTimes 1 f = f
+nTimes n f = f . nTimes (n-1) f 

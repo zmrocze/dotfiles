@@ -1,0 +1,1 @@
+- How to debug flake? I want inputs resolved and peak into what are the values of attributes 

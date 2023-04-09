@@ -1,0 +1,21 @@
+library:
+  source-dirs: src
+
+dependencies:
+  - base
+  - hint
+  - pretty-simple
+  - extra
+  - containers
+  - turtle >= 1.6.1
+
+executables:
+  hsh:
+    main:                Main.hs
+    source-dirs:         src
+    dependencies: []
+
+    ghc-options: []
+    # - -threaded
+    # - -rtsopts
+    # - -with-rtsopts=-N

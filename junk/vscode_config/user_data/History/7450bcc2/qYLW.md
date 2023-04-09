@@ -1,0 +1,30 @@
+
+# Changes
+
+### Redefines `Tx` type
+ - `Tx` gets withdrawals, certificates(1), metadata(1) fields
+ - script and datum witnesses get put into maps and refered to by hashes
+ - redeemers get put together with the MintingPolicy/Certificate/Input
+ - defines `TxInput` and `TxInputType` simmilar to `TxIn` and `TxInType`.
+ - defines `Withdrawal` type
+ - defines `Certificate` type
+ - splits Ledger.Tx.Internal module
+
+### Updates pab accordingly
+ - `TxIn` remains used by some functions
+ - most changes are automatic: imports and minor updates that don't change logic but update the `Tx`
+ - `toCardanoTxBodyContent` from Ledger.Tx.CardanoAPI gets updated with withdrawal translation (based on [plutus-simple-model](https://github.com/mlabs-haskell/plutus-simple-model/blob/main/src/Plutus/Test/Model/Fork/CardanoAPI.hs)). Certificate
+
+### Updates purescript accordingly
+ - code generation generates added types: `Certificate`, `Withdrawal`, `TxInput`, `TxIn`
+ - minor tweak in purescript source code
+
+
+
+# Certificate and Metadata is chosen wrong (1)
+ - `DCert` in `Certificate` has some data like `StakePoolParameters` in registration certificate digested. Best would be to reproduce [cardano-api/`Certificate`](https://github.com/input-output-hk/cardano-node/blob/6a465b09b5dfd5fe281061b94f69faee1227800a/cardano-api/src/Cardano/Api/Certificate.hs#L80) but using plutus-friendly types.
+ - Metadata is more like `Map Word64 JSONLikeValue`, definitely not bytestring. Best would be [cardano-api/`TxMetadata`](https://github.com/input-output-hk/cardano-node/blob/6a465b09b5dfd5fe281061b94f69faee1227800a/cardano-api/src/Cardano/Api/TxMetadata.hs#L83), but we can't use for example Word64 onchain, correct?
+
+
+
+  using `DCert`. Only `DCert` is incorrect for that as some info is digested, better would `Cardano.Api.Certificate`.

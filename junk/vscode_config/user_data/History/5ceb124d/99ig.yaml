@@ -1,0 +1,61 @@
+Composer:
+
+#-------------------------------------------------------------------------------
+# Disclaimer
+  - RawMd:
+      level: 0
+      link: https://raw.githubusercontent.com/mlabs-haskell/audit-report-template/master/linked-files/disclaimer.md
+
+  - NewPage: 0
+
+#-------------------------------------------------------------------------------
+# Audit Background
+  - Issue:
+      level: 0
+      number: 1
+
+  - NewPage: 0
+
+# Findings and Reccomendations
+  - Issue:
+      level: 0
+      number: 11
+
+  - NewPage: 0
+      
+  # Vulnerabilities
+  - Header:
+      level: 1
+      text: Vulnerabilities
+
+  - AllIssuesThat:
+      level: 1
+      filters:
+        - hasLabel: "vulnerability"
+        - isOpen: true
+
+  - NewPage: 0
+
+#-------------------------------------------------------------------------------
+# Appendix
+  # Findings
+  - Header:
+      level: 1
+      text: Appendix
+
+  - RawMd:
+      level: 1
+      link: https://raw.githubusercontent.com/mlabs-haskell/audit-report-template/master/linked-files/vulnerability-types.md
+
+#-------------------------------------------------------------------------------
+
+GHAppy:
+  - GetLinkedFile:
+      location: Images
+      name: MLabs-logo.jpg
+      link: https://raw.githubusercontent.com/mlabs-haskell/audit-report-template/master/linked-files/images/MLabs-logo.jpg
+
+  - GetLinkedFile:
+      location: Images
+      name: MLabs-logo-cropped.jpg
+      link: https://raw.githubusercontent.com/mlabs-haskell/audit-report-template/master/linked-files/images/MLabs-logo-cropped.jpg

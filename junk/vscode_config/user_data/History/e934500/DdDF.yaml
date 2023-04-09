@@ -1,0 +1,6 @@
+ cradle:
+  cabal:
+    - path: "./src"
+      component: "lib:cardano-mlabs-template-onchain"
+    - path: "./exporter"
+      component: "exe:exporter"

@@ -1,0 +1,6 @@
+g(x:int):int {
+  whiletrue ()
+}
+// TODO
+//@PRACOWNIA
+//@stop_after parser

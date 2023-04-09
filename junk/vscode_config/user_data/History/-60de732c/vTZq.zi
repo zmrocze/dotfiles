@@ -1,0 +1,7 @@
+producer() : { foo : int } {    return { foo = 42 }}
+test()
+{
+  test()
+}
+//@PRACOWNIA
+//@stop_after typechecker

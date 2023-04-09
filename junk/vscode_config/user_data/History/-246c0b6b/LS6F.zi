@@ -1,0 +1,9 @@
+f()
+{
+    x : int = { foo = 18, bar = 123, baz = true,}.foo
+    y : { } = { }
+    x.bar = 17;
+}
+
+//@PRACOWNIA
+//@stop_after parser

@@ -1,0 +1,3 @@
+# Conclusion
+
+During the 6 week period Mlabs inspected the on-chain code of the Indigo protocol revealing TODO vulnurabilities, TODO of them critical. The list is not guaranteed to be exhaustive, but rather contains issues identified by the team in the timeframe of the audit. The team has summarized the findings in the given report, outlining potential dangers and leaving recommendations. The report is provided without a guarantee of any kind, but we hope it proves useful.

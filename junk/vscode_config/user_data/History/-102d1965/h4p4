@@ -1,0 +1,32 @@
+# Schnorr signatures
+
+## Intro
+
+My aim is to explain Schnorr signatures, but in a way that doesn't make it look like an arbitral scheme. 
+We are going to split the explanation into modular parts.
+
+ - discrete logarithm
+ - zero knowledge protocols
+ - fiat-shamir heurestic
+
+## Discrete logarithm
+
+We are going to do calculations in modular arithmetic. But really the fact that it's modular arithmetic is an implementation detail.
+We need a finite group G, where the discrete logarithm problem is hard. What is a group: [short reminder](#short-reminder-on-what-a-group-is) and [thorough explanation](). Having a group with binary operation $*$ lets write $a^n$ for repeated $n$-times $a*a*..*a$.
+
+Discrete logarithm problem asks: Given $a$ and $b$ - knowing $b=a^n$ for some $n$ - what is $n$? 
+
+Take arithmetic modulo 120 (result of multiplication is "trimmed" to fit in the range $[0, 120)$). We can repeatedly multiply $3$ by itself getting $3, 9, 27, 81$ like we usually do, but once we tick over 120 and get $81*3%120$
+
+A group is a natural structure where this equation always has a single solution. 
+
+Let's take a group $Z^*_k$ - a group of integers $\{1,2,...,k-1\}$
+
+### Short reminder on what a group is
+
+It is an algebraic structure with a single binary operation. The operation:
+ - has a neutral element $1$
+ - is associative: $(a*b)*c = a*(b*c)$
+ - is invertable: $∀x∃y x*y=1$
+
+A prime example is the set of functions `A -> A` with composition being the binary operation.

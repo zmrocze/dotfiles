@@ -1,0 +1,20 @@
+
+packages: ./.
+
+-- We never, ever, want this.
+write-ghc-environment-files: never
+
+test-show-details: direct
+
+-- * it has strict aeson < 1.5 dep - this will be fixed in the next release.
+allow-newer:
+    *:aeson
+  , size-based:template-haskell
+
+constraints:
+    aeson >= 2
+
+package ouroboros-consensus-shelley
+  optimization: False
+package ouroboros-consensus-cardano
+  optimization: False

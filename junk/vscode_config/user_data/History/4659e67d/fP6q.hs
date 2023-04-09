@@ -1,0 +1,59 @@
+{-# LANGUAGE ImportQualifiedPost  #-}
+
+module Main (
+  main
+) where
+
+import Cardano.BM.Data.Severity qualified as Severity
+
+import Cardano.BM.Configuration.Model qualified as CM
+
+import Paths_plutip (getDataFileName)
+import Plutus.ChainIndex.App qualified as ChainIndex
+import Plutus.ChainIndex.Config (ChainIndexConfig (cicNetworkId, cicPort), cicDbPath, cicSocketPath)
+import Plutus.ChainIndex.Config qualified as ChainIndex
+import Plutus.ChainIndex.Logging (defaultConfig)
+
+import Test.Plutip.Config (
+  PlutipConfig (
+    chainIndexPort,
+    clusterDataDir,
+    clusterWorkingDir,
+    relayNodeLogs
+  ),
+  WorkingDirectory (Fixed, Temporary),
+ )
+import Test.Plutip.Internal.BotPlutusInterface.Setup qualified as BotSetup
+import Test.Plutip.Internal.Types (
+  ClusterEnv (
+    ClusterEnv,
+    chainIndexUrl,
+    networkId,
+    plutipConf,
+    runningNode,
+    supportDir,
+    tracer
+  ),
+  RunningNode (RunningNode),
+ )
+
+
+launchChainIndex :: FilePath -> IO Int
+launchChainIndex = do
+  config <- defaultConfig
+  CM.setMinSeverity config Severity.Notice
+  let dbPath = "/home/zmrocze/mlabs/plutip/master/my-local-cluster" </> "chain-index.db"
+      chainIndexConfig =
+        ChainIndex.defaultConfig
+          { cicSocketPath = "/home/zmrocze/mlabs/plutip/master/my-local-cluster/pool-1/node.socket"
+          , cicDbPath = dbPath
+          , cicNetworkId = CAPI.Mainnet
+        --   , cicPort =
+        --       maybe
+        --         (cicPort ChainIndex.defaultConfig)
+        --         fromEnum
+        --         (chainIndexPort conf)
+          }
+  ChainIndex.runMainWithLog (const $ return ()) config chainIndexConfig
+
+main = launchChainIndex 

@@ -1,0 +1,6 @@
+f() {
+  b:bool[][2]  
+}
+
+//@PRACOWNIA
+//@stop_after parser

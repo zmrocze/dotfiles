@@ -1,0 +1,9 @@
+%left () [] . ^ wywołanie funkcji, indeksowania, selekcja pola, 
+%right MINUS 
+%left TIMES DIV MOD
+%left PLUS MINUS
+%left LE LT GT GE
+%left EQ NEQ
+%right NOT
+%left AND
+%left OR

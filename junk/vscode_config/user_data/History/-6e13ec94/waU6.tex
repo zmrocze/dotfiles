@@ -1,0 +1,51 @@
+% Vulnerability Macro
+\vuln
+    { %title
+    Incorrect validation of Proposal execution allows stealing of the Upgrade Token.
+    }
+    { % CVSS RATING
+      9.3
+    }
+    { % CVSS Calculator Link
+    https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:N/UI:N/S:C/C:N/I:H/A:N/E:F/RL:O/RC:C/CR:X/IR:H/AR:M/MAV:N/MAC:L/MPR:N/MUI:N/MS:C/MC:X/MI:H/MA:X&version=3.1
+    }
+    { % Severity
+    Critical
+    }
+    { % vulnerability types
+    \item multiple-satisfaction
+    }
+    { % Description 
+    If there are two successful proposals, then a user can steal an upgrade token by executing both of the proposals in the same transaction. 
+
+    A passed proposal results in an UTXO with an \texttt{Upgrade Token}. There are pairs of \texttt{Upgrade Tokens} whose validation logic allows for them to be executed simultaneously in a single transaction. For example two \texttt{Text Proposals} or two \texttt{Modify Protocol Params} proposals for the same parameters.
+    
+    Though the validation logic checks precisely for a single \texttt{Upgrade Token} to get burnt. This allows for a transaction spending two \texttt{Upgrade Tokens}, burning one of them as demanded by the validator, but sending the remaining one to a wallet address of an attacker. This is very severe as a user having an upgrade token could execute arbitrary proposals.
+    }
+    { % How to reproduce / Provided Proof      
+    To test for the vulnerability we use two successful `Text Proposals` and execute them in a single transaction. 
+
+    A [test](https://github.com/IndigoProtocol/smart-contracts/blob/3ceec2538fba0266b75c5e7cadddeae1fb8fb4e6/tests/Spec/Governance/Benchmark.hs#L197) was added in the IndigoProtocol/smart-contracts test suite that demonstrates the attack. To reproduce it's sufficient to run the following steps:
+    
+    \begin{lstlisting}
+    $ git clone https://github.com/IndigoProtocol/smart-contracts.git
+    $ cd smart-contracts
+    $ git checkout 3ceec2538fba0266b75c5e7cadddeae1fb8fb4e6
+    $ nix develop
+    $ cabal run indigo-tests -- --test -- --pattern "Text Exploit Proposal"
+    benchmark test suite
+      Governance
+        Text Exploit Proposal: OK (0.65s)
+    All 1 tests passed (0.65s)
+    \end{lstlisting}
+    
+    }
+    { % Recommended Fix
+    The validation of proposal execution should check for the unique update token in the inputs. Ability to execute multiple proposals at once is more confusing than usefull.
+    }
+    { % Links
+    \item\href{https://www.atlassian.com/trust/security/security-severity-levels}{Severity Levels for Security Issues}
+    2. [MLabs vulnerability classification](https://www.notion.so/Vulnerability-Types-ad39253c84ce443a82b835d94d765ba2)
+    \item\href{https://github.com/IndigoProtocol/smart-contracts/pull/466}{Audit - Proposal Exploit #466}
+    \item\href{https://github.com/IndigoProtocol/smart-contracts/blob/3ceec2538fba0266b75c5e7cadddeae1fb8fb4e6/tests/Spec/Governance/Benchmark.hs#L197}{Proposal exploit test}
+    }

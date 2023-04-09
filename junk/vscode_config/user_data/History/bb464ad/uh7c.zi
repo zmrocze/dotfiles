@@ -1,0 +1,38 @@
+f() {
+
+}
+
+f(x:int) {
+
+}
+
+f():int {
+    return 0
+}
+
+f(x:int, y:int) {
+
+}
+
+f(): bool {
+
+}
+
+f(): {foo : int} {
+
+}
+
+f(x : {foo : int, bar : bool[]} ) {
+    x:int
+}
+
+f() : { x:int, y:int } {
+
+}
+
+f() {
+    x:int = 1
+}
+
+//@PRACOWNIA
+//@stop_after parser

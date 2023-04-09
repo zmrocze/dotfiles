@@ -1,0 +1,4 @@
+- \emph 
+- $\mathit$
+- skolem uppercase
+- section inference ref

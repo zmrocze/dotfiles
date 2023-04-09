@@ -1,0 +1,11 @@
+Plutip has executable 'local-cluster' starting a cluster of 3 pools and a relay node.
+One should:
+ - start cluster with `cabal new-run local-cluster` and copy shown node socket
+ - to hard-fork run: 
+ ```
+ export CARDANO_NODE_SOCKET_PATH=<socket path>
+
+ # submit update-proposal bumping major version to 7 (babbage)
+ bash 
+
+ ```

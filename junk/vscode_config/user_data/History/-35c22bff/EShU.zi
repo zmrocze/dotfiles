@@ -1,0 +1,8 @@
+
+g()
+{
+    x:int[][][1]
+}
+
+//@PRACOWNIA
+//@stop_after parser

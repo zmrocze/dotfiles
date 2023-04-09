@@ -1,0 +1,8 @@
+f() {
+  while not a^.field {
+    print("hello")
+  }
+}
+
+//@PRACOWNIA
+//@stop_after parser

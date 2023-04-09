@@ -1,0 +1,6 @@
+g(x:int):int {
+  arr = {1}
+}
+// TODO
+//@PRACOWNIA
+//@stop_after parser

@@ -1,0 +1,14 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "editor.fontSize": 18,
+    "clangd.path": "/usr/bin/clangd",
+    "agdaMode.connection.agdaPath": "/home/zaabson/.local/bin/agda",
+    "files.associations": {
+        "*.psql": "sql"
+    },
+    "haskell.plugin.ghcide-completions.config.autoExtendOn": false,
+    "window.zoomLevel": 1,
+    "hoogle-vscode.verbose": true,
+    "haskell.manageHLS": "PATH",
+    "git.mergeEditor": false
+}

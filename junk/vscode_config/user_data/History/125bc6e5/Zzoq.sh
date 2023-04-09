@@ -1,0 +1,12 @@
+#!/bin/sh
+find . | grep -E "*.md" | xargs sed -i "s/it's/it is/g"
+find . | grep -E "*.md" | xargs sed -i "s/\ Ada\ /\ _Ada_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/\ Lovelace\ /\ _Lovelace_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/\ lovelace\ /\ _Lovelace_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/ADA/_Ada_/g"
+find . | grep -E "*.md" | xargs sed -i "s/ ada /\ _Ada_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/\ iUSD\ /\ _iUSD_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/\ CDP\ /\ _CDP_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/\ MCR\ /\ _MCR_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/\ UTXO\ /\ _eUTxO_\ /g"
+find . | grep -E "*.md" | xargs sed -i "s/\ Tx\ /\ _Tx_\ /g"

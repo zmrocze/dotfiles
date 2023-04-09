@@ -1,0 +1,2461 @@
+\documentclass[]{beamerikz}
+
+\usepackage{verbatimbox}
+\usepackage{fancyvrb}
+
+\sBzTitle{\bf \beamerikz class manual}
+
+\sBzAuthor{Micha{\l} Skrzypczak}
+
+\newcommand{\bzCode}[1]{
+	\node[bzL, anchor=north west, scale=11.03/\bzUseScale] at (\bzI+0.5, \bzH+0.18) {\linespread{1}\fontsize{10}{12}\selectfont #1};
+}
+
+\newcommand{\hint}{\hb{Hint}: }
+
+\newcommand{\TikZ}{Ti{\it k}Z\xspace}
+
+\begin{document}
+
+% =======================================================================================
+
+\begin{bzPlainFrame}%[show]
+\bzOn{
+	\iBzH[4.5]
+	\bzCenter[bzEB, scale=1.4]{\bzTitle}
+
+	\iBzH[1.0]
+	\bzCenter[scale=1.1]{\bzAuthor}
+
+	\bzCenter[scale=0.8] {\sc University of Warsaw}
+}
+\end{bzPlainFrame}
+
+% =======================================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Setup}
+}
+
+\iBzH
+
+\bzOn{
+	\bzList{Download the \Verb"beamerikz.cls" file.}
+}
+
+\bzOn{
+	\bzList{Place it in the folder where your \Verb"*.tex" file is.}
+}
+
+\bzOn{
+	\bzList{Prepare your slides in the \Verb"*.tex" file.}
+}
+
+\bzOn{
+	\bzList{Compile them with \Verb"pdflatex" (optimally twice).}
+}
+
+\bzOn{
+	\bzList{See the result.}
+}
+
+\bzOn{
+	\bzList{Be happy$^\ast$.}
+	\bzEvalInt{\itemHappy}{\bzL}
+}
+
+\iBzH[6]
+
+\bzOn{
+	\bzText[scale=0.7] {{\bf $^\ast$} Item {\bf \itemHappy} is optional.}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbMin}
+\documentclass{beamerikz}              % defines the document to be BeamerikZ
+
+\begin{document}
+\begin{bzFrame}                        % the only frame of that document
+\bzOn{                                 % content to appear first
+    \bzCenter{Welcome to \beamerikz!}  % a centred text
+}
+\end{bzFrame}
+\end{document}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbMid}
+\documentclass{beamerikz}              % defines the document to be BeamerikZ
+
+\begin{document}
+\begin{bzFrame}                        % the only frame of that document
+\bzOn{                                 % content to appear first
+    \bzCenter{Welcome to \beamerikz!}  % a centred text
+}
+\bzOn{                                 % content to appear second
+    \bzCenter{Welcome again, nice to see you!}
+    \bzCenter{Hope that you'll stay longer :)}
+}
+\end{bzFrame}
+\end{document}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbMax}
+\documentclass{beamerikz}              % defines the document to be BeamerikZ
+
+\begin{document}
+\begin{bzFrame}                        % the first frame of that document
+\bzOn{                                 % content to appear first
+    \bzCenter{Welcome to \beamerikz!}  % a centred text
+}
+\bzOn{                                 % content to appear second
+    \bzCenter{Welcome again, nice to see you!}
+    \bzCenter{Hope that you'll stay longer :)}
+}
+\end{bzFrame}
+
+\begin{bzFrame}                        % the second frame
+\bzOn{                                 % content to appear first
+    \bzCenter{Welcome again!}          % a centred text
+}
+\end{bzFrame}
+\end{document}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbBzOn}\bzOn{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzOnly}\bzOnly{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzOne}\bzOne{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzTwo}\bzTwo{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzIn}\bzIn{from}{to}{...}\end{myverbbox}
+
+\begin{myverbbox}{\vbBzC}\bzCenter{...}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzIn{\bzS}{\bzS}{
+	\iBzH
+	\bzCode{\vbMin}
+	\dBzH
+}
+
+\bzOn{
+	\bzCenter[bzEB]{Minimal working example}
+}
+
+\bzIn{\bzS}{\bzS}{
+	\path[fill=bzBlue!40, rounded corners=3pt] (\bzI+0.25, \bzH-3.5+0.25) rectangle ++(14.5, -2);
+	\bzCode{\vbMid}
+}
+
+\bzOn{	
+	\iBzH[10.0]	
+	\bzLeft{To add more content, create a new \vbBzOn{} entry, as above.}
+}
+
+\bzOn{
+	\bzLeft{Or add a new frame.}
+	\dBzH[12]
+	\path[fill=bzBlue!40, rounded corners=3pt] (\bzI+0.25, \bzH-6.5+0.25) rectangle ++(14.5, -2.5);
+	\bzCode{\vbMax}
+	\iBzH[12]
+}
+
+\bzOn{
+	\bzLeft{\hint To avoid problems, put all your content (like \vbBzC)}
+	\bzRight{inside \vbBzOn{} entries (or their variants)\ldots}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzM}bzM\end{myverbbox}
+\begin{myverbbox}{\vbBzEvalInt}\bzEvalInt\end{myverbbox}
+\begin{myverbbox}{\vbBzEvalFloat}\bzEval\end{myverbbox}
+
+\begin{myverbbox}{\vbBzCenter}\bzCenter{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzLeft}\bzLeft{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzNext}\bzNext{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzPrev}\bzPrev{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzText}\bzText{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzRight}\bzRight{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzBox}\bzBox{...}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Content}
+}
+
+\bzEval{\xs}{0.2}
+
+\bzOn{
+	\bzLeft{Use the following commands to draw your content into the frame:}
+}
+
+\iBzH[\xs]
+
+\bzOn{
+	\bzCenter{\vbBzCenter{} for centred text}
+}
+
+\iBzH[\xs]
+
+\bzOn{
+	\bzLeft{\vbBzLeft{} for text aligned next to the left edge}
+}
+
+\iBzH[\xs]
+
+\bzOn{
+	\bzText{\vbBzText{} for text written normally, from left, with an indent}
+}
+
+\iBzH[\xs]
+
+\bzOn{
+	\bzRight{\vbBzRight{} for text aligned to the right}
+}
+
+\iBzH[\xs]
+
+\bzOn{
+	\bzBox{\vbBzBox{} for content that exceeds the standard width of the slide and should wrap to another line (other commands may also allow that, see \vbBzM{} below\ldots)}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzItem}\bzItem{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzList}\bzList{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzL}\bzL\end{myverbbox}
+\begin{myverbbox}{\vbzBzL}\zBzL\end{myverbbox}
+
+\begin{myverbbox}{\vbBzItemDot}\bzItemDot\end{myverbbox}
+\begin{myverbbox}{\vbzBzItemDot}\zBzItemDot\end{myverbbox}
+
+\begin{myverbbox}{\vbRenewDot}\renewcommand{\bzItemDot}{$\circ$}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Item and list}
+}
+
+\bzEval{\xs}{0.2}
+
+\bzOn{
+	\bzLeft{There are two ways to present lists of items:}
+}
+
+\bzOn{
+	\bzItem{\vbBzItem{} for each of the consecutive items}
+}
+
+\bzOn{
+	\bzItem{\vbBzItem{} \ldots}
+}
+
+\bzOn{
+	\bzLeft{The big dot is drawn using \vbBzItemDot{} which you may:}
+	\dBzH[0.2]
+	\bzCode{\vbRenewDot}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{You can later reset it using:}
+	\dBzH[0.2]
+	\bzCode{\vbzBzItemDot}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{Or, if you need a (non-nested) list (the number of last item is stored in \vbBzL):}
+}
+
+\bzOn{
+	\bzList{\vbBzList{} one entry}
+}
+
+\bzOn{
+	\bzList{\vbBzList{} another}
+}
+
+\iBzH[\xs]
+
+\bzOn{
+	\bzLeft{To start your list again, use \vbzBzL{} (it zeroes \vbBzL), and then:}
+}
+
+\zBzL
+
+\bzOn{
+	\bzList{\vbBzList{} new first entry}
+}
+
+\bzOn{
+	\bzList{\vbBzList{} second\ldots}
+}
+
+\bzOn{
+	\bzLeft{\hint \vbBzEvalInt{} later in the manual will help you manage \vbBzL}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzTheorem}\bzTheorem{authors}{statement}\end{myverbbox}
+\begin{myverbbox}{\vbBzTheoremS}\bzTheorem{...}{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzProof}\bzProof{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzQed}\bzQed\end{myverbbox}
+\begin{myverbbox}{\vbBzLine}\bzLine\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{More content\ldots}
+}
+
+\bzEval{\xs}{0.4}
+
+\bzOn{
+	\bzTheorem{Authors}{\vbBzTheorem{} to state a theorem (the statement can take multiple lines if needed)}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{\hint you can leave the authors empty if you don't want to specify them.}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft[bzM]{The same syntax works for: \hb{Lemma}, \hb{Fact}, \hb{Conjecture}, \hb{Definition}, \hb{Question}, \hb{Problem}, \hb{Proposition}, \hb{Corollary}, \hb{Exercise}, and \hb{Example}.}	
+}
+
+\iBzH[1.0]
+
+\bzOn{
+	\bzProof{\vbBzProof{} to provide a proof (again, it can be spread across multiple lines if needed)}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{Finally use \vbBzQed{} to conclude a proof:}
+	\iBzH[-1]
+	\bzQed
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{\vbBzLine{} draws a line:}
+	\bzLine
+}
+
+\iBzH[0.5]
+
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzBoxO}\bo{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzHL}\hl{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzHB}\hb{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzEL}\el{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzEB}\eb{...}\end{myverbbox}
+
+\begin{myverbbox}{\vbBzTHL}\bzLeft[bzHL]{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzCHB}\bzCenter[bzHB]{...}\end{myverbbox}
+\begin{myverbbox}{\vbBzRBO}\bzRight[bzBO]{...}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Text style}
+}
+
+\bzEval{\xs}{0.3}
+
+\bzOn{
+	\bzLeft{Use the following commands to emphasise some text:}
+}
+
+\bzOn{
+	\bzItem{\vbBzBoxO{} to only \bo{boldface} something (it works only with text, no math!)}
+}
+
+\bzOn{
+	\bzItem{\vbBzHL{} to \hl{highlight} some text (including math: $a+\hl{b}+c$)}
+}
+
+\bzOn{
+	\bzItem{\vbBzHB{} to \hb{highlight\&boldface} some text (again, no math!)}
+}
+
+\bzOn{
+	\bzItem{\vbBzEL{} to \el{emphasize} some text (including math: $a+\el{b}+c$)}
+}
+
+\bzOn{
+	\bzItem{\vbBzEB{} to \eb{emphasize\&boldface} some text (again, no math!)}
+}
+
+\iBzH[1-\xs]
+
+\bzOn{
+	\bzLeft[bzM]{The same suffixes with \Verb"bz" can be used for the standard content, e.g.:}
+}
+
+\bzOn{
+	\bzLeft{\vbBzTHL{} }
+	\bzNext[bzHL]{gives a highlighted left-aligned text}
+}
+
+\bzOn{
+	\bzLeft{\vbBzCHB{}}
+	\dBzH[0.25]
+	\bzCenter[bzHB]{gives a highlighted\&boldfaced centred text}
+}
+
+\bzOn{
+	\bzLeft{\vbBzRBO}
+	\dBzH
+	\bzRight[bzBO]{gives a boldfaced right-aligned text}
+}
+
+\iBzH[\xs]
+
+\bzOn{
+	\bzLeft[bzM]{\hint styles also apply to \vbBzBox, \vbBzTheoremS, \vbBzProof, etc}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+
+\begin{myverbbox}{\vbLeftPara}\bz____[...]{...}\end{myverbbox}
+
+\begin{myverbbox}{\vbBzCenterSt}\bzCenter[scale=1.5, draw, inner sep=1mm, ellipse]{egg}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{\TikZ style}
+}
+
+\bzOn{
+	\bzLeft{Each of the following commands (some are explained later):}
+	\bzText[bzM]{\vbBzLeft, \vbBzText, \vbBzItem, \vbBzList, \vbBzRight, \vbBzCenter, \vbBzNext, \vbBzPrev, \vbBzBox, \vbBzTheoremS, \vbBzProof}
+	\iBzH[3]
+	\bzLeft{accepts an additional optional first parameter \vbLeftPara.}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{You can put any \TikZ style (applicable to a node) there.}
+}
+
+\bzOn{
+	\bzLeft{The styles \Verb"bzBO", \Verb"bzHL", etc from the previous slide are examples of such styles.}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{For instance}
+	\bzText{\vbBzCenterSt}
+}
+
+\bzOn{
+	\bzLeft{gives:}
+	\bzCenter[scale=1.5, draw, inner sep=1mm, ellipse]{egg}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbWhole}
+\documentclass{beamerikz}              % defines the document to be BeamerikZ
+
+\sBzTitle{My title}                    % sets the title of the presentation
+\sBzAuthor{Me Mysef}                   % sets the author (or authors)
+
+\begin{document}
+...\end{myverbbox}
+
+
+\begin{myverbbox}{\vbTitle}\bzTitle\end{myverbbox}
+\begin{myverbbox}{\vbAuthor}\bzAuthor\end{myverbbox}
+
+\begin{myverbbox}{\vbBTitle}\sBzTitle{\bf The Title}\end{myverbbox}
+\begin{myverbbox}{\vbUAuthors}\sBzAuthor{A. Guy, \underline{My Self}}\end{myverbbox}
+\begin{myverbbox}{\vbNames}\bzNames{Reference, Relevance [2013]}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Titles, authors, references}
+}
+
+\bzOn{
+	\bzLeft{Control the footline of your frames using these macros (in the preamble):}
+	\bzCode{\vbWhole}
+}
+
+\bzOn{
+	\iBzH[4]
+	\bzLeft{You can access these values using \vbTitle{} and \vbAuthor.}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{You may boldface your title: \vbBTitle}
+}
+
+\bzOn{
+	\bzLeft{Or underline the speaker: \vbUAuthors}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{To refer to others' work, you may use:}
+	\bzText{\vbNames}
+	\bzCenter{\bzNames{Reference, Relevance [2013]}}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbCtext}\bzCtext\end{myverbbox}
+\begin{myverbbox}{\vbCemph}\bzCemph\end{myverbbox}
+\begin{myverbbox}{\vbChigh}\bzChigh\end{myverbbox}
+\begin{myverbbox}{\vbCname}\bzCname\end{myverbbox}
+\begin{myverbbox}{\vbCback}\bzCback\end{myverbbox}
+
+\begin{myverbbox}{\vbRecolour}
+\definecolor{mynewcolor}{RGB}{123,255,0}    % the RGB coordinates are between 0 and 255
+\renewcommand{\bzCtext}{mynewcolor}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbUseColour}\bzCenter{\textcolor{\bzCname}{this is also red}}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Colours}
+}
+
+\newcommand{\showColor}[1]{
+	\bzRight{(here it's \textcolor{#1}{{\bf #1}})}
+}
+
+\bzOn{
+	\bzLeft{The layout is based on the following colours}
+	\bzItem{\vbCtext{} used for text and drawings}
+	\dBzH
+	\showColor{\bzCtext}
+}
+
+\bzOn{
+	\bzItem{\vbCemph{} used for titles}
+	\dBzH
+	\showColor{\bzCemph}
+}
+
+\bzOn{
+	\bzItem{\vbChigh{} used for highlighting}
+	\dBzH
+	\showColor{\bzChigh}
+}
+
+\bzOn{
+	\bzItem{\vbCname{} used for references}
+	\dBzH
+	\showColor{\bzCname}
+}
+
+\bzOn{
+	\bzItem{\vbCback{} used for background}
+	\dBzH
+	\bzRight{(here it's \textcolor{bzWhite!60!bzBlack}{{\bf bzWhite}})}
+}
+
+\bzOn{
+	\bzLeft{You can change each of these colours, by using (in the preamble):}
+	\bzCode{\vbRecolour}
+}
+
+\iBzH[1.5]
+
+\bzOn{
+	\bzLeft{To make your presentation look uniform, use these colours consequently:}
+	\bzCode{\vbUseColour}
+	\iBzH
+	\bzCenter{\textcolor{\bzCname}{this is also red}}
+}
+
+\bzOn{
+	\bzLeft{\hint To choose your colours consistently, I recommend using:}
+	\bzCenter{\href{https://coolors.co/}{https://coolors.co/}}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbPlain}
+\begin{bzPlainFrame}
+...
+\end{bzPlainFrame}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbTitleEx}
+\begin{bzPlainFrame}
+\bzOn{
+    \bzCenter{\textcolor{\bzCtitle}{\bzTitle}}
+
+    \bzCenter{\bzAuthor}
+}
+
+\bzOn{
+    \bzCenter{\bf READY?}
+}
+\end{bzPlainFrame}
+\end{myverbbox}
+
+
+\begin{bzPlainFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Plain frames}
+}
+
+\bzOn{
+	\bzLeft{Some frames (like the title one) need to be plain.}
+}
+
+\bzOn{
+	\bzLeft{They go without the footline and are not counted in frame counter.}	
+}
+
+\bzOn{
+	\bzRight{({\small like this one\ldots})}
+}
+
+\bzOn{
+	\bzLeft{To create such a frame, use}	
+	\bzCode{\vbPlain}
+}
+
+\bzOn{
+	\iBzH[2]
+	\bzLeft{The content of such a frame is generated in the same way as for other frames:}
+	\bzCode{\vbTitleEx}
+}
+\end{bzPlainFrame}
+
+% =======================================================================================
+
+\tikzstyle{corarr}=[Circle-Latex]
+
+\begin{myverbbox}{\vbBzCoords}\bzCoords\end{myverbbox}
+
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\iBzH
+
+\bzOn{
+	\bzCenter[bzEB]{Coordinates}
+}
+
+\bzOn{
+	\bzLeft{Each slide has the same coordinate system, with $(0, 0)$ here:\ \mbox{}}
+	\draw (\bzLabel{\bzN}.north east) edge[corarr, bend right=30] (0,0);
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{Horizontal axis ranges from $-10$ here:\ \mbox{ }}
+	\draw (\bzLabel{\bzN}.north east) edge[corarr, bend right=10] (-10,\bzH+2);
+}
+
+\bzOn{
+	\bzNext{ to $+10$ here:\ \mbox{}}
+	\draw (\bzLabel{\bzN}.north east) edge[corarr, bend left=10] (+10,\bzH+2);
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{Vertical axis decreases down to $-14.5$ here:\ \mbox{}}
+	\draw (\bzLabel{\bzN}.north east) edge[corarr, bend left=10] (0,-14.5);
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{That means that the point $(4, -6)$ is located here:\ \mbox{}}
+	\draw (\bzLabel{\bzN}.north east) edge[corarr, bend right=10] (4,-6);
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{The content is automatically clipped to the visible area, like those circles.}
+	
+	\path[fill=bzGray] (+9.5, -13.5) circle (1.5cm);
+	\path[fill=bzGray] (-9.5, -13.5) circle (1.5cm);
+	\path[fill=bzGray] (+9.5, 0) circle (1.5cm);
+	\path[fill=bzGray] (-9.5, 0) circle (1.5cm);
+}
+
+
+\iBzH
+
+\bzOn{
+	\bzLeft{\hspace{3cm}\hint 1cm = 1unit of this coordinate system :)}
+}
+
+\bzOn{
+	\bzLeft{\hspace{3cm}\hint \vbBzCoords{} shows the coordinate system}
+}
+
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBezier}
+\bzOn{
+    \draw (-5, -3) .. controls ++(+3, +2) and ++(-3, -2) .. (+5, -3);
+}\end{myverbbox}
+
+
+\begin{myverbbox}{\vbNodes}
+\bzOn{
+	\node[bzL, draw] at (-8, -9) {aligns to left};
+	\node[bzC, draw] at (+0, -9) {aligns to centre};
+	\node[bzR, draw] at (+8, -9) {aligns to right};
+}\end{myverbbox}
+
+
+\begin{myverbbox}{\vbBaseline}
+\bzOn{
+    \node[bzL, draw] at (-8.0, -14) {car};
+    \node[bzL, draw] at (-7.0, -14) {trunk};
+    \node[bzL, draw] at (-5.0, -14) {yummy};
+    \node[bzL, draw] at (-2.5, -14) {Tommy};
+}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbNodeTwoliner}
+\node[bzC] at (0, -13) {spreads for\\ two lines};
+\end{myverbbox}
+
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Nodes}
+}
+
+\bzOn{
+	\bzLeft{You can use all the \TikZ machinery you like:}
+	\bzCode{\vbBezier}
+	\draw (-5, -4) .. controls ++(+3, +2) and ++(-3, -2) .. (+5, -4);
+}
+
+\iBzH[3.5]
+
+\bzOn{
+	\bzLeft{To write text, you may use styles \Verb"bzR", \Verb"bzC", and \Verb"bzL":}
+	\bzCode{\vbNodes}
+	\node[bzL, draw] at (-8, -9) {aligns to left};
+	\node[bzC, draw] at (+0, -9) {lies centrally};
+	\node[bzR, draw] at (+8, -9) {aligns to right};
+	\node[circle, inner sep=1mm, fill=bzRed, draw=bzRed] at (-8,-9) {};
+	\node[circle, inner sep=1mm, fill=bzRed, draw=bzRed] at (+0,-9) {};
+	\node[circle, inner sep=1mm, fill=bzRed, draw=bzRed] at (+8,-9) {};
+}
+
+\iBzH[3.5]
+
+\bzOnly{
+	\bzLeft{\hint in fact \vbBzLeft, \vbBzCenter, \ldots are based on these styles!}
+}
+
+\dBzH
+
+\bzOn{
+	\bzLeft{What is important, is that the baseline of text is kept:}
+	\bzCode{\vbBaseline}
+	\node[bzL, draw] at (-8.0,  -14) {car};
+	\node[bzL, draw] at (-7.0,  -14) {trunk};
+	\node[bzL, draw] at (-5,  -14) {yummy};
+	\node[bzL, draw] at (-2.5,  -14) {Tommy};
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbUnder}\bzUnder{...}\end{myverbbox}
+
+\begin{myverbbox}{\vbUnderEx}
+\bzOn{
+    \path[fill=bzRed] (5, -10) rectangle (9, -12);
+}
+
+\bzUnder{
+    \bzOn{
+        \path[fill=bzBlue] (6, -9) rectangle (8, -13);
+    }
+}
+\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Underlayer}
+}
+
+\bzOn{
+	\bzLeft{You can place some content under the existing content.}
+}
+
+\bzOn{
+	\bzLeft{Use the following commands to draw on the under layer:}
+}
+
+\bzOn{
+	\bzCode{\vbUnderEx}
+	\path[fill=bzRed] (5, -10) rectangle (9, -12);
+}
+
+\bzUnder{
+	\bzOn{
+		\path[fill=bzBlue] (6, -9) rectangle (8, -13);
+	}
+}
+
+\iBzH[5]
+
+\bzOn{
+	\bzLeft{\hint \vbUnder{} must contain \vbBzOn{}, not the other way round!}
+}
+\end{bzFrame}
+% =======================================================================================
+	
+\begin{myverbbox}{\vbBzHStep}
+\bzHStep
+\end{myverbbox}
+
+\begin{myverbbox}{\vbsBzHStep}
+\sBzHStep{2.0}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbsBzHStepOne}
+\sBzHStep{1.0}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbzBzHStep}
+\zBzHStep
+\end{myverbbox}
+
+
+\bzEval{\bzHStp}{1.0}
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Vertical spacing}
+}
+
+\bzOn{
+	\bzLeft{Each consecutive command like \vbBzLeft{} spreads text vertically\ldots}
+	\bzLeft{\ldots like these two.}
+}
+
+\bzOn{
+	\bzLeft{The vertical step is stored in the counter \vbBzHStep.}
+	\bzLeft{By default, its value is 1.0.}
+}
+
+\bzOn{
+	\bzLeft{To control the vertical spacing between the lines of your text, use:}
+	\bzCode{\vbsBzHStep}
+	\iBzH
+	\sBzHStep{2.0}
+}
+
+\bzOn{
+	\bzLeft{Which changes the spacing}
+	\bzLeft{as seen}
+	\bzLeft{here!}
+}
+
+\bzOn{
+	\bzLeft{\vbzBzHStep{} is equivalent to \vbsBzHStepOne, i.e. it restores the value to 1.0.}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzH}\bzH\end{myverbbox}
+\begin{myverbbox}{\vbsBzH}\sBzH{4.0}\end{myverbbox}
+\begin{myverbbox}{\vbiBzH}\iBzH\end{myverbbox}
+\begin{myverbbox}{\vbiBzHp}\iBzH[0.8]\end{myverbbox}
+\begin{myverbbox}{\vbdBzH}\dBzH\end{myverbbox}
+\begin{myverbbox}{\vbdBzHp}\dBzH[1.3]\end{myverbbox}
+\begin{myverbbox}{\vbzBzH}\zBzH\end{myverbbox}
+
+\begin{myverbbox}{\vbConRel}
+    \draw (-4, \bzH) rectangle (+4, \bzH-1);
+\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Vertical alignment}
+}
+
+\bzOn{
+	\bzLeft{There is a counter called \vbBzH, controlling the \emph{height} of the content.}
+}
+
+\bzOn{
+	\bzText{Its value is now \bzH}
+}
+
+\bzOn{
+	\bzText{and now \bzH}
+}
+
+\bzOn{
+	\bzLeft{Each new line decreases it by \vbBzHStep{} (usually equal 1.0) so that now it's \bzH.}
+}
+
+\bzOn{
+	\bzLeft{You should place {\bf all} your content relatively to \vbBzH(!):}
+	\bzCode{\vbConRel}
+	\iBzH
+	\bzRight{$\vbBzH=\bzH$}
+	\dBzH
+    \draw (-4, \bzH) rectangle (+4, \bzH-1);
+}
+
+\bzOn{
+	\iBzH[2]
+	\bzRight{$\vbBzH=\bzH$}
+	\dBzH
+	\bzLeft{To get some vertical space, use:}
+	\bzRight{$\vbBzH=\bzH$}
+	\dBzH
+	\bzText{\vbiBzH}
+}
+
+\bzOn{
+	\bzRight{$\vbBzH=\bzH$}
+	\dBzH
+	\bzLeft{That \emph{increases} (in fact decreases\ldots) \vbBzH{} by \vbBzHStep}
+}
+
+\bzOn{
+	\bzLeft{You can control the amount of space by an optional parameter:}
+	\dBzH
+	\bzRight{$\vbBzH=\bzH$}
+	\bzText{\vbiBzHp}
+	\dBzH
+	\bzRight{$\vbBzH=\bzH$}
+}
+	
+\bzOn{
+	\dBzH
+	\iBzH[0.8]
+	\bzRight{$\vbBzH=\bzH$}
+	\dBzH
+	\bzLeft{Which \emph{increases} (in fact decreases\ldots) \vbBzH{} by $0.8$}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+
+\begin{myverbbox}{\vbArith}
+\newcommand{\x}{1.6}
+\iBzH[(\x+1)*0.5+2]
+\end{myverbbox}
+	
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Vertical alignment --- summary}
+}
+
+\bzOn{
+	\bzLeft{Available commands:}
+}
+
+\bzOn{
+	\bzItem{\vbBzH{} --- the counter}
+}
+
+\bzOn{
+	\bzItem{\vbsBzH{} --- set the value of the counter}
+}
+
+\bzOn{
+	\bzItem{\vbiBzH{} --- go down one line (i.e. decrease \vbBzH{} by \vbBzHStep, 1.0 by default)}
+}
+
+\bzOn{
+	\bzItem{\vbiBzHp{} --- go down by $0.8$}
+}
+
+\bzOn{
+	\bzItem{\vbdBzH{} --- go up one line (i.e.~\emph{increase} \vbBzH{} by \vbBzHStep)}
+}
+
+\bzOn{
+	\bzItem{\vbdBzHp{} --- go up $1.3$ of a line}
+}
+
+\bzOn{
+	\bzItem{\vbzBzH{} --- reset \vbBzH{} to $0$ (i.e.~\emph{zero} \vbBzH)}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{All these commands accept arithmetic, like:}
+	\bzCode{\vbArith}
+}
+
+\iBzH[2.0]
+
+\bzOn{
+	\bzLeft{\hint you may put such commands both {\bf inside} and {\bf outside} of \vbBzOn}
+	\dBzH[0.2]
+	\bzCenter{({\small all the commands above the given one do affect it})}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzI}\bzI\end{myverbbox}
+\begin{myverbbox}{\vbsBzI}\sBzI{5.0}\end{myverbbox}
+\begin{myverbbox}{\vbiBzI}\iBzI\end{myverbbox}
+\begin{myverbbox}{\vbiBzIp}\iBzI[2.8]\end{myverbbox}
+\begin{myverbbox}{\vbdBzI}\dBzI\end{myverbbox}
+\begin{myverbbox}{\vbdBzIp}\dBzI[1.3]\end{myverbbox}
+\begin{myverbbox}{\vbzBzI}\zBzI\end{myverbbox}
+
+\begin{myverbbox}{\vbConRelT}
+    \draw (-4, \bzH) rectangle (+4, \bzH-1);
+\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Horizontal alignment}
+}
+
+\bzOn{
+	\bzLeft{There is a counter called \vbBzI, controlling the \emph{indentation} of the content.}
+}
+
+\bzOn{
+	\bzLeft{Using \vbBzLeft{} when $\vbBzI=\bzI$}
+}
+
+\iBzI[5]
+
+\bzOn{
+	\bzLeft{now \vbBzLeft{} again but $\vbBzI=\bzI$}
+}
+
+\iBzI[8]
+
+\bzOn{
+	\bzLeft{and now $\vbBzI=\bzI$}
+}
+
+\dBzI[13]
+
+\bzOn{
+	\bzText{\vbBzText{} is always $1$ to the right (now $\vbBzI=-10$ again)}
+}
+
+\iBzH[0.3]
+
+\bzOn{
+	\bzCenter{\vbBzCenter{} is not affected}
+}
+
+\iBzH[0.3]
+
+\zBzI
+\iBzI[5]
+
+\bzOn{
+	\bzRight{\vbBzRight{} is affected by $-\vbBzI$ (now $\vbBzI=\bzI$)}
+}
+
+\zBzI
+
+\iBzH[0.3]
+
+\bzOn{
+	\bzLeft{Available commands:}
+}
+
+\bzOn{
+	\bzItem{\vbsBzI{} --- set the value of the counter}
+}
+
+\bzOn{
+	\bzItem{\vbiBzI{} --- increase indent by $1$ (+parametrised \vbiBzIp)}
+}
+
+\bzOn{
+	\bzItem{\vbdBzI{} --- decrease indent by $1$ (+parametrised \vbdBzIp)}
+}
+
+\bzOn{
+	\bzItem{\vbzBzI{} --- reset \vbBzI{} to $0$}
+}
+
+\bzOn{
+	\bzLeft{\hint you may modify \vbBzI{} {\bf outside} \vbBzOn}
+}
+\end{bzFrame}
+
+
+% =======================================================================================
+	
+\begin{myverbbox}{\vbNL}\\\end{myverbbox}
+
+\begin{myverbbox}{\vbBzMEx}
+\iBzI[3.5]
+\bzLeft[bzM]{Text that is longer than a line and the style bzM brakes it automatically}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbBzMSet}
+\bzLeft[bzM=5.5, draw]{Text of width 5.5 with automatic line breaks}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbBzHStep}
+\bzHStep
+\end{myverbbox}
+
+\begin{myverbbox}{\vbsBzHStep}
+\sBzHStep{1.25}
+\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Multiline nodes}
+}
+
+\bzOn{
+	\bzLeft{Standard \vbBzLeft, etc commands do not break lines automatically, as here where\ldots}
+}
+
+\bzOn{
+	\iBzH[1]
+	\node[circle, inner sep=1mm, fill=bzRed, draw=bzRed] at (\bzI+1,\bzH) {};
+	\bzText[draw]{You can manually break lines using the newline syntax \vbNL\\ however, the node is then aligned vertically to the \hb{last} line of text}
+}
+
+\bzOn{
+	\bzLeft{To allow automatic line breaks, use the \hl{multiline} style \Verb"bzM":}
+	\bzCode{\vbBzMEx}
+	\iBzH[1.5]
+	\iBzI[3.5]
+	\node[circle, inner sep=1mm, fill=bzRed, draw=bzRed] at (\bzI,\bzH) {};
+	\bzLeft[bzM]{Text which is longer than a line and the style \Verb"bzM" brakes it automatically}
+	\zBzI
+	\iBzH
+}
+
+\bzOn{
+	\bzLeft{The same works for other nodes, like \vbBzRight, \vbBzCenter, etc}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft[bzM]{\hint The vertical spacing between the lines is controlled by \vbBzHStep!}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft[bzM]{\hint \beamerikz is not aware of the actual height of the node, so increase \vbBzH{} manually!}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\iBzH[1]
+	\bzLeft{\hint \Verb"bzM" aligns vertically to the \hl{first} line of text and allows explicit newlines \vbNL}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Multiline nodes --- width}
+}
+
+\bzOn{
+	\bzLeft[bzM]{By default, the width of the text is adjusted so that it spreads until the end of the working area $(-10,\ldots,+10)$ (or $(-13.0,\ldots,+13.0)$ in \texttt{wide} mode).}
+	\iBzH
+	\bzLeft{In \vbBzCenter, margins of width given by \vbBzI{} are left on both sides.}
+}
+
+\bzOn{
+	\sBzI{-3}
+	\bzLeft[bzM, draw]{Text aligned to left by \vbBzLeft{} and being broken to a new line.}
+	\iBzH
+	\bzRight[bzM, draw]{Text aligned to right by \vbBzRight{} and being broken to a new line.}
+	\iBzH
+	\bzCenter[bzM, draw]{Text centered via \vbBzCenter{} and broken to new lines.}
+	\iBzH
+}
+
+\iBzH[1.25]
+\zBzI
+
+\bzOn{
+	\bzLeft{You can set your own width of text, by using \Verb"bzM=<num>" like here}
+	\bzCode{\vbBzMSet}
+	\iBzH
+	\node[circle, inner sep=1mm, fill=bzRed, draw=bzRed] at (\bzI,\bzH) {};
+	\bzLeft[bzM=5.5, draw]{Text of width 5.5 with automatic line breaks}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+
+\begin{myverbbox}{\vbStdMath}$...$\end{myverbbox}
+\begin{myverbbox}{\vbDisMath}\[...\]\end{myverbbox}
+\begin{myverbbox}{\vbBzEq}\bzEq{...}\end{myverbbox}
+\begin{myverbbox}{\vbDisMathEx}\bzCenter[bzM]{\[\sum_{i=1}^n i=\frac{n\cdot(n+1)}{2}\]}\end{myverbbox}
+\begin{myverbbox}{\vbBzEqEx}\bzRight{$\bzEq{\sum_{i=1}^n i=\frac{n\cdot(n+1)}{2}}$}\end{myverbbox}
+\begin{myverbbox}{\vbBzEqMlEx}
+\bzCenter{$\bzEq{
+  x_0 &= x_1 = 0 &\quad\text{(1)}\\
+  x_{n+2} &= x_{n+1}+x_n &\quad\text{(2)}
+}$}
+\end{myverbbox}
+\begin{myverbbox}{\vbAlign}align*\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Mathematics}
+}
+	
+\bzOn{
+	\bzItem{Standard math mode \vbStdMath{} is allowed everywhere, like here $x=1$.}
+}
+	
+\bzOn{
+	\bzItem{To use displayed mathematics \vbDisMath{}, the option \vbBzM{} is required:}
+	\bzCode{\vbDisMathEx}
+	\bzCenter[bzM]{\[\sum_{i=1}^n i=\frac{n\cdot(n+1)}{2}\]}
+	\iBzH[2]
+	\bzText[bzM]{\ldots but \vbDisMath{} introduces additional vertical space. \hb{Better avoid it.}}
+	\bzText{Similarly \vbAlign{} is also not suggested\ldots}
+}
+		
+\bzOn{
+	\bzItem{Instead, use \vbBzEq{} as below:}
+	\bzCode{\vbBzEqEx}
+	\bzRight{$\bzEq{\sum_{i=1}^n i=\frac{n\cdot(n+1)}{2}}$}
+}
+
+\bzOn{
+	\bzItem{It allows formatting as in \vbAlign:}
+	\bzCode{\vbBzEqMlEx}
+	\iBzH[2.0]
+	\bzCenter{$\bzEq{
+		x_0&=x_1=0&\quad\text{(1)}\\
+		x_{n+2}&=x_{n+1}+x_n&\quad\text{(2)}
+	}$}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzGraphics}\node[bzG] at (5,-7) {\includegraphics[width=6cm]{logo.png}};\end{myverbbox}
+
+\begin{myverbbox}{\vbBzCen}(5,-7)\end{myverbbox}
+\begin{myverbbox}{\vbBzWid}6cm\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Graphics}
+}
+
+\bzOn{
+	\path[fill=\bzCtext, opacity=0.3] (1, -3) rectangle ++(8, -8);
+	\bzLeft{To include graphics, you may use:}
+}
+
+\bzOn{
+	\bzCenter{\vbBzGraphics}
+	\node[bzG] at (5, -7) {\includegraphics[width=6cm]{logo.png}};
+}
+
+\iBzH
+
+\bzOn{
+	\bzItem{The centre is at \vbBzCen}
+	\path ($(\bzLabel{\bzN}.east)+(0.25,0)$) edge[draw, Circle-Latex, bend left] (5,-7);
+}
+
+\bzOn{
+	\bzItem{Width is \vbBzWid{} = 6 units}
+	\draw (2,-10) edge[bzBraceU] node{6 units} ++(6,0);
+}
+
+\bzOn{
+	\bzItem{Height is proportional to the ratio}
+	\draw (8,-10) edge[bzBraceR] node{6 units} ++(0,6);
+}
+
+\bzOn{
+	\bzItem{There are no margins or spacing}
+}
+
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbEval}
+\bzEvalInt{\x}{7*(4+\bzH)+0.25}
+\bzEval{\y}{6/(2-\bzH)}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbX}\x\end{myverbbox}
+\begin{myverbbox}{\vbY}\y\end{myverbbox}
+\begin{myverbbox}{\vbBzEvalFloatEx}\bzEval{\curH}{\bzH}\end{myverbbox}
+\begin{myverbbox}{\vbCurH}\curH\end{myverbbox}
+\begin{myverbbox}{\vbDrawArRef}\draw (0, \bzH-1) edge[Circle-Latex, bend right=40] (9, \curH);\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Arithmetic}
+}
+
+\bzOn{
+	\bzLeft{To perform complex computations, you may use the following two functions:}
+	
+	\bzEvalInt{\x}{7*(4+\bzH)+0.25}
+	\bzEval{\y}{6/(2-\bzH)}
+	
+	\bzCode{\vbEval}
+}
+
+\bzOn{
+	\bzRight{$\vbBzH=\bzH$}
+	\dBzH
+}
+
+\iBzH[1.5]
+
+\bzOn{
+	\bzLeft{They compute {\bf immediately}, using {\bf current} values of the variables.}
+}
+
+\bzOn{
+	\bzLeft{The first stores the value as a rounded integer, the second is floating point.}
+}
+
+\bzOn{
+	\bzLeft{Thus, we get $\vbX=\x$ and $\vbY=\y$, even though now $\vbBzH=\bzH$.}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{\hint do not mix \vbBzEvalInt{} with \vbBzEvalFloat!}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzEval{\curH}{\bzH}
+	\bzLeft{You may use \vbBzEvalFloatEx{} to store in the variable \vbCurH}
+	\bzRight{the current value of \vbBzH{} for later use!}
+}
+
+\bzOn{
+	\draw (0, \bzH-2) edge[Circle-Latex, bend right=40] (9, \curH);
+	\bzLeft{And then use:}
+	\bzLeft{\vbDrawArRef}
+	\bzRight{to use that value!}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbScript}
+\newcommand{\putDot}[2]{
+  \bzEval{\x}{#1}
+  \bzEval{\r}{#2}
+  \node[draw, circle, rotate=\r] at (\x, \bzH) {Hi!};
+}
+
+\bzOn{
+  \foreach \i in {0,...,9} {
+    \putDot{\bzI+2*\i+1}{\i*20}
+  }
+}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbBzFrame}\begin{bzFrame}...\end{bzFrame}\end{myverbbox}
+
+
+\newcommand{\putDot}[2]{
+	\bzEval{\x}{#1}
+	\bzEval{\r}{#2}
+	\node[draw, circle, rotate=\r] at (\x, \bzH) {Hi!};
+}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Arithmetic and scripting}
+	\iBzH[0.5]
+}
+
+\bzOn{
+	\bzLeft[bzM]{To avoid syntactic problems, use \vbBzEvalFloat{} to give names to parameters of your macros.}
+	\iBzH
+}
+
+\bzOn{
+	\bzCode{\vbScript}
+	\iBzH[6.0]
+}
+
+\bzOn{
+	\bzLeft{Gives:}
+	\foreach \i in {0,...,9} {
+		\putDot{\bzI+2*\i+1}{\i*20}
+	}
+}
+
+\bzOn{
+	\iBzH[2]
+	\bzLeft[bzM]{\hint For readability, you can put your macros outside \Verb"bzFrame" environment}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzS}\bzS\end{myverbbox}
+\begin{myverbbox}{\vbsBzS}\sBzS{4}\end{myverbbox}
+\begin{myverbbox}{\vbiBzS}\iBzS\end{myverbbox}
+\begin{myverbbox}{\vbiBzSp}\iBzS[2]\end{myverbbox}
+\begin{myverbbox}{\vbdBzS}\dBzS\end{myverbbox}
+\begin{myverbbox}{\vbdBzSp}\dBzS[1]\end{myverbbox}
+\begin{myverbbox}{\vbzBzS}\zBzS\end{myverbbox}
+
+\newcommand{\doS}[1][0]{
+\bzEvalInt{\oneMore}{\bzS+#1}
+\bzIn{\oneMore}{\oneMore}{
+	\node[bzL] at (7, 0) {$\vbBzS=\oneMore$};
+}
+}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Slide counter --- basics}
+}
+
+\doS
+
+\bzOn{
+	\bzLeft{To control the flow of time within a frame, a counter \vbBzS{} is used.}
+}
+
+\doS
+
+\bzOn{
+	\bzLeft{Each \vbBzOn{} shows a new content, increasing \vbBzS{}.}
+}
+
+\doS
+
+\bzOne{
+	\bzLeft{\vbBzOne{} shows its content for one slide and disappears.}
+}
+
+\doS
+		
+\bzOn{
+	\bzLeft{The next \vbBzOn{} appears at the moment when \vbBzOne{} disappears.}
+}
+
+\doS
+
+\bzTwo{
+	\bzLeft{\vbBzTwo{} shows its content for two slides and disappears.}
+}
+
+\doS
+		
+\bzOn{
+	\bzLeft{The next \vbBzOn{} appears afterwards.}
+}
+
+\doS
+		
+\bzOn{
+	\bzLeft{And only the second \vbBzOn{} appears when \vbBzTwo{} disappears.}
+}
+
+\doS
+
+\doS[1]
+
+\bzOnly{
+	\bzLeft{\vbBzOnly{} appears for one slide and takes one more to disappear.}
+}
+
+\doS
+		
+\bzOn{
+	\bzLeft{The next \vbBzOn{} appears after one more click.}
+}
+
+\doS
+
+\bzOn{
+	\iBzH[0.5]
+	\bzLeft{\hint Some package options display the current value of \vbBzS{}, see }
+	\bzRight{\Verb"draft" and \Verb"brief" later on}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzEvalIntS}\bzEvalInt{\curS}{\bzS}\end{myverbbox}
+\begin{myverbbox}{\vbCurS}\curS\end{myverbbox}
+\begin{myverbbox}{\vbBzInEx}\bzIn{\curS+2}{\curS+7}{...}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\doS
+
+\bzOn{
+	\bzCenter[bzEB]{Slide counter --- \vbBzIn}
+}
+
+\doS
+
+\bzOn{
+	\bzLeft{Because of the order of drawing (or other reasons), you may need}
+	\bzRight{to manually handle when content (dis)appears.}
+}
+
+\doS
+
+\bzOn{
+	\bzEvalInt{\curS}{\bzS}
+	\bzLeft{First, use \vbBzEvalIntS{} to store the current value of \vbBzS.}
+}
+
+\doS
+
+\bzOn{
+	\bzLeft{Then, use \vbBzIn{} to control when some content is visible.}
+}
+
+\doS
+
+\bzIn{\curS+2}{\curS+7}{
+	\bzCode{\vbBzInEx}
+	\bzRight{$\vbCurS=\curS$}
+}
+
+\bzOn{
+	\bzLeft{Rules:}
+}
+
+\doS
+
+\bzOn{
+	\bzList{If both arguments are equal, then the content lasts one slide.}
+}
+
+\doS
+
+\bzOn{
+	\bzList{If the first argument is empty, it's visible from the beginning.}
+}
+
+\doS
+
+\bzOn{
+	\bzList{If the second argument is empty, it's visible until the end of the frame.}
+}
+
+\doS
+
+\bzOn{
+	\bzList{You can do any (integer) arithmetic within the arguments.}
+}
+
+\doS
+
+\bzOn{
+	\bzList{You can use \vbBzS{} within the arguments --- it takes its current value.}
+}
+
+\doS
+
+\bzOn{
+	\bzList{\vbBzIn{} does not modify \vbBzS{}.}
+}
+
+\doS
+
+\bzOn{
+	\bzList{You should ensure that \Verb"from" $\leq$ \Verb"to".}
+}
+
+\doS
+
+\bzOn{
+	\bzList{\vbBzS{} starts with $1$.}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Slide counter --- summary}
+}
+
+\bzOn{
+	\bzLeft{Available commands:}
+}
+
+\bzOn{
+	\bzItem{\vbsBzS{} --- set slide counter value}
+}
+
+\bzOn{
+	\bzItem{\vbiBzS{} --- increase slide counter by $1$ (+parametrised \vbiBzSp)}
+}
+
+\bzOn{
+	\bzItem{\vbdBzS{} --- decrease slide counter by $1$ (+parametrised \vbdBzSp)}
+}
+
+\bzOn{
+	\bzItem{\vbzBzS{} --- reset \vbBzS{} to $1$}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{\hint if you increase \vbBzS{} using \vbiBzS{} without showing any more content,}
+	\bzRight{it will not make your slide last longer!}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{\hint if possible, avoid guessing correct numbers for \vbBzIn,}
+	\bzRight{use a variant of \vbBzEvalIntS{} instead!}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{\hint remember that the content overlays each other.}
+	\bzText{The order comes from the order of entries in the source file,}
+	\bzRight{not from the values of \vbBzS.}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzN}\bzN\end{myverbbox}
+
+\begin{myverbbox}{\vbBzEvalIntN}\bzEvalInt{\curN}{\bzN}\end{myverbbox}
+\begin{myverbbox}{\vbCurN}\curN\end{myverbbox}
+
+\begin{myverbbox}{\vbNeEx}\bzNext{\bf I'm next}[\curN]\end{myverbbox}
+\begin{myverbbox}{\vbPrEx}\bzPrev{\bf I'm prev}[\curN]\end{myverbbox}
+
+\begin{myverbbox}{\vbBzPrevSt}\bzPrev[draw]{...}\end{myverbbox}
+	
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Named nodes}
+}
+
+\bzOnly{
+	\bzLeft{These commands create \TikZ nodes:}
+	\bzText{\vbBzLeft, \vbBzText, \vbBzItem, \vbBzList,}
+	\bzText{\vbBzCenter, \vbBzRight, \vbBzNext, \vbBzBox.}
+}
+
+\dBzH[3]
+
+\bzOn{
+	\bzLeft{You can append new content to the last node using \vbBzNext:}
+}
+
+\bzOn{
+	\bzLeft{\vbBzLeft}
+}
+
+\bzOn{
+	\bzNext{\vbBzNext}
+}
+
+\bzOn{
+	\bzNext{\vbBzNext}
+}
+
+\bzOn{
+	\bzLeft{You can also attach content to the left (once):}
+}
+
+\bzOn{
+	\bzCenter{\vbBzCenter}
+}
+
+\bzOn{
+	\bzPrev{\vbBzPrev}
+}
+
+\bzOn{
+	\bzNext{\vbBzNext}
+}
+
+\bzOn{
+	\bzNext{\vbBzNext}
+}
+
+\bzOn{
+	\bzLeft{\hint to surround a node:}
+	\bzCenter{first use \vbBzPrev{} and then \vbBzNext!}
+}
+
+\bzOn{
+	\bzLeft{This is controlled by a counter named \vbBzN.}
+}
+
+\bzOn{
+	\bzLeft{\hint you should never modify the value of that counter yourself!}
+}
+
+\bzOn{
+	\bzLeft{You can store the number of the last node using:}
+	\bzCenter{\vbBzEvalIntN}
+	\bzEvalInt{\curN}{\bzN}
+}
+
+\bzOn{
+	\bzLeft{You can later append content to that node using parametrised versions:}
+}
+
+\bzOn{
+	\bzNext{\bf I'm next}[\curN]
+	\bzText{\vbNeEx}
+}
+
+\bzOn{
+	\bzPrev{\bf I'm prev}[\curN]
+	\bzText{\vbPrEx}	
+}
+
+\bzOn{
+	\bzLeft{\hint nodes created by \vbBzPrev{} do not have labels!}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbLargEqA}
+\bzCenter[scale=1.3]{$=$}
+\bzPrev[scale=1.3]{$\int_a^b f'(x)\ $}
+\bzNext[scale=1.3]{$\ f(x)\Big|_a^b$}
+\end{myverbbox}
+
+
+\begin{myverbbox}{\vbLargEqB}
+\bzCenter[scale=1.3]{$\leq$}
+\bzPrev[scale=1.3]{$\Big|\int_a^b f(x)\Big|\ $}
+\bzNext[scale=1.3]{$\ \int_a^b \big|f(x)\big|$}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbToL}[bzR]\end{myverbbox}
+\begin{myverbbox}{\vbToR}[bzL]\end{myverbbox}
+\begin{myverbbox}{\vbToC}[bzC]\end{myverbbox}
+
+\begin{myverbbox}{\vbToLCR}
+\node[bzR] at (5-1, \bzH) {$(f(g(x))'$};
+\node[bzC] at (5+0, \bzH) {$=$};
+\node[bzL] at (5+1, \bzH) {$(f'(g(x))\cdot g'(x)$};
+\end{myverbbox}
+
+
+\begin{myverbbox}{\vbToLRMatch}
+\node[bzR] at (0, \bzH) {deoxyribo}; \node[bzL] at (0, \bzH) {nucleic acid};
+\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Named nodes --- hints and tricks}
+}
+
+\bzOn{
+	\bzLeft{\hint you can style these nodes: \vbBzPrevSt}
+}
+
+\bzOn{
+	\bzLeft{To create an aligned large mathematical equation, you can use:}
+}
+
+\bzOn{
+	\dBzI[0.5]
+	\bzCode{\vbLargEqA}
+	\iBzI[9.25]
+	\bzCode{\vbLargEqB}
+	\zBzI
+}
+
+\iBzH[2.5]
+
+\bzOn{
+	\bzCenter[scale=1.3]{$=$}
+	\bzPrev[scale=1.3]{$\int_a^b f'(x)\ $}
+	\bzNext[scale=1.3]{$\ f(x)\Big|_a^b$}
+}
+
+\iBzH[0.75]
+
+\bzOn{
+	\bzCenter[scale=1.3]{$\leq$}
+	\bzPrev[scale=1.3]{$\Big|\int_a^b f(x)\Big|\ $}
+	\bzNext[scale=1.3]{$\ \int_a^b \big|f(x)\big|$}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{However, a similar effect can be also achieved via \vbToL, \vbToR, and \vbToC:}
+}
+
+\bzOn{
+	\dBzI[0.5]
+	\bzCode{\vbToLCR}
+	\zBzI
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\node[bzR] at (5-1, \bzH) {$(f(g(x))'$};
+	\node[bzC] at (5+0, \bzH) {$=$};
+	\node[bzL] at (5+1, \bzH) {$(f'(g(x))\cdot g'(x)$};
+}
+
+\iBzH[1.75]
+
+\bzOn{
+	\bzLeft{\hint you can break a word using \vbToL{} and \vbToR{} (and the nodes match):}
+}
+
+\bzOn{
+	\dBzI[0.5]
+	\bzCode{\vbToLRMatch}
+	\zBzI
+}
+
+\iBzH
+
+\bzOn{
+	\node[bzR] at (0, \bzH) {deoxyribo};
+}
+
+\bzOn{
+	\node[bzL] at (0, \bzH) {nucleic acid};
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbRefNode}
+\bzCenter{Referable node!}
+\bzEvalInt{\nodeN}{\bzN}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbBzLabelN}\bzLabel{\nodeN}\end{myverbbox}
+
+\begin{myverbbox}{\vbBzLabelDraw}\draw (7, \bzH) edge[Circle-Latex, bend right=50] (\bzLabel{\nodeN}.mid east);\end{myverbbox}
+
+
+\begin{myverbbox}{\vbBzLabelDrawT}\draw (8, \bzH) edge[Circle-Latex, bend right=50] ($(\bzLabel{\nodeN}.east)+(4,0)$);\end{myverbbox}
+\begin{myverbbox}{\vbBzLabelDrawU}\coordinate (base) at ($(\bzLabel{\nodeN}.east)+(0,-0.5)$);
+\draw
+    (\bzLabel{\nodeN}.west |- base)
+    edge[bzBraceU] node{the one}
+    (base -| \bzLabel{\nodeN}.east);\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Named nodes --- explicit references}
+}
+
+\bzOn{
+	\bzLeft{Let's create a referable node:}
+}
+
+\bzOn{
+	\bzCode{\vbRefNode}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzCenter{Referable node!}
+	\bzEvalInt{\nodeN}{\bzN}
+}
+
+\iBzH[1.0]
+
+\bzOn{
+	\bzLeft{It's label can be obtained by \vbBzLabelN:}
+}
+
+\bzOn{
+	\bzCode{\vbBzLabelDraw}
+	\draw (7, \bzH) edge[corarr, bend right=50] (\bzLabel{\nodeN}.mid east);
+}
+
+\iBzH[1.5]
+
+\bzOn{
+	\bzLeft{\hint you cannot draw relatively to a node that has disappeared :)}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{You may use \Verb"calc"-based references, like:}
+	\bzCode{\vbBzLabelDrawT}
+	\draw (8, \bzH) edge[corarr, bend right=50] ($(\bzLabel{\nodeN}.east)+(4,0)$);
+}
+
+\iBzH[1.5]
+
+\bzOn{
+	\bzLeft{You may also use the great \Verb"|-" and \Verb"-|" features of \TikZ:}
+	\bzCode{\vbBzLabelDrawU}
+	\coordinate (base) at ($(\bzLabel{\nodeN}.east)+(0,-0.5)$);
+	\draw
+		(\bzLabel{\nodeN}.west |- base)
+		edge[bzBraceU] node{the one}
+		(base -| \bzLabel{\nodeN}.east);
+}
+\end{bzFrame}
+
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBraces}
+\path (-4, -11) edge[bzBraceU] node{under brace} (+4, -11);
+\path (-4, -6)  edge[bzBraceO] node{over brace}  (+4, -6);
+\path (-5, -10) edge[bzBraceL] node{left brace}  (-5, -7);
+\path (+5, -10) edge[bzBraceR] node{right brace} (+5, -7);
+\end{myverbbox}
+
+
+\begin{myverbbox}{\vbBzBraces}
+\bzCenter{First}
+\bzBraceU{1}
+\bzNext{\ }
+
+\bzNext{Second}
+\bzEvalInt{\secondN}{\bzN}
+\bzNext{\ }
+
+\bzNext{Third}
+\bzBraceU{3}
+
+\bzBraceU{2}[\secondN]
+\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzCoords
+
+\bzOn{
+	\bzCenter[bzEB]{Braces}
+}
+
+\bzOn{
+	\bzLeft{Use the following commands to draw braces:}
+}
+
+\bzOn{
+	\bzCode{\vbBraces}
+	\path (-4, -6) edge[bzBraceU] node{under brace} (+4, -6);
+	\path (-4, -5) edge[bzBraceO] node{over brace}  (+4, -5);
+	\path (-5, -7) edge[bzBraceL] node{left brace}  (-5, -4);
+	\path (+5, -7) edge[bzBraceR] node{right brace} (+5, -4);
+}
+
+\iBzH[6]
+
+\dBzH[0.25]
+
+\bzOn{
+	\bzLeft{You can also create braces similarly to \vbBzNext:}
+}
+
+\dBzH[0.25]
+
+\bzOn{
+	\bzCode{\vbBzBraces}
+}
+
+\iBzH[2.5]
+
+\bzOn{
+	\bzCenter{First}
+	\bzBraceU{1}
+	\bzNext{\ }
+
+	\bzNext{Second}
+	\bzEvalInt{\secondN}{\bzN}
+	\bzNext{\ }
+
+	\bzNext{Third}
+	\bzBraceU{3}
+
+	\bzBraceU{2}[\secondN]
+}
+
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBlock}\bzBlock{...}{...}\end{myverbbox}
+\begin{myverbbox}{\vbBlockOpt}\bzBlock[fill=red]{...}{...}\end{myverbbox}
+
+\begin{myverbbox}{\vbBlockEx}
+\bzBlock{0.5}{0.5}
+\bzCenter{A simple block!}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbBlockTop}
+\bzBlock[draw=none, fill=\bzCtext, opacity=0.4]{0.5}{0.5}
+\bzBlock[]{0.5}{1.5}
+\bzCenter[bzEB]{Beamer-like blocks}
+\bzLeft{You can draw blocks like in Beamer.}
+\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzBlock[draw=none, fill=\bzCtext, opacity=0.4]{0.5}{0.5}
+	\bzBlock[]{0.5}{1.5}
+	\bzCenter[bzEB]{Beamer-like blocks}
+}
+
+\iBzI[0.5]
+
+\bzOn{
+	\bzLeft[]{You can draw blocks like in Beamer.}
+}
+
+\zBzI
+
+\iBzH[0.25]
+
+\bzOn{
+	\bzLeft{The basic command is \vbBlock{}:}
+	\dBzH[0.25]
+	\bzCode{\vbBlockEx}
+	\iBzH[1.5]
+	\bzLeft{which produces a simple block with border, positioned relatively to \vbBzH:}
+	\bzBlock{0.5}{0.5}
+	\bzCenter{A simple block!}
+}
+
+\iBzH[0.25]
+
+\bzOn{
+	\bzLeft{The two arguments of \vbBlock{} measure the height of the block:}
+	\dBzH[0.25]
+}
+
+\bzOn{
+	\bzItem{the first one above the current value of \vbBzH{} up to the top,}
+	\dBzH[0.25]
+}
+
+\bzOn{
+	\bzItem{the second one below the current value of \vbBzH{} down to the bottom.}
+}
+
+\bzOn{
+	\bzLeft{Moreover, the first optional argument is styling, like:}
+	\dBzH[0.25]
+	\bzCenter{\vbBlockOpt{}}
+}
+
+\bzOn{
+	\bzLeft{The topmost block of this frame is obtained as:}
+	\dBzH[0.25]
+	\bzCode{\vbBlockTop}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzLarge}\documentclass[large]{beamerikz}\end{myverbbox}
+\begin{myverbbox}{\vbBzNormal}\documentclass{beamerikz}\end{myverbbox}
+\begin{myverbbox}{\vbBzMultipleOptions}\documentclass[large, small, basic, large, basic, large, basic]{beamerikz}\end{myverbbox}
+
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Class options --- font size and \Verb"plain"}
+}
+
+\bzOn{
+	\bzLeft{The class \Verb"BeamerikZ" accepts a number of class options.}
+}
+
+\bzOn{
+	\bzLeft{The first category are options regarding \hl{font size}:}
+}
+
+\bzOn{
+	\bzItem{\Verb"small" defines font size of 14pt (smaller than usually),}
+}
+
+\bzOn{
+	\bzItem{\Verb"basic" is the default option with the font of 17pt used,}
+}
+
+\bzOn{
+	\bzItem{\Verb"large" uses font of 20pt.}
+}
+
+\bzOn{
+	\bzLeft{Specify these options when invoking document class, e.g.:}
+	\bzCode{\vbBzLarge}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{This document is typeset using the default option of 17pt, i.e. with:}
+	\bzCode{\vbBzNormal}
+}
+
+\iBzH
+
+\bzOn{
+	\bzBox{All the class options are processed sequentially, so the following code gives the default~17pt font size:}
+	\iBzH[0.8]
+	\bzCode{\vbBzMultipleOptions}
+}
+
+\iBzH
+
+\bzOn{
+	\bzBox{If you really hate ``Powered by \beamerikz'' on the first plain frame, use the class option \Verb"plain".}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbBzWide}\documentclass[wide]{beamerikz}\end{myverbbox}
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Class options --- 16:9}
+}
+
+\bzOn{
+	\bzLeft{Package option \Verb"wide" sets the aspect ratio of the presentation to 16:9}
+	\bzCode{\vbBzWide}
+}
+
+\iBzH
+
+\bzOn{
+	\bzLeft{It {\bf does not} change the size of the text!}
+	\bzText{In particular, you can still use options \Verb"small", \Verb"basic", and \Verb"large"}
+}
+
+\bzOn{
+	\bzLeft{Also, the vertical space is unchanged: (-1.0 -- 14.5)}
+}
+
+\bzOn{
+	\bzLeft{However, the horizontal space is then: (-13.0 -- +13.0) (plus margins)}
+}
+
+\bzOn{
+	\bzLeft{This means that the default value of \Verb"bzI" becomes -13}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbFrameShow}
+\begin{bzFrame}[show]
+...
+\end{bzFrame}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbFrameHide}
+\begin{bzFrame}%[show]  % to make this frame [show] again, remove the first % in this line
+...
+\end{bzFrame}
+\end{myverbbox}
+
+
+\begin{myverbbox}{\vbFrameHidePlain}
+\begin{bzPlainFrame}%[show]  % to make this frame [show] again, just remove %
+...
+\end{bzPlainFrame}
+\end{myverbbox}
+
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Class options --- \Verb"[show]" frames}
+}
+
+\bzOn{
+	\bzLeft{Compilation of complex presentations may take up to a couple of minutes!}
+}
+
+\iBzH[0.3]
+
+\bzOn{
+	\bzBox{To speed-up the development process, \Verb"BeamerikZ" provides a mechanism, that allows do disable compilation of certain frames to focus on the currently developed ones.}
+	\iBzH[2]
+}
+
+\bzOn{
+	\bzLeft{Frames of interest should be marked with the option \Verb"[show]":}
+	\bzCode{\vbFrameShow}
+	\iBzH[2.0]
+}
+
+\bzOn{
+	\bzLeft{While the rest should have this option commented out:}
+	\bzCode{\vbFrameHide}
+	\iBzH[2]
+}
+
+\bzOn{
+	\bzLeft{The same option applies to the ``plain'' frames:}
+	\bzCode{\vbFrameHidePlain}
+	\iBzH[1.8]
+}
+
+\bzOn{
+	\bzLeft{\hint to make use of these options, read on!}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{myverbbox}{\vbFrameShow}
+\begin{bzFrame}[show]
+...
+\end{bzFrame}
+\end{myverbbox}
+
+\begin{myverbbox}{\vbFrameHide}
+\begin{bzFrame}%[show]  % to make this frame [show] again, remove the first % in this line
+...
+\end{bzFrame}
+\end{myverbbox}
+
+
+\begin{myverbbox}{\vbFrameHidePlain}
+\begin{bzPlainFrame}%[show]  % to make this frame [show] again, just remove %
+...
+\end{bzPlainFrame}
+\end{myverbbox}
+
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Class options --- compilation modes}
+}
+
+\bzOn{
+	\bzLeft{Similarly as \Verb"normal" and \Verb"large", \Verb"BeamerikZ" reacts to the following options:}
+}
+
+\bzOn{
+	\bzItem{\Verb"final" --- the default option, when all the frames are normally compiled}
+}
+
+\bzOn{
+	\bzItem{\Verb"ready" --- similar to \Verb"final", but add compile info (see later)}
+}
+
+\bzOn{
+	\bzItem{\Verb"draft" --- compiles \Verb"[show]" frames, others are made one-shot}
+}
+
+\bzOn{
+	\bzItem{\Verb"short" --- compiles all the frames in one-shot, \Verb"[show]" is ignored}
+}
+
+\bzOn{
+	\bzItem{\Verb"brief" --- compiles only \Verb"[show]" frames, others are blank}
+}
+
+\iBzH[0.5]
+
+\bzOn{
+	\bzLeft{Thus, in terms of compilation time we get ({\small assuming few \Verb"[show]" frames}):}
+	\bzCenter{\Verb"brief" $<$ \Verb"short" $\leq$ \Verb"draft" $<$ \Verb"final" $\leq$ \Verb"ready"}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Class options --- \Verb"draft" and \Verb"brief"}
+}
+
+\bzOn{
+	\bzLeft{The modes \Verb"draft" and \Verb"brief" are meant to help with development of slides.}	
+}
+
+\bzOn{
+	\bzLeft{For that purpose, they feature:}
+}
+
+\bzOn{
+	\bzList{A grid of coordinates on each \Verb"[show]" frame to help arrange the nodes.}
+}
+
+\bzOn{
+	\bzList{A slide counter in the bottom left of each \Verb"[show]" frame.}
+}
+
+\bzOn{
+	\bzText{\hint use this counter to synchronize \vbBzIn{} arguments!}
+}
+
+\bzOn{
+	\bzLeft{Moreover, \Verb"draft" forces Beamer to use \Verb"draft" to speed-up the compilation process.}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+
+\begin{myverbbox}{\vbPlainFirst}
+\begin{bzPlainFrame}
+...
+\end{bzPlainFrame}
+\end{myverbbox}
+
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Class options --- \Verb"ready"}
+}
+
+\bzOn{
+	\bzLeft{The last thing to be explained is the \Verb"ready" class option.}
+}
+
+\bzOn{
+	\bzLeft{It works exactly as \Verb"final" except for the first \Verb"bzPlainFrame":}
+}
+
+\bzOn{
+	\bzCode{\vbPlainFirst}
+	\iBzH[2]
+}
+
+\bzOn{
+	\bzBox{Where it adds an additional \vbBzOn{} with the time of the current recompilation, written on the bottom of the slide.}
+	\iBzH
+}
+
+\bzOn{
+	\bzLeft{It serves two purposes:}
+}
+
+\bzOn{
+	\bzItem{Makes it easier for you to make sure which version you are to present.}
+}
+
+\bzOn{
+	\bzItem{Allows you to test your slide-switcher without unravelling the next slide :)}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\begin{bzFrame}%[show]
+\bzOn{
+	\bzCenter[bzEB]{Credits}
+}
+
+\bzOn{
+	\bzLeft{The author would like to thank:}
+}
+
+\bzOn{
+	\bzItem{Till Tantau for his amazing work on Beamer and PGF/\TikZ!}
+}
+
+\bzOn{
+	\bzItem{Szczepan Hummel for suggestions and a prototype of \vbBzNext,}
+}
+
+\bzOn{
+	\bzItem{Filip Mazowiecki and Micha{\l} Pilipczuk for never-ending enthusiasm,}
+}
+
+\bzOn{
+	\bzItem{Kamila {\L}yczek for support,}
+}
+
+\bzOn{
+	\bzItem{Abhishek Aich and Bartosz Bednarczyk for feature requests.}
+}
+\end{bzFrame}
+
+% =======================================================================================
+
+\end{document}

@@ -1,0 +1,38 @@
+
+data WalletType
+  = Enterprise
+  | WithStakeKeys
+
+data WalletTag t k where
+  BaseTag :: k -> WalletTag 'WithStakeKeys k
+  PkhTag :: k -> WalletTag 'Enterprise k
+
+data WalletTypeError
+    ExpectedEnterpriseWallet
+  | ExpectedWalletWithStakeKeys
+  | BadWalletIndex
+
+data t where
+  BaseWallet :: PaymentPubKeyHash -> StakePubKeyHash -> WalletInfo 'WithStakeKeys
+  PkhWallet :: PaymentPubKeyHash -> WalletInfo 'Enterprise
+
+data WalletLookups k = WalletLookups {
+  lookupWallet :: 
+    WalletTag t k
+    -> Contract w s (Either WalletTypeError e) (t)
+  , 
+  lookupAddress ::
+    k
+    -> Contract w s (Either WalletTypeError e) Address
+}
+
+-- and in tests
+assertExecution
+    (initAda (PkhTag "ewa")
+        <> initAda (BaseTag "lena")
+        <> initAda (PkhTag "eryk"))
+    (withContract $ \wl -> do
+        BaseWallet pkh1 spkh1 <- lookupWallet wl (BaseTag "lena")
+        PkhWallet pkh2 <- lookupWallet wl (PkhTag "eryk")
+        mapError Right $ theActualContract
+    )

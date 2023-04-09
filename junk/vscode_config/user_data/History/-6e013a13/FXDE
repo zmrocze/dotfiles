@@ -1,0 +1,41 @@
+  - Add locktime field to transaction.
+  - Swaping the whole of networking with network-transport seems like a good idea. (but a late one)
+  - Improve validate functions not to calculate searchPool multiple times. Refactor so that coinbase UTXO is not forgotten about in those functions.
+  - Write more extensive block validation tests. Better after the ^ above refactor.
+  - Now there's blockchain file to read a starting blockchain from and file to output blockchain after closing the node (not exactly!).
+    The blockchain is kept in memory during running time. App should better append new blocks in real time and also
+    app should store minimal subset of the whole blockchain in ram. Better not to mess up this in a rush, so this will need to wait. 
+  - ReaderT Env IO and HasConfig style constraints on Env  <- nope!
+  - Strategy - have all the code that does stuff ready and only then refactor, knowing better what refactor makes sense
+  - Some things are recalculated at need (utxopool for nodes in LivelyBlocks). Consider keeping this in memory.
+  - Implement node querying functionality. For now make it dumb and quick only to be able to finaly run node. 
+    Also improving it doesn't make sense before blockchain is moved out of runtime and into some database.
+  - Wallet
+  - Delete unneeded future blocks (can be done based on blockHeight)
+  - Fix bug of reading/writing fixed and lively blocks in seperate atomic operations.
+  - Change catchUpToBlockchain to be called like log - there's a single queue of catchingUpToBlockchain calls. And really - was the idea of changing to HasConfig-style that undoable?
+  - Quiting app, saving blockchain, handling errors.
+  - Wallet should monitor transaction validations.
+  - SimpleWallet
+  - Update broadcastTransaction to keep resending untill it's in blockchain.
+  - Consider no mining mode and two "withAppDo" functions: one that does stuff and closes the app and second that doesn't.
+  - More fine grained mining difficulty (2 is under second, 3 is few minutes, jump by a factor of 256).
+  - Start with random nonce, so that we ommit unlucky cases of first fitting nonce being very big and not able to be found in 4 minutes.
+  - Basic transaction validation on receiveings!
+  - System of monitoring peers activity and updating contact list.
+  - Maybe Answer should be flattened to Answer with extra constructor "NoAnswer".
+  - Flush logging before quit.
+  - Proper quitting.
+  - Specify wallet functionality so that wallet can be run seperately but also plugged in in full node for collecting coins.
+  - Investigate localhost not being resolved when run from "stack ghci".
+  - Mining at the tip of LivelyBlocks. Validation as well (write correct, benchmark later?).
+  - Fix/Check bug: Catch up to blockchain appending blocks from peers, peer at a time, evolves blockchain innaturaly, if the first peer has a long list, but not exhaustive, blocks from others wont be appended.
+  - Put Merkle.hs into BlockValidation.  
+  - Check BlockValidation once more.
+  - Consider merging InMemory _ (Lively/Fixed/Future) into already existing InMemory _ BlockchainData
+  - Check bytestring encoding, consider encoding as text.
+  - Make FixedLength a part of Lively.
+  - Update Peers on receiving messages also.
+  - Remove used in block incomingTransactions
+  - Update owned utxo set in wallet (and display ala monero client)
+  - Show 

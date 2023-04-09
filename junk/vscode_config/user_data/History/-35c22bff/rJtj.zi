@@ -1,0 +1,12 @@
+f()
+{
+    return "Wroclaw"
+}
+
+f()
+{
+    return {5, 10, 15, "zaraz sie zacznie"}
+}
+
+//@PRACOWNIA
+//@stop_after parser
