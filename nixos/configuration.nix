@@ -138,8 +138,13 @@
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = [ "wheel" "audio" "networkmanager"];
+      shell = pkgs.zsh;
     };
   };
+
+  # somehow this is needed here as well as home.nix,
+  # https://www.reddit.com/r/NixOS/comments/z16mt8/cant_seem_to_set_default_shell_using_homemanager/
+  programs.zsh.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
