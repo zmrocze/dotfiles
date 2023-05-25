@@ -4,5 +4,5 @@
 # nix run .#homeConfigurations.zmrocze@omen.activationPackage
 
 pushd ~/dotfiles
-sudo home-manager switch --flake '.#zmrocze@omen'
+home-manager switch --flake '.#zmrocze@omen'
 popd
