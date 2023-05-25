@@ -35,7 +35,6 @@
     };
   };
 
-  # TODO: Set your username
   home = {
     inherit username;
     homeDirectory = "/home/${username}";
@@ -51,9 +50,9 @@
     vscode
     # dconf-editor
     # direnv
-    docker
+    # docker
     # efibootmgr
-    # exa
+    exa
     firefox
     # gnome-gedit
     # gimp
@@ -73,6 +72,7 @@
     # opam
     netcat-openbsd
     # opendoas
+    openssl
     refind
     spotify
     gnused
@@ -97,26 +97,28 @@
   # }
 
   # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    userEmail = "karolochmanmilarski@gmail.com";
-    userName = "zmrocze";
-    difftastic.enable = true;
-    extraConfig = {
-      init.defaultBranch = "main";
-      # core.editor = pkgs.micro;
-      credential = {
-        credentialStore = "secretservice";
-        helper =
-          "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
+  programs = {
+    home-manager.enable = true;
+    git = {
+      enable = true;
+      userEmail = "karolochmanmilarski@gmail.com";
+      userName = "zmrocze";
+      difftastic.enable = true;
+      extraConfig = {
+        init.defaultBranch = "main";
+        # core.editor = pkgs.micro;
+        credential = {
+          credentialStore = "secretservice";
+          helper =
+            "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
+        };
       };
     };
-  };
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+  }
 
   # https://discourse.nixos.org/t/home-manager-nerdfonts/11226
   fonts.fontconfig.enable = true;

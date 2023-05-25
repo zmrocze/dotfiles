@@ -2,7 +2,7 @@
 # The following lines were added by compinstall
 
 zstyle ':completion:*' auto-description '%d'
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' expand suffix
 zstyle ':completion:*' insert-unambiguous false
 zstyle ':completion:*' list-colors ''
@@ -10,6 +10,15 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' verbose true
+# zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path 
+# # Speed up completions
+# zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+#export EDITOR=/usr/bin/nano
+#export VISUAL=/usr/bin/nano
 
 # TODO
 # zstyle :compinstall filename '/home/zmrocze/.zshrc'
@@ -18,10 +27,82 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Lines configured by zsh-newuser-install
+
+## History command configuration
 HISTFILE=~/.histfile
-HISTSIZE=2000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
+unsetopt extended_history       # record timestamp of command in HISTFILE
+# setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+# (karol: For concurrent zsh sessions, instant history sharing (does it interfer with other options?))
+setopt appendhistory                                            # Immediately append history instead of overwriting
+# karol: don't know how this differs
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+# setopt hist_ignore_space      # ignore commands that start with space
+# setopt hist_verify            # show command with history expansion to user before running it
+# setopt inc_append_history     # add commands to HISTFILE in order of execution
+# setopt share_history          # share command history data
+setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+# setopt histignorespace                                          # Don't save commands that start with space
+
+## Options section
+setopt nocaseglob                                               # Case insensitive globbing
+
+# % setopt rcexpandparam
+# % echo foo/$srcs
+# foo/glob.c foo/exec.c foo/init.c
+# % echo foo/${^srcs}
+# foo/glob.c foo/exec.c foo/init.c
+# % echo foo/$^srcs
+# foo/glob.c foo/exec.c foo/init.c
+# setopt rcexpandparam                                            # Array expension with parameters
+# setopt nocheckjobs                                              # Don't warn about running processes when exiting
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+# setopt nobeep                                                   # No beep
+# setopt autocd                                                   # if only directory path is entered, cd there.
+
 setopt nomatch
 unsetopt autocd beep extendedglob
-bindkey -e
 # End of lines configured by zsh-newuser-install
+
+WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+
+## Keybindings section
+bindkey -e                                                      # emacs bindings
+# these work by default
+# bindkey '^[[7~' beginning-of-line                               # Home key
+# bindkey '^[[H' beginning-of-line                                # Home key
+# if [[ "${terminfo[khome]}" != "" ]]; then
+#   bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
+# fi
+# bindkey '^[[8~' end-of-line                                     # End key
+# bindkey '^[[F' end-of-line                                     # End key
+# if [[ "${terminfo[kend]}" != "" ]]; then
+#   bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
+# fi
+# bindkey '^[[3~' delete-char                                     # Delete key
+# bindkey '^[[C'  forward-char                                    # Right key
+# bindkey '^[[D'  backward-char                                   # Left key
+# bindkey '^[[5~' history-beginning-search-backward               # Page up key
+# bindkey '^[[6~' history-beginning-search-forward                # Page down key
+# Navigate words with ctrl+arrow keys
+# bindkey '^[Oc' forward-word                                     #
+# bindkey '^[Od' backward-word                                    #
+bindkey '^[[1;5D' backward-word                                 #
+bindkey '^[[1;5C' forward-word                                  #
+bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
+bindkey '^[[Z' undo                                             # Shift+tab undo last action
+
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-R
+
+# aliases
+# source functions.zsh
