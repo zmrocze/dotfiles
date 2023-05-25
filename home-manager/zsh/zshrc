@@ -12,7 +12,7 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' verbose true
 
 # TODO
-zstyle :compinstall filename '/home/zmrocze/other/tmp_zsh_home/.zshrc'
+# zstyle :compinstall filename '/home/zmrocze/.zshrc'
 
 autoload -Uz compinit
 compinit

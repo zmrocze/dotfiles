@@ -39,11 +39,20 @@
         ];
         perSystem = { pkgs, system, inputs', config, ... }: {
           devShells.default = config.pre-commit.devShell;
-          pre-commit.settings.hooks = {
-            nixfmt.enable = true;
-            statix.enable = true;
-            deadnix.enable = true;
-            shellcheck.enable = true;
+          pre-commit.settings = rec {
+            excludes = [ 
+              "./junk.*"
+              "junk.*"
+            ];
+            hooks = {
+              nixfmt.enable = true;
+              statix = {
+                enable = true;
+                ignore = excludes;
+              };
+              deadnix.enable = true;
+              shellcheck.enable = true;
+            };
           };
         };
       };

@@ -14,6 +14,11 @@
       initExtra = builtins.readFile ./zshrc;
       # initExtraFirst
       # initExtraBeforeCompInit
+      plugins = [{
+        name = "powerlevel10k";
+        file = "powerlevel10k.zsh-theme";
+        src = inputs.powerlevel10k;
+      }];
     };
   };
 }

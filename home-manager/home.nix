@@ -74,6 +74,7 @@
     netcat-openbsd
     # opendoas
     refind
+    spotify
     gnused
     gnutar
     # texinfo
@@ -107,9 +108,14 @@
       # core.editor = pkgs.micro;
       credential = {
         credentialStore = "secretservice";
-        helper = "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
+        helper =
+          "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
       };
     };
+  };
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # https://discourse.nixos.org/t/home-manager-nerdfonts/11226

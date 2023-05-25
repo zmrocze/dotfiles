@@ -42,7 +42,8 @@
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
+      config.nix.registry;
 
     settings = {
       # Enable flakes and new 'nix' command
@@ -72,7 +73,7 @@
   # TODO: Set your hostname
   networking.hostName = "${hostname}";
 
-    # Bootloader.
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
@@ -123,7 +124,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username
@@ -137,7 +137,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" "audio" "networkmanager"];
+      extraGroups = [ "wheel" "audio" "networkmanager" ];
       shell = pkgs.zsh;
     };
   };
@@ -172,7 +172,7 @@
   #   # no need to redefine it in your config for now)
   #   #media-session.enable = true;
   # };
-  
+
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
