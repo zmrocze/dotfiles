@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, config, ... }: {
   imports = [
     # paths to other modules
   ];
@@ -11,9 +11,7 @@
     # option definitions
     programs.zsh = {
       enable = true;
-      initExtra = 
-        builtins.readFile ./zshrc
-        + builtins.readFile ./functions.zsh;
+      initExtra = builtins.readFile ./zshrc + builtins.readFile ./functions.zsh;
       # initExtraFirst
       # initExtraBeforeCompInit
       plugins = [{
@@ -28,8 +26,6 @@
       completionInit = "";
     };
 
-    home.file = {
-      ".p10k.zsh".source = ./p10k.zsh
-    }
+    home.file = { ".p10k.zsh".source = ./p10k.zsh; };
   };
 }

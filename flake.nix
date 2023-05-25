@@ -27,32 +27,27 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, flake-parts, pre-commit-hooks
-    , powerlevel10k, ... }@inputs:
+  outputs =
+    { nixpkgs, home-manager, flake-parts, pre-commit-hooks, ... }@inputs:
     let
       hostname = "omen";
       username = "zmrocze";
       system = "x86_64-linux";
-      pre-commit-module = { inputs, lib, ... }: {
+      pre-commit-module = {
         imports = [
           pre-commit-hooks.flakeModule # Adds perSystem.pre-commit options
         ];
-        perSystem = { pkgs, system, inputs', config, ... }: {
+        perSystem = { config, ... }: {
           devShells.default = config.pre-commit.devShell;
           pre-commit.settings = rec {
-            excludes = [ 
-              "./junk.*"
-              "junk.*"
-            ];
+            excludes = [ "junk" ];
             hooks = {
               nixfmt.enable = true;
-              statix = {
-                enable = true;
-                ignore = excludes;
-              };
+              statix = { enable = true; };
               deadnix.enable = true;
               shellcheck.enable = true;
             };
+            settings.statix.ignore = excludes;
           };
         };
       };

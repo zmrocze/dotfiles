@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, username, ... }: {
+{ inputs, config, pkgs, username, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -31,7 +31,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -118,7 +118,7 @@
       enable = true;
       enableZshIntegration = true;
     };
-  }
+  };
 
   # https://discourse.nixos.org/t/home-manager-nerdfonts/11226
   fonts.fontconfig.enable = true;
