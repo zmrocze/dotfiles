@@ -110,7 +110,7 @@
         credential = {
           credentialStore = "secretservice";
           helper =
-            "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
+            "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager";
         };
       };
     };
