@@ -75,7 +75,7 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -154,6 +154,11 @@
     permitRootLogin = "no";
     # Use keys only. Remove if you want to SSH using password (not recommended)
     passwordAuthentication = false;
+  };
+
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
   };
 
   #   # Enable sound with pipewire.
