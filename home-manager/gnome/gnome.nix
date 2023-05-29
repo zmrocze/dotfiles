@@ -38,8 +38,13 @@
 
     # home.sessionVariables.GTK_THEME = "arc";
 
-    # ...
-    # dconf.settings = {
+    # extra dconf settings
+    dconf.settings = {
+      "org/gnome/desktop/background" = {
+        picture-options = "zoom";
+        picture-uri = ./wallpapers/manul.png;
+      };
+    };
     #   # ...
     #   "org/gnome/shell" = {
     #     favorite-apps = [
