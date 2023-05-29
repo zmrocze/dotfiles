@@ -8,10 +8,10 @@
     gtk = {
       enable = true;
 
-      theme = {
-        name = "arc";
-        package = pkgs.arc-theme;
-      };
+      # theme = {
+      #   name = "Arc-Darker";
+      #   package = pkgs.arc-theme;
+      # };
 
       #     iconTheme = {
       # name = "Papirus-Dark";
@@ -36,38 +36,14 @@
       # };
     };
 
-    # home.sessionVariables.GTK_THEME = "arc";
+    # home.sessionVariables.GTK_THEME = "Arc-Darker";
 
     # extra dconf settings
     dconf.settings = {
       "org/gnome/desktop/background" = {
         picture-options = "zoom";
-        picture-uri = ./wallpapers/manul.png;
+        picture-uri = "file://${./wallpapers/manul.png}";
       };
     };
-    #   # ...
-    #   "org/gnome/shell" = {
-    #     favorite-apps = [
-    #       "firefox.desktop"
-    #       "code.desktop"
-    #       "org.gnome.Terminal.desktop"
-    #       "spotify.desktop"
-    #       "org.gnome.Nautilus.desktop"
-    #     ];
-    #     # `gnome-extensions list` for a list
-    #     # enabled-extensions = [
-    #     #   "user-theme@gnome-shell-extensions.gcampax.github.com"
-    #     #   "trayIconsReloaded@selfmade.pl"
-    #     #   "Vitals@CoreCoding.com"
-    #     #   "dash-to-panel@jderose9.github.com"
-    #     #   "sound-output-device-chooser@kgshank.net"
-    #     #   "space-bar@luchrioh"
-    #     # ];
-    #   };
-    #   "org/gnome/desktop/interface" = {
-    #     color-scheme = "prefer-dark";
-    #     # enable-hot-corners = false;
-    #   };
-    # };
   };
 }

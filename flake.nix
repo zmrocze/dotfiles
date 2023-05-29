@@ -1,7 +1,7 @@
 {
   description = "Your new nix config";
 
-  nixConfig = { allow-import-from-derivation = true; };
+  # nixConfig = { allow-import-from-derivation = true; };
 
   inputs = {
     # Nixpkgs
@@ -53,7 +53,7 @@
         perSystem = { config, ... }: {
           devShells.pre-commit = config.pre-commit.devShell;
           pre-commit.settings = rec {
-            excludes = [ "junk" ];
+            excludes = [ "junk" "home-manager/gnome/dconf.nix" ];
             hooks = {
               nixfmt.enable = true;
               statix = { enable = true; };

@@ -1,2 +1,19 @@
 [org/gnome/desktop/input-sources]
 xkb-options=['ctrl:nocaps']
+
+[org/gnome/desktop/peripherals/touchpad]
+click-method='areas'
+
+[org/gnome/desktop/interface]
+color-scheme='prefer-dark'
+
+[org/gnome/desktop/peripherals/mouse]
+speed=0.23651452282157681
+
+[org/gnome/desktop/wm/keybindings]
+close=['<Alt>F4']
+maximize=['<Super>Up']
+switch-applications=@as []
+switch-applications-backward=@as []
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
