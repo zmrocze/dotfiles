@@ -1,6 +1,8 @@
 {
   description = "Your new nix config";
 
+  nixConfig = { allow-import-from-derivation = true; };
+
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
@@ -33,12 +35,23 @@
       hostname = "omen";
       username = "zmrocze";
       system = "x86_64-linux";
+      pkgsFor = system:
+        import inputs.nixpkgs {
+          inherit system;
+          overlays = [
+            (final: _:
+              import ./lib {
+                pkgs = final;
+                # inherit inputs;
+              })
+          ];
+        };
       pre-commit-module = {
         imports = [
           pre-commit-hooks.flakeModule # Adds perSystem.pre-commit options
         ];
         perSystem = { config, ... }: {
-          devShells.default = config.pre-commit.devShell;
+          devShells.pre-commit = config.pre-commit.devShell;
           pre-commit.settings = rec {
             excludes = [ "junk" ];
             hooks = {
@@ -54,6 +67,20 @@
     in flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ pre-commit-module ];
       systems = [ system ];
+      perSystem = { config, pkgs, system, ... }: {
+        _module.args.pkgs = pkgsFor system;
+        devShells = {
+          default = pkgs.mergeShells config.devShells.pre-commit (pkgs.mkShell {
+            packages = [ pkgs.just ];
+            # inputsFrom = [ pkgs.hello ];
+            # shellHook = '''';
+          });
+        };
+        checks = {
+          "homeConfiguraton_zmrocze@omen" =
+            config.homeConfigurations."zmrocze@omen".activationPackage;
+        };
+      };
       flake = {
 
         # NixOS configuration entrypoint
@@ -75,8 +102,7 @@
           # FIXME replace with your username@hostname
           "${username}@${hostname}" =
             home-manager.lib.homeManagerConfiguration {
-              pkgs =
-                nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
+              pkgs = pkgsFor system; # Home-manager requires 'pkgs' instance
               extraSpecialArgs = {
                 inherit inputs username;
               }; # Pass flake inputs to our config
@@ -87,3 +113,4 @@
       };
     };
 }
+

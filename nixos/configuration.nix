@@ -146,6 +146,8 @@
   # https://www.reddit.com/r/NixOS/comments/z16mt8/cant_seem_to_set_default_shell_using_homemanager/
   programs.zsh.enable = true;
 
+  programs.dconf.enable = true;
+
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   services.openssh = {
