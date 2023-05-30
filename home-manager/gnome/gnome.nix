@@ -40,9 +40,10 @@
 
     # extra dconf settings
     dconf.settings = {
-      "org/gnome/desktop/background" = {
+      "org/gnome/desktop/background" = rec {
         picture-options = "zoom";
         picture-uri = "file://${./wallpapers/manul.png}";
+        picture-uri-dark = picture-uri;
       };
     };
   };
