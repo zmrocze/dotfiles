@@ -1,6 +1,7 @@
 
+alias ls=exa
 alias -g mi="micro"
-alias sudo="doas"
+# alias sudo="doas"
 alias -g json="python3 -m json.tool"
 alias -g mapapply="xargs -L1"
 alias hs="hsh"
@@ -9,7 +10,7 @@ alias py=python
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-# alias cd=exa
+alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,MOUNTPOINTS,LABEL"  # add LABEL
 # not needed now
 # alias config='/usr/bin/git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
 

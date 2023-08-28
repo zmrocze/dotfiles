@@ -5,3 +5,13 @@ regenerate-dconf-nix:
 
 build-home:
     nix build .#homeConfigurations.zmrocze@omen.activationPackage
+
+# https://nixos.org/manual/nixos/stable/#sec-changing-config
+build:
+    nixos-rebuild build --flake .#omen
+    nix build .#homeConfigurations.zmrocze@omen.activationPackage
+
+apply:
+    bash apply-system.sh
+    bash apply-home.sh
+    

@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, config, pkgs, username, ... }: {
+{ inputs, config, username, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -9,6 +9,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./packages.nix
     zsh/zsh.nix
     gnome/gnome.nix
     inputs.nur.nixosModules.nur
@@ -41,61 +42,11 @@
     homeDirectory = "/home/${username}";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  home.packages = with pkgs; [
-    meslo-lgs-nf
-    bash
-    bear
-    haskellPackages.cabal-plan
-    vscode
-    # dconf-editor
-    # direnv
-    # docker
-    # efibootmgr
-    exa
-    firefox
-    # gnome-gedit
-    # gimp
-    glava
-    gparted
-    gnugrep
-    gzip
-    htop
-    inxi
-    jupyter
-    less
-    lsof
-    # man-pages
-    # micro
-    monero-cli
-    # npm
-    # opam
-    netcat-openbsd
-    # opendoas
-    openssl
-    refind
-    spotify
-    gnused
-    gnutar
-    # texinfo
-    # texlive-bibtexextra
-    tldr
-    tor
-    # torsocks
-    traceroute
-    tree
-    vim
-    wget
-    which
-    xz
-    yq
-    jq
-  ];
-
   # home.file = {
 
   # }
+  # Add stuff for your user as you see fit:
+  # programs.neovim.enable = true;
 
   # Enable home-manager and git
   programs = {

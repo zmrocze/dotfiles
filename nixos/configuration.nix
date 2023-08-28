@@ -77,7 +77,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
   # https://discourse.nixos.org/t/easy-refind-boot-by-booting-into-systemd-boot-from-refind/28507/5?u=zmrocze
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -159,27 +159,36 @@
     passwordAuthentication = false;
   };
 
-  virtualisation.docker.rootless = {
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
 
-  #   # Enable sound with pipewire.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = false;
-  # security.rtkit.enable = true;
-  # services.pipewire = {
-  #   enable = true;
-  #   alsa.enable = true;
-  #   alsa.support32Bit = true;
-  #   pulse.enable = true;
-  #   # If you want to use JACK applications, uncomment this
-  #   #jack.enable = true;
+  hardware.bluetooth.enable = true;
 
-  #   # use the example session manager (no others are packaged yet so this is enabled by default,
-  #   # no need to redefine it in your config for now)
-  #   #media-session.enable = true;
-  # };
+  # security.doas.enable = true;
+  # security.sudo.enable = false;
+  # security.doas.extraConfig = builtins.readFile ./doas.conf;
+
+  #   # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  # security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
 
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {

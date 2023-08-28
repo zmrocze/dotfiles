@@ -3,5 +3,8 @@
  - nixconf
  - micro (or else)
  - modern coreutils
- - gnome
+ - gnome:
+   * workspace shortcuts
  - flake init snippet 
+ - vscode:
+   * ctrl+p on selection
