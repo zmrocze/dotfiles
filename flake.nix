@@ -27,6 +27,10 @@
       flake = false;
     };
 
+    # zsh-autocomplete = {
+    #   url = "github:marlonrichert/zsh-autocomplete";
+    #   flake = false;
+    # };
   };
 
   outputs =
@@ -79,6 +83,8 @@
         checks = {
           "homeConfiguraton_zmrocze@omen" =
             config.homeConfigurations."zmrocze@omen".activationPackage;
+          "nixosConfiguration_omen" =
+            config.nixosConfigurations."omen".activationPackage;
         };
       };
       flake = {

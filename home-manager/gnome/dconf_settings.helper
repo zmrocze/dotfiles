@@ -40,3 +40,6 @@ switch-to-application-6=[]
 switch-to-application-7=[]
 switch-to-application-8=[]
 switch-to-application-9=[]
+
+[org/gnome/shell]
+favorite-apps=['firefox.desktop', 'org.gnome.Console.desktop', 'nautilus.desktop']

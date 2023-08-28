@@ -26,10 +26,14 @@
           file = "p10k.zsh";
           src = ./.;
         }
+        # {
+        #   name = "zsh-autocomplete";
+        #   file = "zsh-autocomplete.plugin.zsh";
+        #   src = inputs.zsh-autocomplete;
+        # }
       ];
       # sources plugin
       enableSyntaxHighlighting = true;
-      historySubstringSearch.enable = true;
       # "autoload -U compinit && compinit" is already in zshrc
       completionInit = "";
     };

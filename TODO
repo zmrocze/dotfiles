@@ -8,3 +8,6 @@
  - flake init snippet 
  - vscode:
    * ctrl+p on selection
+ - shell/zsh:
+   * [x] history search based on whats written already
+   * [ ] zawijanie linii komend w shellu dla długich linii

@@ -54,5 +54,9 @@ with lib.hm.gvariant;
       switch-to-application-9 = [ ];
     };
 
+    "org/gnome/shell" = {
+      favorite-apps = [ "firefox.desktop" "org.gnome.Console.desktop" "nautilus.desktop" ];
+    };
+
   };
 }
