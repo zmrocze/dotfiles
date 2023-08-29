@@ -7,6 +7,8 @@
     # option declarations
   };
 
+  # note: homemanager zsh plugin is terrible set of string macros and undocumented conventions,
+  # it doesn't provide lot of value, so don't hesitate rewriting it with simpler set of string macros.
   config = {
     # option definitions
     programs.zsh = {

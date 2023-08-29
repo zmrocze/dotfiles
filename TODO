@@ -10,6 +10,6 @@
    * [x] ctrl+p on selection
  - shell/zsh:
    * [x] history search based on whats written already
-   * [ ] zawijanie linii komend w shellu dla długich linii
- - [ ] git use micro
+   * [x] zawijanie linii komend w shellu dla długich linii
+ - [x] git use micro
  - [ ] browse nixos options and pkgs easily from shell

@@ -58,7 +58,7 @@
       difftastic.enable = true;
       extraConfig = {
         init.defaultBranch = "main";
-        # core.editor = pkgs.micro;
+        core.editor = "micro";
         credential = {
           credentialStore = "secretservice";
           helper =
