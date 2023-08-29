@@ -25,7 +25,7 @@
     less
     lsof
     # man-pages
-    # micro
+    micro
     monero-cli
     # npm
     # opam
@@ -33,6 +33,7 @@
     # opendoas
     openssl
     refind
+    rustup
     spotify
     gnused
     gnutar

@@ -1,13 +1,15 @@
- - cachix mlabs key
- - git credentials
+ - [ ] cachix mlabs key
+ - [x] git credentials
  - nixconf
- - micro (or else)
+ - [ ] micro (or else)
  - modern coreutils
  - gnome:
-   * workspace shortcuts
- - flake init snippet 
+   * [x] workspace shortcuts
+ - flake init snippet
  - vscode:
-   * ctrl+p on selection
+   * [x] ctrl+p on selection
  - shell/zsh:
    * [x] history search based on whats written already
    * [ ] zawijanie linii komend w shellu dla długich linii
+ - [ ] git use micro
+ - [ ] browse nixos options and pkgs easily from shell

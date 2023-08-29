@@ -142,6 +142,10 @@
       shell = pkgs.zsh;
     };
   };
+  # this enabled `$ man alias`
+  environment.systemPackages = [ pkgs.man-pages pkgs.man-pages-posix ];
+  # this no clue what it does
+  documentation.dev.enable = true;
 
   # somehow this is needed here as well as home.nix,
   # https://www.reddit.com/r/NixOS/comments/z16mt8/cant_seem_to_set_default_shell_using_homemanager/
