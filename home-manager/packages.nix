@@ -8,6 +8,7 @@
     haskellPackages.cabal-plan
     vscode
     gnome.dconf-editor
+    gnome.gnome-terminal
     # direnv
     # docker
     # efibootmgr

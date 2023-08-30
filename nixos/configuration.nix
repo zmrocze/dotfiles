@@ -113,12 +113,32 @@
     # Enable the GNOME Desktop Environment.
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-
     # Configure keymap in X11
     layout = "pl";
     # TODO: what is this?
     xkbVariant = "";
   };
+
+  environment.gnome.excludePackages = (with pkgs;
+    [
+      # gnome-photos
+      # gnome-tour
+      gnome-console
+    ]) ++ (with pkgs.gnome; [
+      # cheese # webcam tool
+      # gnome-music
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      # gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      yelp # Help view
+      gnome-contacts
+      # gnome-initial-setup
+    ]);
 
   console.keyMap = "pl2";
   services.printing.enable = true;
