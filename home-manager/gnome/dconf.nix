@@ -55,7 +55,12 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      favorite-apps = [ "firefox.desktop" "org.gnome.Console.desktop" "nautilus.desktop" ];
+      favorite-apps = [ "firefox.desktop" "org.gnome.Console.desktop" "org.gnome.Nautilus.desktop" "spotify.desktop" ];
+    };
+
+    "org/freedesktop/tracker/miner/files" = {
+      index-recursive-directories = [ "$HOME" "/home/zmrocze" "&DOWNLOAD" ];
+      index-single-directories = [ "$HOME" "/home/zmrocze" "&DOWNLOAD" ];
     };
 
   };

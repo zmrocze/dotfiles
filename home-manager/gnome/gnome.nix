@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   imports = [ ./dconf.nix ];
 
   config = {
@@ -13,27 +13,27 @@
       #   package = pkgs.arc-theme;
       # };
 
-      #     iconTheme = {
-      # name = "Papirus-Dark";
-      # package = pkgs.papirus-icon-theme;
-      # };
+      iconTheme = {
+        name = "Papirus-Dark-Maia";
+        package = pkgs.papirus-maia-icon-theme;
+      };
 
-      # cursorTheme = {
-      #   name = "Numix-Cursor";
-      #   package = pkgs.numix-cursor-theme;
-      # };
+      cursorTheme = {
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+      };
 
-      # gtk3.extraConfig = {
-      #   Settings = ''
-      #     gtk-application-prefer-dark-theme=1
-      #   '';
-      # };
+      gtk3.extraConfig = {
+        Settings = ''
+          gtk-application-prefer-dark-theme=1
+        '';
+      };
 
-      # gtk4.extraConfig = {
-      #   Settings = ''
-      #     gtk-application-prefer-dark-theme=1
-      #   '';
-      # };
+      gtk4.extraConfig = {
+        Settings = ''
+          gtk-application-prefer-dark-theme=1
+        '';
+      };
     };
 
     # home.sessionVariables.GTK_THEME = "Arc-Darker";
@@ -44,6 +44,10 @@
         picture-options = "zoom";
         picture-uri = "file://${./wallpapers/manul.png}";
         picture-uri-dark = picture-uri;
+      };
+      # redundancy with dconf_settings.nix, but maybe needed
+      "org/freedesktop/tracker/miner/files" = {
+        index-recursive-directories = [ config.home.homeDirectory ];
       };
     };
   };
