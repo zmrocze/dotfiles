@@ -1,8 +1,0 @@
-f() {
-  while not a^.[1] {
-    print("hello")
-  }
-}
-
-//@PRACOWNIA
-//@stop_after parser

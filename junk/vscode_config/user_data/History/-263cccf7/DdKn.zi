@@ -1,7 +1,0 @@
-f() {
-  a:int[] = {1,2,3,}
-  
-}
-
-//@PRACOWNIA
-//@stop_after parser

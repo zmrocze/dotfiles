@@ -1,6 +1,0 @@
-- CI check that materialized scripts are up to date with onchain
-- ctl runtime
-- template doc (outsorcing to ctl doc, but additionaly about the flow of data)
-
-Q:
-- is it a problem that offchain/onchain use different nixpkgs?

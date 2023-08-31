@@ -1,6 +1,0 @@
-packages:
-  - .
-
-system-ghc: true
-
-resolver: lts-19.8

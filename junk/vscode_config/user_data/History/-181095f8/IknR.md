@@ -1,5 +1,0 @@
-- \emph 
-- $\mathit$
-- section inference ref
-- aligned equation
-- myslnik 

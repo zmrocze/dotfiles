@@ -1,9 +1,0 @@
-- CI check that materialized scripts are up to date with onchain
-- ctl runtime
-- template doc (outsorcing to ctl doc, but additionaly about the flow of data)
-- check out if ply-ctl is something we should use
-
-Q:
-- is it a problem that offchain/onchain use different nixpkgs?
-- command to e2e bundle/run chosen purescript main module (tired of moving debug test into official main)
-- Magnus about tooling/pre-commits

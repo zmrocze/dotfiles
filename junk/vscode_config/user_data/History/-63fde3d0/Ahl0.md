@@ -1,2 +1,0 @@
-
-There are currently no tests that attempt to run the protocol with a non zero fee. The collector logic bypasses all checks in this case, thus the fee collection logic of the protocol is never tested. Simply changing the fee seems to make tests using depositTx fail.

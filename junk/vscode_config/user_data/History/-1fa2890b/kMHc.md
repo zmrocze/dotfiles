@@ -1,4 +1,0 @@
-nix functions 
- - onchain: derives script directory
- - offchain: 1. script directory -> derives offchain src with bindings
-             2. script bindings -> whole offchain src

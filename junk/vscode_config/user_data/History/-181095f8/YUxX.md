@@ -1,7 +1,0 @@
-- \emph 
-- $\mathit$
-- skolem uppercase
-- section inference ref
-- aligned equation
-- myslnik 
-- todo: functional symbol -> function symbol

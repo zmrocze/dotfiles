@@ -1,8 +1,0 @@
-
-class Interface
-{
-    
-}
-
-int main() {
-}

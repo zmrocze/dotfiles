@@ -1,4 +1,0 @@
-- \emph 
-- $\mathit$
-- section inference ref
-- myslnik 

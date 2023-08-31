@@ -1,8 +1,0 @@
-https://github.com/input-output-hk/hydra-poc/blob/759fee84475f951aaf2f35acdb8ab82094ec5fbf/plutus-cbor/bench/Main.hs#L163
-https://cardano.stackexchange.com/a/4388
-https://input-output-hk.github.io/cardano-node/cardano-api/Cardano-Api-Script.html
-https://input-output-hk.github.io/cardano-node/cardano-api/lib/Cardano-Api-ScriptData.html
-
-hashScriptData:
-  - https://github.com/input-output-hk/cardano-ledger/blob/1db68a3ec0a2dcb5751004beb22b906162474f23/eras/alonzo/impl/src/Cardano/Ledger/Alonzo/Data.hs#L172
-  - DatumHash

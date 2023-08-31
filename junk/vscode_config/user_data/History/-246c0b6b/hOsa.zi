@@ -1,7 +1,0 @@
-f()
-{
-    y : { } = 5
-}
-
-//@PRACOWNIA
-//@stop_after parser

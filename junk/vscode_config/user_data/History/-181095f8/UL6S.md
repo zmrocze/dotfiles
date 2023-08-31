@@ -1,3 +1,0 @@
-- \emph 
-- $\mathit$
-- skolem uppercase

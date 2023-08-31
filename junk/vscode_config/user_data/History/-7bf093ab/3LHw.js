@@ -1,2 +1,0 @@
-
-exports.alwaysSucceed = allScripts["alwaysSucceed"]
