@@ -13,3 +13,6 @@
    * [x] zawijanie linii komend w shellu dla długich linii
  - [x] git use micro
  - [ ] browse nixos options and pkgs easily from shell
+ - [ ] hsh/ghci (a must)
+ - [ ] gnome-terminal default theme
+ - [ ] gtk themes (icon sizes)

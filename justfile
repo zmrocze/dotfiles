@@ -16,4 +16,7 @@ apply:
     just regenerate-dconf-nix
     bash apply-system.sh
     bash apply-home.sh
-    
+
+apply-home:
+    just regenerate-dconf-nix
+    bash apply-home.sh
