@@ -24,6 +24,7 @@
     htop
     inxi
     jupyter
+    just
     less
     lsof
     # man-pages
