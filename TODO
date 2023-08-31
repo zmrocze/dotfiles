@@ -16,3 +16,5 @@
  - [ ] hsh/ghci (a must)
  - [ ] gnome-terminal default theme
  - [ ] gtk themes (icon sizes)
+ - [ ] figure out latex
+ - [ ] bootloader: fix icons and boot by default last generation

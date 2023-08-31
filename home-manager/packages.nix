@@ -6,6 +6,7 @@
     bash
     bear
     haskellPackages.cabal-plan
+    # haskellPackages.ghcup
     vscode
     gnome.dconf-editor
     gnome.gnome-terminal
