@@ -6,8 +6,10 @@
     bash
     bear
     haskellPackages.cabal-plan
-    # haskellPackages.ghcup
+    # haskellPackages.ghcup # broken package
     vscode
+    # gcc
+    llvmPackages_16.libcxxClang
     gnome.dconf-editor
     gnome.gnome-terminal
     # direnv
