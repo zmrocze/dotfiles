@@ -20,11 +20,11 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/MY_NIXOS";
+    device = "/dev/disk/by-label/MY_NVME_NIXOS";
     fsType = "ext4";
   };
 
-  fileSystems."/boot/efi" = {
+  fileSystems."/boot" = {
     device = "/dev/disk/by-label/MY_BOOT";
     fsType = "vfat";
   };
@@ -47,7 +47,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware
-    config.hardware.enableRedistributableFirmware;
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
   # ^ true, set probably by import /installer/scan/not-detected.nix
 }
