@@ -20,7 +20,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXOS_SYSTEM";
+    device = "/dev/disk/by-label/MY_NIXOS";
     fsType = "ext4";
   };
 
@@ -31,6 +31,10 @@
 
   # TODO
   # swapDevices = [ ];
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 16 * 1024;
+  }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -43,5 +47,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware;
+    lib.mkDefault config.hardware.enableRedistributableFirmware
+    config.hardware.enableRedistributableFirmware;
+  # ^ true, set probably by import /installer/scan/not-detected.nix
 }
