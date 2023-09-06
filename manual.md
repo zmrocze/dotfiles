@@ -2,7 +2,7 @@
 
 ## base
 
-1. Set up partitions and swap.
+1. Set up partitions (and swap? i think not needed).
 2. Generate hardware.nix - this part of the configuration is only somewhat portable.
 3. Merge hardware.nixs and apply this configuration
 
