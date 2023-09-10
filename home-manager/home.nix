@@ -42,7 +42,7 @@
     homeDirectory = "/home/${username}";
   };
 
-  home.file = { ".config/user-dirs.dirs".source = ./config/user-dirs.dirs; };
+  # home.file = { ".config/user-dirs.dirs".source = ./config/user-dirs.dirs; };
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;

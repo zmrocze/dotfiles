@@ -57,7 +57,6 @@
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
-        "mlabs.cachix.org-1:gStKdEqNKcrlSQw5iMW6wFCj3+b+1ASpBVY2SYuNV2M="
       ];
       substituters = [
         "https://cache.iog.io"
@@ -65,13 +64,15 @@
         "https://hydra.iohk.io"
         "https://iohk.cachix.org"
         "https://cache.nixos.org/"
-        "https://mlabs.cachix.org"
       ];
     };
   };
 
   # TODO: Set your hostname
   networking.hostName = "${hostname}";
+
+  # be able to mount windows
+  boot.supportedFilesystems = [ "ntfs" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -139,6 +140,7 @@
       gnome-contacts
       # gnome-initial-setup
     ]);
+  environment.etc."xdg/user-dirs.defaults".source = etc/user-dirs.defaults;
 
   console.keyMap = "pl2";
   services.printing.enable = true;
