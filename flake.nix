@@ -27,6 +27,10 @@
       flake = false;
     };
 
+    zsh-directory-history = {
+      url = "https://github.com/tymm/zsh-directory-history";
+      flake = false;
+    };
     # zsh-autocomplete = {
     #   url = "github:marlonrichert/zsh-autocomplete";
     #   flake = false;

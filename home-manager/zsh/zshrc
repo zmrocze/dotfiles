@@ -12,7 +12,7 @@ fi
 zstyle ':completion:*' auto-description '%d'
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' expand suffix
-zstyle ':completion:*' insert-unambiguous false
+zstyle ':completion:*' insert-unambiguous true
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select=long
@@ -50,9 +50,12 @@ setopt histignorealldups                                        # If a new comma
 # setopt hist_ignore_space      # ignore commands that start with space
 # setopt hist_verify            # show command with history expansion to user before running it
 # setopt inc_append_history     # add commands to HISTFILE in order of execution
-# setopt share_history          # share command history data
-setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+setopt inc_append_history       # save commands are added to the history immediately, otherwise only when shell exits.
+setopt share_history       # share history across open windows
 # setopt histignorespace                                          # Don't save commands that start with space
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
 
 ## Options section
 setopt nocaseglob                                               # Case insensitive globbing

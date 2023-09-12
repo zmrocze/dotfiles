@@ -45,6 +45,7 @@
     gnutar
     # texinfo
     # texlive-bibtexextra
+    texlive.combined.scheme-full
     tldr
     tor
     # torsocks
@@ -56,5 +57,6 @@
     xz
     yq
     jq
+    # zoxide
   ];
 }

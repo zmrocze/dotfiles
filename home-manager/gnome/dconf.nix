@@ -65,18 +65,15 @@ with lib.hm.gvariant;
 
     "org/gnome/terminal/legacy/profiles:" = {
       default = "33dd0588-9ee4-4da4-969f-133ce73633df";
-      list = [ "b1dcc9dd-5262-4d8d-a863-c897e6d979b9" "33dd0588-9ee4-4da4-969f-133ce73633df" ];
+      list = [ "33dd0588-9ee4-4da4-969f-133ce73633df" ];
     };
 
     "org/gnome/terminal/legacy/profiles:/:33dd0588-9ee4-4da4-969f-133ce73633df" = {
       font = "Monospace 24";
-      use-theme-colors = true;
-      visible-name = "transaprency?";
-    };
-
-    "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
+      preserve-working-directory = "never";
       use-system-font = false;
-      use-theme-colors = false;
+      use-theme-colors = true;
+      visible-name = "alright_size";
     };
 
   };

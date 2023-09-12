@@ -216,7 +216,20 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "powerlevel10k": "powerlevel10k",
-        "pre-commit-hooks": "pre-commit-hooks"
+        "pre-commit-hooks": "pre-commit-hooks",
+        "zsh-directory-history": "zsh-directory-history"
+      }
+    },
+    "zsh-directory-history": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-jL5BDw1sSr8/0oYHwELgmuND8VKzKOrRbsung1Yu+X0=",
+        "type": "file",
+        "url": "https://github.com/tymm/zsh-directory-history"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/tymm/zsh-directory-history"
       }
     }
   },

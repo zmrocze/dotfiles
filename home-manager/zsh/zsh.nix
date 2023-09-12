@@ -28,6 +28,12 @@
           file = "p10k.zsh";
           src = ./.;
         }
+        # in case you'd want a local directory history, when searching with UP key. saved to ./.directory_history
+        # {
+        #   name = "zsh-directory-history";
+        #   file = "directory-history.plugin.zsh";
+        #   src = inputs.zsh-directory-history
+        # }
         # {
         #   name = "zsh-autocomplete";
         #   file = "zsh-autocomplete.plugin.zsh";

@@ -14,9 +14,9 @@
    * [x] zawijanie linii komend w shellu dla długich linii
    * [ ] directory local cmd history
  - [x] git use micro
- - [ ] browse nixos options and pkgs easily from shell
+ - [x] browse nixos options and pkgs easily from shell
  - [ ] hsh/ghci (a must)
- - [ ] gnome-terminal default theme
+ - [x] gnome-terminal default theme
  - [ ] gtk themes (icon sizes)
  - [ ] figure out latex
  - [ ] bootloader: fix icons and boot by default last generation
