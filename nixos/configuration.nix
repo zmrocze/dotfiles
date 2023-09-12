@@ -182,9 +182,9 @@
 
   # somehow this is needed here as well as home.nix,
   # https://www.reddit.com/r/NixOS/comments/z16mt8/cant_seem_to_set_default_shell_using_homemanager/
-  # programs.zsh.enable = true;
+  programs.zsh.enable = true;
   # no effect, overwritten by sth
-  environment.etc."static/zshrc".source = lib.mkForce etc/zshrc;
+  # environment.etc."static/zshrc".source = lib.mkForce etc/zshrc;
 
   programs.dconf.enable = true;
 
