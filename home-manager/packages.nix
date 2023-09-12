@@ -4,6 +4,7 @@
   config.home.packages = with pkgs; [
     amberol
     meslo-lgs-nf
+    bat
     bash
     bear
     haskellPackages.cabal-plan
@@ -13,11 +14,14 @@
     llvmPackages_16.libcxxClang
     gnome.dconf-editor
     gnome.gnome-terminal
+    difftastic
+    # dust
     # direnv
     # docker
     # efibootmgr
     exa
     firefox
+    fd
     # gnome-gedit
     # gimp
     glava
@@ -38,8 +42,10 @@
     netcat-openbsd
     # opendoas
     openssl
+    procs
     refind
     rustup
+    rm-improved
     spotify
     gnused
     gnutar

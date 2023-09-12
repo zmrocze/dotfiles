@@ -1,6 +1,10 @@
 
 alias cd=zoxide
 alias ls=exa
+alias ccat=cat
+alias cat=bat
+alias ps=procs
+alias rm=rip
 alias -g mi="micro"
 # alias sudo="doas"
 alias -g json="python3 -m json.tool"
