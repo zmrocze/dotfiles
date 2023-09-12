@@ -1,0 +1,90 @@
+# /etc/zshrc: DO NOT EDIT -- this file has been generated automatically.
+# This file is read for interactive shells.
+#
+# Note that generated /etc/zprofile and /etc/zshrc files do a lot of
+# non-standard setup to make zsh usable with no configuration by default.
+#
+# Which means that unless you explicitly meticulously override everything
+# generated, interactions between your ~/.zshrc and these files are likely
+# to be rather surprising.
+#
+# Note however, that you can disable loading of the generated /etc/zprofile
+# and /etc/zshrc (you can't disable loading of /etc/zshenv, but it is
+# designed to not set anything surprising) by setting `no_global_rcs` option
+# in ~/.zshenv:
+#
+#   echo setopt no_global_rcs >> ~/.zshenv
+#
+# See "STARTUP/SHUTDOWN FILES" section of zsh(1) for more info.
+
+
+# Only execute this file once per shell.
+if [ -n "$__ETC_ZSHRC_SOURCED" -o -n "$NOSYSZSHRC" ]; then return; fi
+__ETC_ZSHRC_SOURCED=1
+
+# Set zsh options.
+setopt HIST_IGNORE_DUPS SHARE_HISTORY HIST_FCNTL_LOCK
+
+
+# Setup command line history.
+# Don't export these, otherwise other shells (bash) will try to use same HISTFILE.
+SAVEHIST=2000
+HISTSIZE=2000
+HISTFILE=$HOME/.zsh_history
+
+# Configure sane keyboard defaults.
+. /etc/zinputrc
+
+# Enable autocompletion.
+autoload -U compinit && compinit
+
+
+
+
+# Setup custom interactive shell init stuff.
+
+
+# This function is called whenever a command is not found.
+command_not_found_handler() {
+  local p='/nix/store/mwa7prdyl7cjbymjijfnkl9s0mxvj7i8-command-not-found/bin/command-not-found'
+  if [ -x "$p" ] && [ -f '/nix/var/nix/profiles/per-user/root/channels/nixos/programs.sqlite' ]; then
+    # Run the helper program.
+    "$p" "$@"
+
+    # Retry the command if we just installed it.
+    if [ $? = 126 ]; then
+      "$@"
+    else
+      return 127
+    fi
+  else
+    # Indicate than there was an error so ZSH falls back to its default handler
+    echo "$1: command not found" >&2
+    return 127
+  fi
+}
+
+# Show current working directory in VTE terminals window title.
+# Supports both bash and zsh, requires interactive shell.
+. /nix/store/2y4a1976i1gn4sqa7lgi3kxv8bww12d3-vte-0.70.2/etc/profile.d/vte.sh
+
+# Setup prompt.
+# Note that to manually override this in ~/.zshrc you should run `prompt off`
+# before setting your PS1 and etc. Otherwise this will likely to interact with
+# your ~/.zshrc configuration in unexpected ways as the default prompt sets
+# a lot of different prompt variables.
+autoload -U promptinit && promptinit && prompt suse && setopt prompt_sp
+
+
+# Disable some features to support TRAMP.
+if [ "$TERM" = dumb ]; then
+    unsetopt zle prompt_cr prompt_subst
+    unset RPS1 RPROMPT
+    PS1='$ '
+    PROMPT='$ '
+fi
+
+# Read system-wide modifications.
+if test -f /etc/zshrc.local; then
+    . /etc/zshrc.local
+fi

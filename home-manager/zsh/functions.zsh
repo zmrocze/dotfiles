@@ -1,4 +1,5 @@
 
+alias cd=zoxide
 alias ls=exa
 alias -g mi="micro"
 # alias sudo="doas"
@@ -11,6 +12,9 @@ alias cp="cp -i"                                                # Confirm before
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
 alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,MOUNTPOINTS,LABEL"  # add LABEL
+alias -- l='ls -alh'
+alias -- ll='ls -l'
+# alias -- ls='ls --color=tty'
 # not needed now
 # alias config='/usr/bin/git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
 

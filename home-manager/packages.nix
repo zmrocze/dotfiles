@@ -57,6 +57,6 @@
     xz
     yq
     jq
-    # zoxide
+    zoxide
   ];
 }
