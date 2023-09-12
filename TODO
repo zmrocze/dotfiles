@@ -2,7 +2,8 @@
  - [x] git credentials
  - nixconf
  - [ ] micro (or else)
- - modern coreutils
+ - [ ] modern coreutils (you're not using exa)
+ - [ ] turtle sh ghci, cli
  - gnome:
    * [x] workspace shortcuts
  - flake init snippet

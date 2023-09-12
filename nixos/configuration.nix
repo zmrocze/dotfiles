@@ -147,6 +147,17 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  services = {
+    syncthing = {
+      enable = true;
+      user = "${username}";
+      dataDir =
+        "/home/${username}/Shared"; # Default folder for new synced folders
+      configDir =
+        "/home/${username}/Shared/.config/syncthing"; # Folder for Syncthing's settings and keys
+    };
+  };
+
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username

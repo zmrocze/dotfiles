@@ -2,6 +2,7 @@
 
 {
   config.home.packages = with pkgs; [
+    amberol
     meslo-lgs-nf
     bash
     bear
