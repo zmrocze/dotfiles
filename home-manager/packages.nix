@@ -22,6 +22,7 @@
     exa
     firefox
     fd
+    fzf
     # gnome-gedit
     # gimp
     glava

@@ -2,7 +2,7 @@
  - [x] git credentials
  - nixconf
  - [ ] micro (or else)
- - [ ] modern coreutils (you're not using exa)
+ - [x] modern coreutils
  - [ ] turtle sh ghci, cli
  - gnome:
    * [x] workspace shortcuts
@@ -18,5 +18,5 @@
  - [ ] hsh/ghci (a must)
  - [x] gnome-terminal default theme
  - [ ] gtk themes (icon sizes)
- - [ ] figure out latex
+ - [x] figure out latex
  - [ ] bootloader: fix icons and boot by default last generation

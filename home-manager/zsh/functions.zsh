@@ -1,8 +1,9 @@
 
-alias cd=zoxide
+eval "$(zoxide init zsh)"
+alias cd=z
 alias ls=exa
 alias ccat=cat
-alias cat=bat
+alias cat=bat --style=header,plain
 alias ps=procs
 alias rm=rip
 alias -g mi="micro"
