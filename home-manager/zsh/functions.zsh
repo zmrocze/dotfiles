@@ -2,8 +2,8 @@
 eval "$(zoxide init zsh)"
 alias cd=z
 alias ls=exa
-alias ccat=cat
-alias cat=bat --style=header,plain
+alias ccat="bat -pp"
+alias cat="bat --style=header,plain"
 alias ps=procs
 alias rm=rip
 alias -g mi="micro"
@@ -22,6 +22,11 @@ alias -- ll='ls -l'
 # alias -- ls='ls --color=tty'
 # not needed now
 # alias config='/usr/bin/git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
+
+dotfiles () {
+	cl $HOME/dotfiles
+	code .
+}
 
 map () {
     while read line;

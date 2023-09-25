@@ -28,7 +28,7 @@
     };
 
     zsh-directory-history = {
-      url = "https://github.com/tymm/zsh-directory-history";
+      url = "github:tymm/zsh-directory-history?ref=master";
       flake = false;
     };
     # zsh-autocomplete = {

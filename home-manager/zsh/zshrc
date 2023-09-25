@@ -52,7 +52,7 @@ setopt histignorealldups                                        # If a new comma
 # setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt inc_append_history       # save commands are added to the history immediately, otherwise only when shell exits.
 setopt share_history       # share history across open windows
-# setopt histignorespace                                          # Don't save commands that start with space
+setopt histignorespace                                          # Don't save commands that start with space
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_FIND_NO_DUPS

@@ -3,12 +3,14 @@
 {
   config.home.packages = with pkgs; [
     amberol
+    aliza
     meslo-lgs-nf
     bat
     bash
     bear
     haskellPackages.cabal-plan
     # haskellPackages.ghcup # broken package
+    cachix
     vscode
     # gcc
     llvmPackages_16.libcxxClang
@@ -23,12 +25,17 @@
     firefox
     fd
     fzf
+    flatpak
+    gnome.gnome-software
     # gnome-gedit
     # gimp
     glava
     gparted
     gnugrep
     gzip
+    # gnome.pomodoro
+    # pomodoro-unstable
+    gmp
     htop
     inxi
     jupyter
@@ -41,6 +48,8 @@
     # npm
     # opam
     netcat-openbsd
+    ncurses
+    # nix-melt
     # opendoas
     openssl
     procs
@@ -58,12 +67,15 @@
     # torsocks
     traceroute
     tree
+    unzip
     vim
     wget
     which
     xz
     yq
+    # ytop
     jq
     zoxide
+    zip
   ];
 }

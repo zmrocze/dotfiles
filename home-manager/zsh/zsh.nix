@@ -32,7 +32,7 @@
         # {
         #   name = "zsh-directory-history";
         #   file = "directory-history.plugin.zsh";
-        #   src = inputs.zsh-directory-history
+        #   src = inputs.zsh-directory-history;
         # }
         # {
         #   name = "zsh-autocomplete";

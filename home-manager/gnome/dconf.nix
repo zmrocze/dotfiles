@@ -76,5 +76,9 @@ with lib.hm.gvariant;
       visible-name = "alright_size";
     };
 
+    "org/gnome/desktop/session" = {
+      idle-delay = 720;
+    };
+
   };
 }

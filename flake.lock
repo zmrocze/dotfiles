@@ -223,13 +223,18 @@
     "zsh-directory-history": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-jL5BDw1sSr8/0oYHwELgmuND8VKzKOrRbsung1Yu+X0=",
-        "type": "file",
-        "url": "https://github.com/tymm/zsh-directory-history"
+        "lastModified": 1580487273,
+        "narHash": "sha256-VAAfCCirznkSTHzZq56E2rvcKk2tokomBmS20sVADhc=",
+        "owner": "tymm",
+        "repo": "zsh-directory-history",
+        "rev": "7abeca2bd7df910ac546e06a62c128a40f56874a",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://github.com/tymm/zsh-directory-history"
+        "owner": "tymm",
+        "ref": "master",
+        "repo": "zsh-directory-history",
+        "type": "github"
       }
     }
   },

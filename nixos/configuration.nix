@@ -61,10 +61,9 @@
       substituters = [
         "https://cache.iog.io"
         "https://cache.nixos.org"
-        "https://hydra.iohk.io"
         "https://iohk.cachix.org"
-        "https://cache.nixos.org/"
       ];
+      trusted-substituters = [ "https://mlabs.cachix.org" ];
     };
   };
 
@@ -197,6 +196,13 @@
     # Use keys only. Remove if you want to SSH using password (not recommended)
     passwordAuthentication = false;
   };
+
+  # services.flatpak.enable = true;
+  # services.accounts-daemon.enable = true;
+
+  # for spotify
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 57621 ];
 
   virtualisation.docker = {
     enable = true;
