@@ -15,3 +15,9 @@
 ## data
 
 Well, copy/sync the data you need. You might find archive/some_archived_configs_manjaro/list_of_dirs somewhat helpful.
+
+## Refind 
+
+Just run refind-install to get basic refind.
+Then I've changed the theme: copy it into somewhere `Boot/efi/refind/themes/minimal` and include in `refind.conf`.
+Then I've changed the icon for systemd boot to the icon for nixos boot by sth like overwriting `cp icons/os_nixos.png icons/os_systemd.png`.

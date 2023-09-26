@@ -76,6 +76,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
+  # boot immedietely into latest generation. To bypass press shift while booting into systemd
+  boot.loader.timeout = 0;
   # https://discourse.nixos.org/t/easy-refind-boot-by-booting-into-systemd-boot-from-refind/28507/5?u=zmrocze
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
