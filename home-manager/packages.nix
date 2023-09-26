@@ -20,7 +20,7 @@
     # dust
     # direnv
     # docker
-    # efibootmgr
+    efibootmgr
     exa
     firefox
     fd
@@ -34,7 +34,7 @@
     gnugrep
     gzip
     # gnome.pomodoro
-    # pomodoro-unstable
+    pomodoro
     gmp
     htop
     inxi
@@ -49,7 +49,7 @@
     # opam
     netcat-openbsd
     ncurses
-    # nix-melt
+    nix-melt
     # opendoas
     openssl
     procs

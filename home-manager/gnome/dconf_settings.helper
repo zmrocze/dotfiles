@@ -62,3 +62,5 @@ preserve-working-directory='never'
 [org/gnome/desktop/session]
 idle-delay=720
 
+[org/gnome/settings-daemon/plugins/color]
+night-light-enable=true

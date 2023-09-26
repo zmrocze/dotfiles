@@ -80,5 +80,9 @@ with lib.hm.gvariant;
       idle-delay = 720;
     };
 
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enable = true;
+    };
+
   };
 }

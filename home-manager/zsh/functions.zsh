@@ -1,3 +1,4 @@
+set -e
 
 eval "$(zoxide init zsh)"
 alias cd=z
@@ -36,12 +37,12 @@ map () {
 }
 
 cl () {
-	cd $1
+	cd $1 && \
 	ls
 }
 
 cdir () {
-	mkdir $1
+	mkdir $1 && \
 	cd $1
 }
 
@@ -82,7 +83,7 @@ decrypt() {
 }
 
 gitclonebare() {
-	mkdir $2
-	git clone --bare $1 $2/.bare
+	mkdir $2 && \
+	git clone --bare $1 $2/.bare && \
 	echo "gitdir: ./.bare" > $2/.git
 }
