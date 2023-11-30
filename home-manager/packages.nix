@@ -8,7 +8,7 @@
     bat
     bash
     bear
-    haskellPackages.cabal-plan
+    # nixpkgs-23-05.haskellPackages.cabal-plan
     # haskellPackages.ghcup # broken package
     cachix
     cpulimit
@@ -24,7 +24,7 @@
     # direnv
     # docker
     efibootmgr
-    exa
+    eza
     firefox
     fd
     fzf
@@ -58,7 +58,7 @@
     openssl
     obsidian
     procs
-    python311
+    # python3
     refind
     rustup
     rm-improved

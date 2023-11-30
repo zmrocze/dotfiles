@@ -32,6 +32,8 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -68,19 +70,19 @@
     };
   };
 
-  # TODO: Set your hostname
-  networking.hostName = "${hostname}";
-
-  # be able to mount windows
-  boot.supportedFilesystems = [ "ntfs" ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
-  # boot immedietely into latest generation. To bypass press shift while booting into systemd
-  boot.loader.timeout = 0;
-  # https://discourse.nixos.org/t/easy-refind-boot-by-booting-into-systemd-boot-from-refind/28507/5?u=zmrocze
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot = {
+    # be able to mount windows
+    supportedFilesystems = [ "ntfs" ];
+    # Bootloader.
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = false;
+      # boot immedietely into latest generation. To bypass press shift while booting into systemd
+      timeout = 0;
+    };
+    # https://discourse.nixos.org/t/easy-refind-boot-by-booting-into-systemd-boot-from-refind/28507/5?u=zmrocze
+    # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -89,67 +91,53 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager.enable = true;
+    hostName = "${hostname}";
+    # for spotify
+    firewall.enable = true;
+    firewall.allowedTCPPorts = [ 57621 ];
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pl_PL.UTF-8";
-    LC_IDENTIFICATION = "pl_PL.UTF-8";
-    LC_MEASUREMENT = "pl_PL.UTF-8";
-    LC_MONETARY = "pl_PL.UTF-8";
-    LC_NAME = "pl_PL.UTF-8";
-    LC_NUMERIC = "pl_PL.UTF-8";
-    LC_PAPER = "pl_PL.UTF-8";
-    LC_TELEPHONE = "pl_PL.UTF-8";
-    LC_TIME = "pl_PL.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "pl_PL.UTF-8";
+      LC_IDENTIFICATION = "pl_PL.UTF-8";
+      LC_MEASUREMENT = "pl_PL.UTF-8";
+      LC_MONETARY = "pl_PL.UTF-8";
+      LC_NAME = "pl_PL.UTF-8";
+      LC_NUMERIC = "pl_PL.UTF-8";
+      LC_PAPER = "pl_PL.UTF-8";
+      LC_TELEPHONE = "pl_PL.UTF-8";
+      LC_TIME = "pl_PL.UTF-8";
+    };
   };
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-
-    # Enable the GNOME Desktop Environment.
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-    # Configure keymap in X11
-    layout = "pl";
-    # TODO: what is this?
-    xkbVariant = "";
-  };
-
-  environment.gnome.excludePackages = (with pkgs;
-    [
-      # gnome-photos
-      # gnome-tour
-      gnome-console
-    ]) ++ (with pkgs.gnome; [
-      # cheese # webcam tool
-      # gnome-music
-      gedit # text editor
-      epiphany # web browser
-      geary # email reader
-      # gnome-characters
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-      yelp # Help view
-      gnome-contacts
-      # gnome-initial-setup
-    ]);
-  environment.etc."xdg/user-dirs.defaults".source = etc/user-dirs.defaults;
-
-  console.keyMap = "pl2";
-  services.printing.enable = true;
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   services = {
+    # Enable the X11 windowing system.
+    xserver = {
+      enable = true;
+
+      # Enable the GNOME Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      # Configure keymap in X11
+      layout = "pl";
+      # TODO: what is this?
+      xkbVariant = "";
+    };
+
+    printing.enable = true;
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
+
     syncthing = {
       enable = true;
       user = "${username}";
@@ -158,7 +146,64 @@
       configDir =
         "/home/${username}/Shared/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
+
+    # This setups a SSH server. Very important if you're setting up a headless system.
+    # Feel free to remove if you don't need it.
+    openssh = {
+      enable = false;
+      # Forbid root login through SSH.
+      # permitRootLogin = "no";
+      # Use keys only. Remove if you want to SSH using password (not recommended)
+      # passwordAuthentication = false;
+    };
+
+    # services.flatpak.enable = true;
+    # services.accounts-daemon.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      #jack.enable = true;
+
+      # use the example session manager (no others are packaged yet so this is enabled by default,
+      # no need to redefine it in your config for now)
+      #media-session.enable = true;
+    };
+
   };
+
+  environment = {
+    gnome.excludePackages = (with pkgs;
+      [
+        # gnome-photos
+        # gnome-tour
+        gnome-console
+      ]) ++ (with pkgs.gnome; [
+        # cheese # webcam tool
+        # gnome-music
+        gedit # text editor
+        epiphany # web browser
+        geary # email reader
+        # gnome-characters
+        tali # poker game
+        iagno # go game
+        hitori # sudoku game
+        atomix # puzzle game
+        yelp # Help view
+        gnome-contacts
+        # gnome-initial-setup
+      ]);
+
+    etc."xdg/user-dirs.defaults".source = etc/user-dirs.defaults;
+
+    # this enabled `$ man alias`
+    systemPackages = [ pkgs.man-pages pkgs.man-pages-posix ];
+  };
+
+  console.keyMap = "pl2";
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -177,35 +222,17 @@
       shell = pkgs.zsh;
     };
   };
-  # this enabled `$ man alias`
-  environment.systemPackages = [ pkgs.man-pages pkgs.man-pages-posix ];
+
   # this no clue what it does
   documentation.dev.enable = true;
 
-  # somehow this is needed here as well as home.nix,
-  # https://www.reddit.com/r/NixOS/comments/z16mt8/cant_seem_to_set_default_shell_using_homemanager/
-  programs.zsh.enable = true;
-  # no effect, overwritten by sth
-  # environment.etc."static/zshrc".source = lib.mkForce etc/zshrc;
+  programs = {
+    # somehow this is needed here as well as home.nix,
+    # https://www.reddit.com/r/NixOS/comments/z16mt8/cant_seem_to_set_default_shell_using_homemanager/
+    zsh.enable = true;
 
-  programs.dconf.enable = true;
-
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  services.openssh = {
-    enable = false;
-    # Forbid root login through SSH.
-    # permitRootLogin = "no";
-    # Use keys only. Remove if you want to SSH using password (not recommended)
-    # passwordAuthentication = false;
+    dconf.enable = true;
   };
-
-  # services.flatpak.enable = true;
-  # services.accounts-daemon.enable = true;
-
-  # for spotify
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 57621 ];
 
   virtualisation.docker = {
     enable = true;
@@ -215,7 +242,10 @@
     };
   };
 
-  hardware.bluetooth.enable = true;
+  hardware = {
+    pulseaudio.enable = false;
+    bluetooth.enable = true;
+  };
 
   # security.doas.enable = true;
   # security.sudo.enable = false;
@@ -224,28 +254,13 @@
   #   # Enable sound with pipewire.
   sound.enable = true;
   security.rtkit.enable = true;
-  hardware.pulseaudio.enable = false;
   # security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

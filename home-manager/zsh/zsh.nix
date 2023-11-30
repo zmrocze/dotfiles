@@ -41,7 +41,8 @@
         # }
       ];
       # sources plugin
-      enableSyntaxHighlighting = true;
+      # enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       # "autoload -U compinit && compinit" is already in zshrc
       completionInit = "";
     };

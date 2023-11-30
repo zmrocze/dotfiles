@@ -5,11 +5,12 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-23-05.url = "github:nixos/nixpkgs/nixos-23.05";
     nur.url = "github:nix-community/NUR";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
@@ -48,7 +49,28 @@
       pkgsFor = system:
         import inputs.nixpkgs {
           inherit system;
-          overlays = [ (final: _: my-lib.lib final) ];
+          overlays = [
+            (final: _: my-lib.lib final)
+            (_: _:
+              let pkgs2305 = pkgs2305For system;
+              in {
+                inherit (pkgs2305) aliza;
+                nixpkgs-23-05.haskellPackages.cabal-plan =
+                  pkgs2305.haskellPackages.cabal-plan;
+              })
+          ];
+          config = {
+            allowUnfree = true;
+            allowUnfreePredicate = _: true;
+          };
+        };
+      pkgs2305For = system:
+        import inputs.nixpkgs-23-05 {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            allowUnfreePredicate = _: true;
+          };
         };
       pre-commit-module = {
         imports = [
