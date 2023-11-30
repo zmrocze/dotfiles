@@ -1,5 +1,7 @@
 set -e
 
+export PATH="$PATH:$HOME/.cargo/bin"
+
 eval "$(zoxide init zsh)"
 alias cd=z
 alias ls=exa

@@ -22,6 +22,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
+    my-lib.url = "github:zmrocze/nix-lib";
+
     powerlevel10k = {
       url = "github:romkatv/powerlevel10k";
       flake = false;
@@ -37,8 +39,8 @@
     # };
   };
 
-  outputs =
-    { nixpkgs, home-manager, flake-parts, pre-commit-hooks, ... }@inputs:
+  outputs = { nixpkgs, home-manager, flake-parts, pre-commit-hooks, my-lib, ...
+    }@inputs:
     let
       hostname = "omen";
       username = "zmrocze";
@@ -46,13 +48,7 @@
       pkgsFor = system:
         import inputs.nixpkgs {
           inherit system;
-          overlays = [
-            (final: _:
-              import ./lib {
-                pkgs = final;
-                # inherit inputs;
-              })
-          ];
+          overlays = [ (final: _: my-lib.lib final) ];
         };
       pre-commit-module = {
         imports = [

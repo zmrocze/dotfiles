@@ -2,7 +2,7 @@
 
 ## base
 
-1. Set up partitions (and swap? i think not needed).
+1. Set up partitions (and swap? i think not needed <- not needed ).
 2. Generate hardware.nix - this part of the configuration is only somewhat portable.
 3. Merge hardware.nixs and apply this configuration
 
@@ -21,3 +21,7 @@ Well, copy/sync the data you need. You might find archive/some_archived_configs_
 Just run refind-install to get basic refind.
 Then I've changed the theme: copy it into somewhere `Boot/efi/refind/themes/minimal` and include in `refind.conf`.
 Then I've changed the icon for systemd boot to the icon for nixos boot by sth like overwriting `cp icons/os_nixos.png icons/os_systemd.png`.
+
+## Update
+
+don't remember

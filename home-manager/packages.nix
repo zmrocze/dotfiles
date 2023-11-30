@@ -11,9 +11,12 @@
     haskellPackages.cabal-plan
     # haskellPackages.ghcup # broken package
     cachix
+    cpulimit
     vscode
-    # gcc
-    llvmPackages_16.libcxxClang
+    gcc13
+    gdb
+    # clang_16
+    # llvmPackages_16.libcxxClang
     gnome.dconf-editor
     gnome.gnome-terminal
     difftastic
@@ -50,9 +53,12 @@
     netcat-openbsd
     ncurses
     nix-melt
+    nix-tree
     # opendoas
     openssl
+    obsidian
     procs
+    python311
     refind
     rustup
     rm-improved
@@ -75,6 +81,7 @@
     yq
     # ytop
     jq
+    xclip
     zoxide
     zip
   ];

@@ -19,4 +19,5 @@
  - [x] gnome-terminal default theme
  - [ ] gtk themes (icon sizes)
  - [x] figure out latex
- - [ ] bootloader: fix icons and boot by default last generation
+ - [x] bootloader: fix icons and boot by default last generation
+ - [ ] install xclip, check micro copy

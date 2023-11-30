@@ -52,18 +52,19 @@
       auto-optimise-store = true;
       keep-outputs = true;
       keep-derivations = true;
-      # Binary Cache for Haskell.nix
+      # Binary Cache
       trusted-public-keys = [
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
+        "mlabs.cachix.org-1:gStKdEqNKcrlSQw5iMW6wFCj3+b+1ASpBVY2SYuNV2M="
       ];
       substituters = [
         "https://cache.iog.io"
         "https://cache.nixos.org"
         "https://iohk.cachix.org"
+        "https://mlabs.cachix.org"
       ];
-      trusted-substituters = [ "https://mlabs.cachix.org" ];
     };
   };
 
@@ -194,9 +195,9 @@
   services.openssh = {
     enable = false;
     # Forbid root login through SSH.
-    permitRootLogin = "no";
+    # permitRootLogin = "no";
     # Use keys only. Remove if you want to SSH using password (not recommended)
-    passwordAuthentication = false;
+    # passwordAuthentication = false;
   };
 
   # services.flatpak.enable = true;
