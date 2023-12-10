@@ -90,7 +90,7 @@
           };
         };
       };
-    in flake-parts.lib.mkFlake { inherit inputs; } {
+    in flake-parts.lib.mkFlake { inherit inputs; } rec {
       imports = [ pre-commit-module ];
       systems = [ system ];
       perSystem = { config, pkgs, system, ... }: {
@@ -104,9 +104,7 @@
         };
         checks = {
           "homeConfiguraton_zmrocze@omen" =
-            config.homeConfigurations."zmrocze@omen".activationPackage;
-          "nixosConfiguration_omen" =
-            config.nixosConfigurations."omen".activationPackage;
+            flake.homeConfigurations."zmrocze@omen".activationPackage;
         };
       };
       flake = {
@@ -114,13 +112,30 @@
         # NixOS configuration entrypoint
         # Available through 'nixos-rebuild --flake .#your-hostname'
         nixosConfigurations = {
-          # FIXME replace with your hostname
           "${hostname}" = nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit inputs username hostname;
             }; # Pass flake inputs to our config
             # > Our main nixos configuration file <
             modules = [ ./nixos/configuration.nix ];
+          };
+          "pendrive" = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs username hostname;
+            }; # Pass flake inputs to our config
+            # > Our main nixos configuration file <
+            modules = [ ./nixos/configuration.nix ];
+          };
+          "${username}@${hostname}-with-homemanager" = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs username hostname;
+            }; # Pass flake inputs to our config
+            # > Our main nixos configuration file <
+            modules = [
+              ./nixos/configuration.nix
+              home-manager.nixosModules.home-manager
+              ./home-manager/home.nix
+            ];
           };
         };
 

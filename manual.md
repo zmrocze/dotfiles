@@ -11,6 +11,7 @@
 4. Login into vscode with your github account
 5. Login into firefox
 6. Use the toolchains (rustup/ghcup/coursier) to install the compilers you need. ghcup & coursier are not installed
+7. cachix use mlabs / copy netrc
 
 ## data
 

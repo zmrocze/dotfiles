@@ -58,6 +58,7 @@
     openssl
     obsidian
     procs
+    pv
     # python3
     refind
     rustup
