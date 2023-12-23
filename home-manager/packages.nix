@@ -8,6 +8,8 @@
     bat
     bash
     bear
+    bitwig-studio
+    bottom
     # nixpkgs-23-05.haskellPackages.cabal-plan
     # haskellPackages.ghcup # broken package
     cachix
@@ -36,6 +38,7 @@
     gparted
     gnugrep
     gzip
+    helvum
     # gnome.pomodoro
     pomodoro
     gmp
@@ -45,6 +48,7 @@
     just
     less
     lsof
+    lshw
     # man-pages
     micro
     monero-cli
@@ -61,6 +65,7 @@
     pv
     # python3
     refind
+    reaper
     rustup
     rm-improved
     spotify

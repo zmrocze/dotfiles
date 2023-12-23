@@ -113,19 +113,18 @@
         # Available through 'nixos-rebuild --flake .#your-hostname'
         nixosConfigurations = {
           "${hostname}" = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs username hostname;
-            }; # Pass flake inputs to our config
+            specialArgs = { inherit inputs; }; # Pass flake inputs to our config
             # > Our main nixos configuration file <
-            modules = [ ./nixos/configuration.nix ];
+            modules = [
+              ./nixos/configuration.nix
+              ./nixos/hardware-configuration.nix
+              {
+                inherit username;
+                hostname = "omen";
+              }
+            ];
           };
-          "pendrive" = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs username hostname;
-            }; # Pass flake inputs to our config
-            # > Our main nixos configuration file <
-            modules = [ ./nixos/configuration.nix ];
-          };
+          "pendlive" = import ./hosts/pendlive { inherit inputs pkgsFor; };
           "${username}@${hostname}-with-homemanager" = nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit inputs username hostname;

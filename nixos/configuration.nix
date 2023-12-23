@@ -12,7 +12,11 @@
     # ./users.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
-    ./hardware-configuration.nix
+    # ./hardware-configuration.nix
+
+    # options username, hostname 
+    ../modules/usernames.nix
+    ./audio.nix
   ];
 
   nixpkgs = {
@@ -54,6 +58,7 @@
       auto-optimise-store = true;
       keep-outputs = true;
       keep-derivations = true;
+      allow-import-from-derivation = true;
       # Binary Cache
       trusted-public-keys = [
         "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
@@ -93,7 +98,7 @@
   # Enable networking
   networking = {
     networkmanager.enable = true;
-    hostName = "${hostname}";
+    hostName = "${config.hostname}";
     # for spotify
     firewall.enable = true;
     firewall.allowedTCPPorts = [ 57621 ];
@@ -140,11 +145,11 @@
 
     syncthing = {
       enable = true;
-      user = "${username}";
+      user = "${config.username}";
       dataDir =
-        "/home/${username}/Shared"; # Default folder for new synced folders
+        "/home/${config.username}/Shared"; # Default folder for new synced folders
       configDir =
-        "/home/${username}/Shared/.config/syncthing"; # Folder for Syncthing's settings and keys
+        "/home/${config.username}/Shared/.config/syncthing"; # Folder for Syncthing's settings and keys
     };
 
     # This setups a SSH server. Very important if you're setting up a headless system.
@@ -159,19 +164,6 @@
 
     # services.flatpak.enable = true;
     # services.accounts-daemon.enable = true;
-
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      #jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      #media-session.enable = true;
-    };
 
   };
 
@@ -208,7 +200,7 @@
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     # FIXME: Replace with your username
-    "${username}" = {
+    "${config.username}" = {
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
@@ -242,19 +234,9 @@
     };
   };
 
-  hardware = {
-    pulseaudio.enable = false;
-    bluetooth.enable = true;
-  };
-
   # security.doas.enable = true;
   # security.sudo.enable = false;
   # security.doas.extraConfig = builtins.readFile ./doas.conf;
-
-  #   # Enable sound with pipewire.
-  sound.enable = true;
-  security.rtkit.enable = true;
-  # security.rtkit.enable = true;
 
   # programs.mtr.enable = true;
   # programs.gnupg.agent = {

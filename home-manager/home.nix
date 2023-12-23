@@ -48,6 +48,7 @@
       enableZshIntegration = true;
       nix-direnv.enable = true;
     };
+    # dconf.enable = true;
   };
 
   # https://discourse.nixos.org/t/home-manager-nerdfonts/11226
