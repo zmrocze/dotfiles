@@ -5,10 +5,6 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
-    "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "ctrl:nocaps" ];
-    };
-
     "org/gnome/desktop/peripherals/touchpad" = {
       click-method = "areas";
     };
