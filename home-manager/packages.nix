@@ -49,6 +49,7 @@
     less
     lsof
     lshw
+    usbutils
     # man-pages
     micro
     monero-cli
@@ -58,11 +59,13 @@
     ncurses
     nix-melt
     nix-tree
+    nixos-generators
     # opendoas
     openssl
     obsidian
     procs
     pv
+    pciutils
     # python3
     refind
     reaper

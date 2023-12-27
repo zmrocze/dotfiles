@@ -1,6 +1,5 @@
 {
-  # imports = [];
-  # options = {};
+  # package helvum
 
   config = {
 

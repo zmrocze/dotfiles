@@ -1,5 +1,5 @@
 #!/bin/sh
-pushd ~/dotfiles
+pushd ~/dotfiles || exit
 sudo nixos-rebuild switch --flake .#omen
-popd
+popd || exit
 

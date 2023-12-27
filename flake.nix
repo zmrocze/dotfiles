@@ -40,17 +40,16 @@
     # };
   };
 
-  outputs = { nixpkgs, home-manager, flake-parts, pre-commit-hooks, my-lib, ...
-    }@inputs:
+  outputs = { nixpkgs, home-manager, flake-parts, my-lib, ... }@inputs:
     let
-      hostname = "omen";
-      username = "zmrocze";
-      system = "x86_64-linux";
+      local-lib' = import ./lib { inherit inputs; };
+      local-lib = local-lib'.pure;
       pkgsFor = system:
         import inputs.nixpkgs {
           inherit system;
           overlays = [
             (final: _: my-lib.lib final)
+            # (final: _: local-lib'.overlay' final )
             (_: _:
               let pkgs2305 = pkgs2305For system;
               in {
@@ -72,26 +71,11 @@
             allowUnfreePredicate = _: true;
           };
         };
-      pre-commit-module = {
-        imports = [
-          pre-commit-hooks.flakeModule # Adds perSystem.pre-commit options
-        ];
-        perSystem = { config, ... }: {
-          devShells.pre-commit = config.pre-commit.devShell;
-          pre-commit.settings = rec {
-            excludes = [ "junk" "home-manager/gnome/dconf.nix" ];
-            hooks = {
-              nixfmt.enable = true;
-              statix = { enable = true; };
-              deadnix.enable = true;
-              shellcheck.enable = true;
-            };
-            settings.statix.ignore = excludes;
-          };
-        };
-      };
+      hostname = "omen";
+      username = "zmrocze";
+      system = "x86_64-linux";
     in flake-parts.lib.mkFlake { inherit inputs; } rec {
-      imports = [ pre-commit-module ];
+      imports = [ ./pre-commit.nix ];
       systems = [ system ];
       perSystem = { config, pkgs, system, ... }: {
         _module.args.pkgs = pkgsFor system;
@@ -112,28 +96,32 @@
         # NixOS configuration entrypoint
         # Available through 'nixos-rebuild --flake .#your-hostname'
         nixosConfigurations = {
-          "${hostname}" = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-            # > Our main nixos configuration file <
-            modules = [
-              ./nixos/configuration.nix
-              ./nixos/hardware-configuration.nix
-              {
-                inherit username;
-                hostname = "omen";
-              }
-            ];
-          };
-          "pendlive" = import ./hosts/pendlive { inherit inputs pkgsFor; };
-          "${username}@${hostname}-with-homemanager" = nixpkgs.lib.nixosSystem {
+          "omen" = inputs.nixpkgs.lib.nixosSystem {
             specialArgs = {
-              inherit inputs username hostname;
-            }; # Pass flake inputs to our config
-            # > Our main nixos configuration file <
+              inherit inputs;
+              mypkgs = pkgsFor system;
+            };
+            modules = [ ./nixos/hosts/omen.nix ];
+          };
+          "pendlive" = inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              mypkgs = pkgsFor system;
+              mylib = local-lib;
+            };
+            modules = [ ./nixos/hosts/pendlive.nix ];
+          };
+          "omen-w-hm" = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              mypkgs = pkgsFor system;
+            };
             modules = [
-              ./nixos/configuration.nix
-              home-manager.nixosModules.home-manager
-              ./home-manager/home.nix
+              ./nixos/hosts/omen.nix
+              (local-lib.hm-module-2-nixos-module {
+                hm-module = import ./home-manager/home.nix;
+                extraSpecialArgs = { inherit inputs username; };
+              })
             ];
           };
         };
@@ -141,15 +129,11 @@
         # Standalone home-manager configuration entrypoint
         # Available through 'home-manager --flake .#your-username@your-hostname'
         homeConfigurations = {
-          # FIXME replace with your username@hostname
           "${username}@${hostname}" =
             home-manager.lib.homeManagerConfiguration {
-              pkgs = pkgsFor system; # Home-manager requires 'pkgs' instance
-              extraSpecialArgs = {
-                inherit inputs username;
-              }; # Pass flake inputs to our config
-              # > Our main home-manager configuration file <
-              modules = [ ./home-manager/home.nix ];
+              pkgs = pkgsFor system;
+              extraSpecialArgs = { inherit username inputs; };
+              modules = [ (import ./home-manager/home.nix) ];
             };
         };
       };

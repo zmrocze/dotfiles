@@ -1,7 +1,8 @@
+# general = shared with omen+pendlive+samsung
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
-{ inputs, lib, config, pkgs, username, hostname, ... }: {
+{ inputs, lib, config, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules from other flakes (such as nixos-hardware):
@@ -15,31 +16,9 @@
     # ./hardware-configuration.nix
 
     # options username, hostname 
-    ../modules/usernames.nix
+    ../modules/username.nix
     ./audio.nix
   ];
-
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
-    };
-  };
 
   nix = {
     # This will add each flake input as a registry
@@ -102,6 +81,14 @@
     # for spotify
     firewall.enable = true;
     firewall.allowedTCPPorts = [ 57621 ];
+
+    # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+    # (the default) this is the recommended approach. When using systemd-networkd it's
+    # still possible to use this option, but it's recommended to use it in conjunction
+    # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+    useDHCP = lib.mkDefault true;
+    # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
+    # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
   };
 
   # Set your time zone.
@@ -142,15 +129,6 @@
 
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
-
-    syncthing = {
-      enable = true;
-      user = "${config.username}";
-      dataDir =
-        "/home/${config.username}/Shared"; # Default folder for new synced folders
-      configDir =
-        "/home/${config.username}/Shared/.config/syncthing"; # Folder for Syncthing's settings and keys
-    };
 
     # This setups a SSH server. Very important if you're setting up a headless system.
     # Feel free to remove if you don't need it.
@@ -196,24 +174,6 @@
   };
 
   console.keyMap = "pl2";
-
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
-  users.users = {
-    # FIXME: Replace with your username
-    "${config.username}" = {
-      # TODO: You can set an initial password for your user.
-      # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
-      # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "correcthorsebatterystaple";
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
-      ];
-      # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" "audio" "networkmanager" ];
-      shell = pkgs.zsh;
-    };
-  };
 
   # this no clue what it does
   documentation.dev.enable = true;
