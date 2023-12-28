@@ -21,3 +21,16 @@
  - [x] figure out latex
  - [x] bootloader: fix icons and boot by default last generation
  - [ ] install xclip, check micro copy
+ - [ ] zsh slow autocomplete (file, commands)
+ - [ ] luks for barplus
+ - [ ] check zsh error:
+
+[powerlevel10k] fetching gitstatusd .. |                                                            
+[ERROR]: gitstatus failed to initialize.
+
+Failed to download gitstatusd-linux-x86_64 from any mirror:
+
+  1. https://github.com/romkatv/gitstatus/releases/download/v1.5.4/gitstatusd-linux-x86_64.tar.gz
+  2. https://gitee.com/romkatv/gitstatus/raw/release-v1.5.4/release/gitstatusd-linux-x86_64.tar.gz
+
+Check your internet connection, then restart your shell.

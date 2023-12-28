@@ -82,6 +82,8 @@
     # torsocks
     traceroute
     tree
+    qemu
+    gnome.gnome-boxes
     unzip
     vim
     wget
