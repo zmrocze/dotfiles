@@ -124,6 +124,13 @@
               })
             ];
           };
+          "barplus" = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs local-lib;
+              mypkgs = pkgsFor system;
+            };
+            modules = [ ./nixos/hosts/barplus.nix ];
+          };
         };
 
         # Standalone home-manager configuration entrypoint

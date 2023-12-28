@@ -6,8 +6,14 @@ regenerate-dconf-nix:
 # https://nixos.org/manual/nixos/stable/#sec-changing-config
 build:
     just regenerate-dconf-nix
+    nixos-rebuild build --flake .#omen-w-hm
+
+build-all:
+    just regenerate-dconf-nix
     nixos-rebuild build --flake .#omen
     nixos-rebuild build --flake .#omen-w-hm
+    nixos-rebuild build --flake .#barplus
+    nixos-rebuild build --flake .#pendlive
     nix build .#homeConfigurations.zmrocze@omen.activationPackage
 
 # full with hm
