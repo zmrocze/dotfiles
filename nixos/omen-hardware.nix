@@ -19,7 +19,6 @@
       "rtsx_pci_sdmmc"
     ];
     initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" ];
     extraModulePackages = [ ];
   };
 

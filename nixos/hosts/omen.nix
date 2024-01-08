@@ -4,6 +4,7 @@
     ../omen-hardware.nix
     ../omen-extra.nix
     ../../modules/username.nix
+    ../virtualization.nix
   ];
   username = "zmrocze";
   hostname = "omen";

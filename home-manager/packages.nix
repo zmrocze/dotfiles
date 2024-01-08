@@ -14,6 +14,7 @@
     # haskellPackages.ghcup # broken package
     cachix
     cpulimit
+    cryptsetup
     vscode
     gcc13
     gdb
@@ -31,6 +32,7 @@
     fd
     fzf
     flatpak
+    f2fs-tools
     gnome.gnome-software
     # gnome-gedit
     # gimp

@@ -1,0 +1,21 @@
+installing the boot loader...
+setting up /etc...
+Created "/boot/EFI".
+Created "/boot/EFI/systemd".
+Created "/boot/EFI/BOOT".
+Created "/boot/loader".
+Created "/boot/loader/entries".
+Created "/boot/EFI/Linux".
+Copied "/nix/store/i0sdqs34r68if9s4sfmpixnnj36npiwj-systemd-254.6/lib/systemd/boot/efi/systemd-bootx64.efi" to "/boot/EFI/systemd/systemd-bootx64.efi".
+Copied "/nix/store/i0sdqs34r68if9s4sfmpixnnj36npiwj-systemd-254.6/lib/systemd/boot/efi/systemd-bootx64.efi" to "/boot/EFI/BOOT/BOOTX64.EFI".
+⚠️ Mount point '/boot' which backs the random seed file is world accessible, which is a security hole! ⚠️
+⚠️ Random seed file '/boot/loader/.#bootctlrandom-seed684d4272eb56c5fc' is world accessible, which is a security hole! ⚠️
+Random seed file /boot/loader/random-seed successfully written (32 bytes).
+setting up /etc...
+setting up /etc...
+setting root password...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+installation finished!
+ ~/dotfiles  main ⇡13 +6 !3 ?4          
