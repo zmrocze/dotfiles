@@ -18,22 +18,24 @@
     extraModulePackages = [ ];
   };
 
+  # boot.initrd.availableKernelModules = ["usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+
+  boot.initrd.luks.devices."root".device =
+    "/dev/disk/by-uuid/59c0c07a-638f-4743-942c-fd29fef3a169";
+
   fileSystems = {
     "/" = {
-      device =
-        "/dev/disk/by-label/BAR_NIXOS"; # also "/dev/disk/by-label/BAR_NIXOS"
+      device = "/dev/disk/by-label/BAR_ROOT_f2fs";
       fsType = "f2fs";
     };
 
     "/boot" = {
-      device =
-        "/dev/disk/by-label/BAR_BOOT"; # also "/dev/disk/by-label/BAR_BOOT"
+      device = "/dev/disk/by-label/BAR_BOOT";
       fsType = "vfat";
     };
 
     "/mnt/bar_exfat" = {
-      device =
-        "/dev/disk/by-label/BAR_EXFAT"; # also "/dev/disk/by-label/BAR_EXFAT"
+      device = "/dev/disk/by-label/BAR_EXFAT";
       fsType = "exfat";
     };
   };
