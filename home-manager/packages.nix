@@ -68,6 +68,7 @@
     procs
     pv
     pciutils
+    pinta
     # python3
     refind
     reaper
@@ -76,6 +77,8 @@
     spotify
     gnused
     gnutar
+    gimp
+    gthumb
     # texinfo
     # texlive-bibtexextra
     texlive.combined.scheme-full
@@ -90,8 +93,17 @@
     vim
     wget
     which
+    wineWowPackages.stableFull
+    q4wine # qt-based gui for wine
+    qjackctl
+    qpwgraph
+    carla
+    jackmix
+    jackmeter
     xz
     yq
+    yabridge
+    yabridgectl
     # ytop
     jq
     xclip
