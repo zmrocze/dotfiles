@@ -4,6 +4,8 @@
   config.home.packages = with pkgs; [
     amberol
     aliza
+    alsa-utils
+    alsa-scarlett-gui
     meslo-lgs-nf
     bat
     bash
@@ -62,6 +64,9 @@
     nix-melt
     nix-tree
     nixos-generators
+    # screen recorders:
+    kooha
+    obs-studio
     # opendoas
     openssl
     obsidian
@@ -94,6 +99,11 @@
     wget
     which
     wineWowPackages.stableFull
+
+    (lutris.override {
+      extraLibraries = pkgs: with pkgs; [ openssl gnome.zenity ];
+    })
+
     q4wine # qt-based gui for wine
     qjackctl
     qpwgraph
