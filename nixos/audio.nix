@@ -1,3 +1,9 @@
+# cheatsheet:
+# 
+# # The /dev/*midi* devices are just for compatibility with the legacy OSS interface; the actual ALSA devices are in /dev/snd/.
+# # To show incoming MIDI messages, run `aseqdump -p xxx` with the port name shown by `aseqdump -l`.
+# 
+
 {
   # package helvum
 
