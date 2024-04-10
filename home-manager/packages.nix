@@ -17,6 +17,7 @@
     cachix
     cpulimit
     cryptsetup
+    ungoogled-chromium
     vscode
     gcc13
     gdb
@@ -79,6 +80,9 @@
     reaper
     rustup
     rm-improved
+    # redux
+    drumkv1
+    hydrogen
     spotify
     gnused
     gnutar
@@ -89,6 +93,7 @@
     texlive.combined.scheme-full
     tldr
     tor
+    tor-browser
     # torsocks
     traceroute
     tree
