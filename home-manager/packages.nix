@@ -84,6 +84,7 @@
     drumkv1
     hydrogen
     spotify
+    sedutil
     gnused
     gnutar
     gimp
