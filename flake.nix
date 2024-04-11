@@ -104,6 +104,13 @@
             };
             modules = [ ./nixos/hosts/omen.nix ];
           };
+          "framework" = inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              mypkgs = pkgsFor system;
+            };
+            modules = [ ./nixos/hosts/framework.nix ];
+          };
           "pendlive" = inputs.nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit inputs;
