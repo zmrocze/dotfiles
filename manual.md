@@ -27,6 +27,11 @@ Then I've changed the icon for systemd boot to the icon for nixos boot by sth li
 
 Thats software layer encryption, that is using device mapper.
 
+## hardware encrypt
+
+Followed the guide [here](https://github.com/Drive-Trust-Alliance/sedutil/wiki/Encrypting-your-drive).
+It uses sedutil to instruct the drive to self encrypt. Thats not on OS level. Though there is some work possible to make hibernations work that i didnt do yet.
+
 ## using windows VSTs
 
 Use `yabridgectl` (should be installed). Process:
