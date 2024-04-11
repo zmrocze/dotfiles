@@ -14,12 +14,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-label/WDBLACK_NIXOS";
+    device = "/dev/disk/by-label/WD_NIXOS";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-label/WDBLACK_BOOT";
+    device = "/dev/disk/by-label/WD_BOOT";
     fsType = "vfat";
   };
 
