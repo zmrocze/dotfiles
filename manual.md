@@ -6,6 +6,8 @@
 2. Generate hardware.nix - this part of the configuration is only somewhat portable.
 3. Merge hardware.nixs and apply this configuration
 
+Easy if using labels. For partitioning recall docs in [nixos-wiki](https://nixos.wiki/wiki/NixOS_Installation_Guide).
+
 ## extras
 
 4. Login into vscode with your github account
