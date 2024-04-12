@@ -104,26 +104,6 @@
             };
             modules = [ ./nixos/hosts/omen.nix ];
           };
-          "framework" = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-              mypkgs = pkgsFor system;
-            };
-            modules = [ ./nixos/hosts/framework.nix ];
-          };
-          "framework-w-hm" = nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-              mypkgs = pkgsFor system;
-            };
-            modules = [
-              ./nixos/hosts/framework.nix
-              (local-lib.hm-module-2-nixos-module {
-                hm-module = import ./home-manager/home.nix;
-                extraSpecialArgs = { inherit inputs username; };
-              })
-            ];
-          };
           "pendlive" = inputs.nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit inputs;

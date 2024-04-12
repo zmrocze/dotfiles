@@ -1,7 +1,7 @@
 { mypkgs, ... }: {
   imports = [
     ../general.nix
-    ../omen-hardware.nix
+    ../hardware/framework.nix
     ../omen-extra.nix
     ../../modules/username.nix
     ../virtualization.nix
