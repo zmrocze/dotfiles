@@ -12,7 +12,7 @@
         deadnix.enable = true;
         shellcheck.enable = true;
       };
-      settings.statix.ignore = excludes;
+      hooks.statix.settings.ignore = excludes;
     };
   };
 }
