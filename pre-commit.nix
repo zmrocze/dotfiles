@@ -10,7 +10,12 @@
         nixfmt.enable = true;
         statix = { enable = true; };
         deadnix.enable = true;
-        shellcheck.enable = true;
+        shellcheck = {
+          enable = true;
+          excludes = [
+            ".*.zsh"
+          ]; # how tf can shellcheck not support zsh files but still fail on them?
+        };
       };
       hooks.statix.settings.ignore = excludes;
     };

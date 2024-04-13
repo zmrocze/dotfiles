@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 set -e
 
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -8,7 +10,7 @@ alias ls=exa
 alias ccat="bat -pp"
 alias cat="bat --style=header,plain"
 alias ps=procs
-alias rm=rip
+# alias rm=rip
 alias -g mi="micro"
 # alias sudo="doas"
 alias -g json="python3 -m json.tool"
@@ -19,7 +21,7 @@ alias py=python
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,MOUNTPOINTS,LABEL"  # add LABEL
+alias lsblk="lsblk -o NAME,MAJ:MIN,RM,SIZE,RO,TYPE,MOUNTPOINTS,LABEL,FSTYPE"  # add LABEL,FSTYPE
 alias -- l='ls -alh'
 alias -- ll='ls -l'
 # alias -- ls='ls --color=tty'
@@ -34,18 +36,18 @@ dotfiles () {
 map () {
     while read line;
     do 
-        $@ <<< $line;
+        "$@" <<< $line;
     done
 }
 
 cl () {
-	cd $1 && \
+	cd "$1" && \
 	ls
 }
 
 cdir () {
-	mkdir $1 && \
-	cd $1
+	mkdir "$1" && \
+	cd "$1"
 }
 
 # stev () {
@@ -68,7 +70,7 @@ findgrep () {
 
 line() {
 	if [ "$2" = '_' ]; then 
-		xargs -I $1 ${@[3,-1]}
+		xargs -I "$1" ${@[3,-1]}
 	else 
 		echo "expected '_'" && false
 	fi
@@ -77,11 +79,11 @@ line() {
 # 
 # cipher='-aes-256-cbc -pbkdf2 -iter 2000000'
 encrypt() {
-	openssl enc -e -aes-256-cbc -pbkdf2 -iter 5000000 $@
+	openssl enc -e -aes-256-cbc -pbkdf2 -iter 5000000 "$@"
 }
 
 decrypt() {
-	openssl enc -d -aes-256-cbc -pbkdf2 -iter 5000000 $@
+	openssl enc -d -aes-256-cbc -pbkdf2 -iter 5000000 "$@"
 }
 
 gitclonebare() {

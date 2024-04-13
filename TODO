@@ -1,7 +1,7 @@
- - [ ] cachix mlabs key
+ - [x] cachix mlabs key
  - [x] git credentials
  - nixconf
- - [ ] micro (or else)
+ - [x] micro (or else)
  - [x] modern coreutils
  - [ ] turtle sh ghci, cli
  - gnome:
@@ -22,7 +22,8 @@
  - [x] bootloader: fix icons and boot by default last generation
  - [ ] install xclip, check micro copy
  - [ ] zsh slow autocomplete (file, commands)
- - [ ] luks for barplus
+ - [x] luks for barplus
+ - [ ] fix uses of my-lib, local-lib etc. its all in the overriden pkgs
  - [ ] check zsh error:
 
 [powerlevel10k] fetching gitstatusd .. |                                                            

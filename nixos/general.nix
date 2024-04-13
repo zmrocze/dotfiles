@@ -18,6 +18,7 @@
     # options username, hostname 
     ../modules/username.nix
     ./audio.nix
+    ./sed.nix
   ];
 
   nix = {

@@ -84,7 +84,7 @@
     drumkv1
     hydrogen
     spotify
-    sedutil
+    sedutil # applied patch in sed.nix
     gnused
     gnutar
     gimp

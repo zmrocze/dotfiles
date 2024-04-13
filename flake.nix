@@ -40,38 +40,12 @@
     # };
   };
 
-  outputs = { nixpkgs, home-manager, flake-parts, my-lib, ... }@inputs:
+  outputs =
+    { nixpkgs, nixpkgs-23-05, home-manager, flake-parts, my-lib, ... }@inputs:
     let
       local-lib' = import ./lib { inherit inputs; };
       local-lib = local-lib'.pure;
-      pkgsFor = system:
-        import inputs.nixpkgs {
-          inherit system;
-          overlays = [
-            (final: _: my-lib.lib final)
-            # (final: _: local-lib'.overlay' final )
-            (_: _:
-              let pkgs2305 = pkgs2305For system;
-              in {
-                inherit (pkgs2305) aliza;
-                nixpkgs-23-05.haskellPackages.cabal-plan =
-                  pkgs2305.haskellPackages.cabal-plan;
-              })
-          ];
-          config = {
-            permittedInsecurePackages = [ "electron-25.9.0" ];
-            allowUnfree = true;
-            allowUnfreePredicate = _: true;
-          };
-        };
-      pkgs2305For = system:
-        import inputs.nixpkgs-23-05 {
-          inherit system;
-          config = {
-            allowUnfree = true;
-            allowUnfreePredicate = _: true;
-          };
-        };
+      inherit (import ./pkgs { inherit nixpkgs nixpkgs-23-05 my-lib; }) pkgsFor;
       hostname = "omen";
       username = "zmrocze";
       system = "x86_64-linux";
