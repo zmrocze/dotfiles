@@ -71,14 +71,14 @@
         # NixOS configuration entrypoint
         # Available through 'nixos-rebuild --flake .#your-hostname'
         nixosConfigurations = {
-          "omen" = inputs.nixpkgs.lib.nixosSystem {
+          "omen" = nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit inputs;
               mypkgs = pkgsFor system;
             };
             modules = [ ./nixos/hosts/omen.nix ];
           };
-          "pendlive" = inputs.nixpkgs.lib.nixosSystem {
+          "pendlive" = nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit inputs;
               mypkgs = pkgsFor system;
