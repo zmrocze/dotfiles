@@ -97,6 +97,19 @@
         # NixOS configuration entrypoint
         # Available through 'nixos-rebuild --flake .#your-hostname'
         nixosConfigurations = {
+          "sda256-backup-omen" = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+              mypkgs = pkgsFor system;
+            };
+            modules = [
+              ./nixos/hosts/sda-omen.nix
+              (local-lib.hm-module-2-nixos-module {
+                hm-module = import ./home-manager/home.nix;
+                extraSpecialArgs = { inherit inputs username; };
+              })
+            ];
+          };
           "omen" = inputs.nixpkgs.lib.nixosSystem {
             specialArgs = {
               inherit inputs;
