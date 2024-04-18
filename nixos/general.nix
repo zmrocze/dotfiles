@@ -54,6 +54,9 @@
         "https://iohk.cachix.org"
         "https://mlabs.cachix.org"
       ];
+      extra-substituters = [ "https://mlabs.cachix.org" ];
+      extra-trusted-public-keys =
+        [ "mlabs.cachix.org-1:gStKdEqNKcrlSQw5iMW6wFCj3+b+1ASpBVY2SYuNV2M=" ];
     };
   };
 
@@ -65,7 +68,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = false;
       # boot immedietely into latest generation. To bypass press shift while booting into systemd
-      timeout = 0;
+      timeout = 2;
     };
     # https://discourse.nixos.org/t/easy-refind-boot-by-booting-into-systemd-boot-from-refind/28507/5?u=zmrocze
     # boot.loader.efi.efiSysMountPoint = "/boot/efi";

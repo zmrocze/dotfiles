@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 set -e
 
 export PATH="$PATH:$HOME/.cargo/bin"
