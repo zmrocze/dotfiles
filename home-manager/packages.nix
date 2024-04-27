@@ -1,129 +1,125 @@
 { pkgs, ... }:
 
 {
-  config.home.packages = with pkgs; [
-    amberol
-    aliza
-    alsa-utils
-    alsa-scarlett-gui
-    meslo-lgs-nf
-    bat
-    bash
-    bear
-    bitwig-studio
-    bottom
-    # nixpkgs-23-05.haskellPackages.cabal-plan
-    # haskellPackages.ghcup # broken package
-    cachix
-    cpulimit
-    cryptsetup
-    ungoogled-chromium
-    vscode
-    gcc13
-    gdb
-    # clang_16
-    # llvmPackages_16.libcxxClang
-    gnome.dconf-editor
-    gnome.gnome-terminal
-    difftastic
-    # dust
-    # direnv
-    # docker
-    efibootmgr
-    eza
-    firefox
-    fd
-    fzf
-    flatpak
-    f2fs-tools
-    gnome.gnome-software
-    # gnome-gedit
-    # gimp
-    glava
-    gparted
-    gnugrep
-    gzip
-    helvum
-    # gnome.pomodoro
-    pomodoro
-    gmp
-    htop
-    inxi
-    jupyter
-    just
-    less
-    lsof
-    lshw
-    usbutils
-    # man-pages
-    micro
-    monero-cli
-    # npm
-    # opam
-    netcat-openbsd
-    ncurses
-    nix-melt
-    nix-tree
-    nixos-generators
-    # screen recorders:
-    kooha
-    obs-studio
-    # opendoas
-    openssl
-    obsidian
-    procs
-    pv
-    pciutils
-    pinta
-    # python3
-    refind
-    reaper
-    rustup
-    rm-improved
-    # redux
-    drumkv1
-    hydrogen
-    spotify
-    sedutil # applied patch in sed.nix
-    gnused
-    gnutar
-    gimp
-    gthumb
-    # texinfo
-    # texlive-bibtexextra
-    texlive.combined.scheme-full
-    tldr
-    tor
-    tor-browser
-    # torsocks
-    traceroute
-    tree
-    qemu
-    gnome.gnome-boxes
-    unzip
-    vim
-    wget
-    which
-    wineWowPackages.stableFull
+  config.home.packages = with pkgs;
+    let
+      cli = let
+        coreutils = [
+          bat
+          bash
+          bottom
+          efibootmgr
+          eza
+          fd
+          fzf
+          gnugrep
+          gzip
+          gnused
+          gnutar
+          htop
+          inxi
+          just
+          less
+          lsof
+          lshw
+          netcat-openbsd
+          ncurses
+          openssl
+          procs
+          pv
+          rm-improved
+          traceroute
+          tree
+          tldr
+          unzip
+          wget
+          which
+          xz
+          yq
+          jq
+          zoxide
+          zip
+        ];
+      in coreutils ++ [
+        cpulimit
+        cryptsetup # software encryption
+        # dust
+        flatpak
+        f2fs-tools
+        gcc13
+        gdb
+        bear
+        cachix
+        difftastic
+        nixos-generators
+        jupyter
+        usbutils
+        nix-melt
+        nix-tree
+        pciutils
+        micro
+        monero-cli
+        refind
+        rustup
+        sedutil # applied patch in sed.nix
+        vim
+        texlive.combined.scheme-full
+      ];
+      audio = [
+        alsa-utils
+        alsa-scarlett-gui # control focusrite scarlett audio interface
+        bitwig-studio
+        carla
+        glava # visualizer
+        helvum # graph view
+        jackmix # mixer
+        jackmeter # graph view
+        reaper
+        qjackctl # graph view
+        qpwgraph # graph view
+        yabridge # vst bridge
+        yabridgectl # vst bridge
+      ];
+      gui = let
+        vm = [
+          qemu
+          gnome.gnome-boxes
+          wineWowPackages.stableFull
+          (lutris.override {
+            extraLibraries = pkgs: with pkgs; [ openssl gnome.zenity ];
+          })
+          q4wine # qt-based gui for wine
+        ];
+      in vm ++ [
+        aliza # mri scans
+        amberol # music player
+        drumkv1 # drum machine
+        firefox
+        gnome.dconf-editor
+        gnome.gnome-terminal
+        gimp
+        gthumb
+        hydrogen # drum machine
+        gparted
+        gnome.gnome-software
 
-    (lutris.override {
-      extraLibraries = pkgs: with pkgs; [ openssl gnome.zenity ];
-    })
+        # screen recorders:
+        kooha
+        obs-studio
 
-    q4wine # qt-based gui for wine
-    qjackctl
-    qpwgraph
-    carla
-    jackmix
-    jackmeter
-    xz
-    yq
-    yabridge
-    yabridgectl
-    # ytop
-    jq
-    xclip
-    zoxide
-    zip
-  ];
+        obsidian
+        pomodoro
+        pinta # paint
+        spotify
+        tor
+        tor-browser
+        ungoogled-chromium
+        vscode
+      ];
+      deps = [
+        meslo-lgs-nf # font
+        gmp # gnu multiple precision arithmetic library
+        xclip
+      ];
+    in builtins.concatLists [ cli audio gui deps ];
 }
