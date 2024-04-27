@@ -31,6 +31,12 @@
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}")
       config.nix.registry;
 
+    # gc = {
+    # automatic = true;
+    # dates = "weekly";
+    # options = "--delete-older-than 30d";
+    # };
+
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
@@ -68,7 +74,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = false;
       # boot immedietely into latest generation. To bypass press shift while booting into systemd
-      timeout = 2;
+      timeout = 0;
     };
     # https://discourse.nixos.org/t/easy-refind-boot-by-booting-into-systemd-boot-from-refind/28507/5?u=zmrocze
     # boot.loader.efi.efiSysMountPoint = "/boot/efi";
