@@ -44,7 +44,7 @@
     { nixpkgs, nixpkgs-23-05, home-manager, flake-parts, my-lib, ... }@inputs:
     let
       local-lib' = import ./lib { inherit inputs; };
-      local-lib = local-lib'.pure;
+      local-lib = local-lib'.pure // my-lib.lib;
       inherit (import ./pkgs { inherit nixpkgs nixpkgs-23-05 my-lib; }) pkgsFor;
       hostname = "omen";
       username = "zmrocze";

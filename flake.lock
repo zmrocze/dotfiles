@@ -175,11 +175,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1701280074,
-        "narHash": "sha256-bM5/hCOamFL6i58X9W5YnwDfC3c5PFVY51eBPlpR4NY=",
+        "lastModified": 1715631853,
+        "narHash": "sha256-e45JGTfsWQYFB4Zq4Bl2a57ysPh0Jfqm0rS4ec2Vjhw=",
         "owner": "zmrocze",
         "repo": "nix-lib",
-        "rev": "b31cddb5e8cb34e95b4f195a5df30bc17abdf2fb",
+        "rev": "aec915c2152d6967b72be5ad1d857e1ddfa5a5ac",
         "type": "github"
       },
       "original": {
@@ -190,15 +190,17 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1695559356,
-        "narHash": "sha256-kXZ1pUoImD9OEbPCwpTz4tHsNTr4CIyIfXb3ocuR8sI=",
-        "path": "/nix/store/dn5wzc9a8hrpml66i6kz5f3q6dr3jjmk-source",
-        "rev": "261abe8a44a7e8392598d038d2e01f7b33cf26d0",
-        "type": "path"
+        "lastModified": 1715631627,
+        "narHash": "sha256-b1j5nG1YsT69GywZxB57793xZf+m4Mmh2R0z0BsPkKQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9d62e426c8cbd9b3a9f68a15bb8a0ff28030eadb",
+        "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-23-05": {

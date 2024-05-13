@@ -3,7 +3,7 @@
     import nixpkgs {
       inherit system;
       overlays = [
-        (final: _: my-lib.lib final)
+        my-lib.overlays.default
         # (final: _: local-lib'.overlay' final )
         (_: _:
           let pkgs2305 = pkgs2305For system;
