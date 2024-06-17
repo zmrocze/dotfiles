@@ -16,6 +16,7 @@
           gzip
           gnused
           gnutar
+          gnupg
           htop
           inxi
           just
@@ -28,6 +29,7 @@
           procs
           pv
           rm-improved
+          socat
           traceroute
           tree
           tldr
@@ -56,6 +58,7 @@
         usbutils
         nix-melt
         nix-tree
+        nix-prefetch-git
         pciutils
         micro
         monero-cli
@@ -77,6 +80,8 @@
         reaper
         qjackctl # graph view
         qpwgraph # graph view
+        vmpk # virtual midi piano keyboard
+        vkeybd # virtual midi piano keyboard
         yabridge # vst bridge
         yabridgectl # vst bridge
       ];
@@ -102,11 +107,10 @@
         hydrogen # drum machine
         gparted
         gnome.gnome-software
-
-        # screen recorders:
-        kooha
-        obs-studio
-
+        kooha # screen recorder
+        libreoffice-fresh
+        obs-studio # screen recorder
+        onlyoffice-bin
         obsidian
         pomodoro
         pinta # paint
@@ -115,6 +119,8 @@
         tor-browser
         ungoogled-chromium
         vscode
+        wpsoffice
+        wireshark
       ];
       deps = [
         meslo-lgs-nf # font

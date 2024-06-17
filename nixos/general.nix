@@ -91,7 +91,8 @@
     networkmanager.enable = true;
     hostName = "${config.hostname}";
     # for spotify
-    firewall.enable = true;
+    # firewall.enable = true;
+    firewall.enable = false;
     firewall.allowedTCPPorts = [ 57621 ];
 
     # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

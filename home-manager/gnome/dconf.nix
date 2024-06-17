@@ -73,11 +73,15 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = 720;
+      idle-delay = 900;
     };
 
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enable = true;
+    };
+
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing";
     };
 
   };
