@@ -219,6 +219,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-24-05": {
+      "locked": {
+        "lastModified": 1722087241,
+        "narHash": "sha256-2ShmEaFi0kJVOEEu5gmlykN5dwjWYWYUJmlRTvZQRpU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8c50662509100d53229d4be607f1a3a31157fa12",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "dir": "lib",
@@ -417,6 +433,7 @@
         "my-lib": "my-lib",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-23-05": "nixpkgs-23-05",
+        "nixpkgs-24-05": "nixpkgs-24-05",
         "nur": "nur",
         "powerlevel10k": "powerlevel10k",
         "pre-commit-hooks": "pre-commit-hooks_2",

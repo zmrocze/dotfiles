@@ -73,7 +73,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = 900;
+      idle-delay = 0;
     };
 
     "org/gnome/settings-daemon/plugins/color" = {

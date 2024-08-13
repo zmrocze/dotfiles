@@ -7,6 +7,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-23-05.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
     nur.url = "github:nix-community/NUR";
 
     # Home manager
@@ -40,12 +41,15 @@
     # };
   };
 
-  outputs =
-    { nixpkgs, nixpkgs-23-05, home-manager, flake-parts, my-lib, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-23-05, home-manager, flake-parts, my-lib
+    , nixpkgs-24-05, ... }@inputs:
     let
       local-lib' = import ./lib { inherit inputs; };
       local-lib = local-lib'.pure // my-lib.lib;
-      inherit (import ./pkgs { inherit nixpkgs nixpkgs-23-05 my-lib; }) pkgsFor;
+      inherit (import ./pkgs {
+        inherit nixpkgs nixpkgs-23-05 nixpkgs-24-05 my-lib;
+      })
+        pkgsFor;
       hostname = "omen";
       username = "zmrocze";
       system = "x86_64-linux";

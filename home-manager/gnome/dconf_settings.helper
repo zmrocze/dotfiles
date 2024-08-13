@@ -57,7 +57,7 @@ use-system-font=false
 preserve-working-directory='never'
 
 [org/gnome/desktop/session]
-idle-delay=900
+idle-delay=0
 
 [org/gnome/settings-daemon/plugins/color]
 night-light-enable=true

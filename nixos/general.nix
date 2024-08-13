@@ -60,9 +60,9 @@
         "https://iohk.cachix.org"
         "https://mlabs.cachix.org"
       ];
-      extra-substituters = [ "https://mlabs.cachix.org" ];
-      extra-trusted-public-keys =
-        [ "mlabs.cachix.org-1:gStKdEqNKcrlSQw5iMW6wFCj3+b+1ASpBVY2SYuNV2M=" ];
+      # extra-substituters = [ "https://mlabs.cachix.org" ];
+      # extra-trusted-public-keys =
+      #   [ "mlabs.cachix.org-1:gStKdEqNKcrlSQw5iMW6wFCj3+b+1ASpBVY2SYuNV2M=" ];
     };
   };
 

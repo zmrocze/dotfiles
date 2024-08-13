@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-23-05, my-lib }: rec {
+{ nixpkgs, nixpkgs-23-05, nixpkgs-24-05, my-lib }: rec {
   pkgsFor = system:
     import nixpkgs {
       inherit system;
@@ -6,9 +6,12 @@
         my-lib.overlays.default
         # (final: _: local-lib'.overlay' final )
         (_: _:
-          let pkgs2305 = pkgs2305For system;
+          let
+            pkgs2305 = pkgs2305For system;
+            pkgs2405 = pkgs2405For system;
           in {
             inherit (pkgs2305) aliza;
+            inherit (pkgs2405) weasis; # todo: remove after updating system
             nixpkgs-23-05.haskellPackages.cabal-plan =
               pkgs2305.haskellPackages.cabal-plan;
           })
@@ -34,6 +37,14 @@
     };
   pkgs2305For = system:
     import nixpkgs-23-05 {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+    };
+  pkgs2405For = system:
+    import nixpkgs-24-05 {
       inherit system;
       config = {
         allowUnfree = true;

@@ -53,6 +53,7 @@
         bear
         cachix
         difftastic
+        graphviz
         nixos-generators
         jupyter
         usbutils
@@ -66,6 +67,7 @@
         rustup
         sedutil # applied patch in sed.nix
         vim
+        virtualenv
         texlive.combined.scheme-full
       ];
       audio = [
@@ -109,6 +111,8 @@
         gnome.gnome-software
         kooha # screen recorder
         libreoffice-fresh
+        minecraft
+        prismlauncher
         obs-studio # screen recorder
         onlyoffice-bin
         obsidian
@@ -119,6 +123,7 @@
         tor-browser
         ungoogled-chromium
         vscode
+        weasis
         wpsoffice
         wireshark
       ];
