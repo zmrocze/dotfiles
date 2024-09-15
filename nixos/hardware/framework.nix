@@ -10,9 +10,14 @@
     initrd = {
       availableKernelModules =
         [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" ];
-      kernelModules = [ ];
     };
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [
+      "kvm-amd"
+      "snd_virmidi" # creates virtual-hardware devices, for wiring for bitwig
+    ];
+    extraModprobeConfig = ''
+      options snd_virmidi midi_devs=2
+    '';
     extraModulePackages = [ ];
   };
 

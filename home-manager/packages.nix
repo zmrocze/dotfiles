@@ -71,14 +71,19 @@
         texlive.combined.scheme-full
       ];
       audio = [
+        a2jmidid # alsa to jack midi
         alsa-utils
         alsa-scarlett-gui # control focusrite scarlett audio interface
         bitwig-studio
         carla
         glava # visualizer
+        guitarix # guitar amp
         helvum # graph view
         jackmix # mixer
         jackmeter # graph view
+        mixxx # dj
+        neural-amp-modeler-lv2 # guitar amp
+        patchage # graph view
         reaper
         qjackctl # graph view
         qpwgraph # graph view

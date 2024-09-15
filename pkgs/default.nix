@@ -11,7 +11,9 @@
             pkgs2405 = pkgs2405For system;
           in {
             inherit (pkgs2305) aliza;
-            inherit (pkgs2405) weasis; # todo: remove after updating system
+            inherit (pkgs2405)
+              weasis
+              neural-amp-modeler-lv2; # todo: remove after updating system
             nixpkgs-23-05.haskellPackages.cabal-plan =
               pkgs2305.haskellPackages.cabal-plan;
           })
