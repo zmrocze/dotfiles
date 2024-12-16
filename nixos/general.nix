@@ -17,7 +17,7 @@
 
     # options username, hostname 
     ../modules/username.nix
-    ./audio.nix
+    (import ./audio.nix {inherit inputs;})
     ./sed.nix
   ];
 
@@ -156,6 +156,9 @@
     # services.flatpak.enable = true;
     # services.accounts-daemon.enable = true;
 
+    # for gnupg.agent
+    # enabled after experiancing: https://discourse.nixos.org/t/cant-get-gnupg-to-work-no-pinentry/15373/24?page=2
+    pcscd.enable = true; # smartcard daemon
   };
 
   environment = {
@@ -164,7 +167,6 @@
         # gnome-photos
         # gnome-tour
         gnome-console
-      ]) ++ (with pkgs.gnome; [
         # cheese # webcam tool
         # gnome-music
         gedit # text editor
@@ -197,6 +199,11 @@
     zsh.enable = true;
 
     dconf.enable = true;
+
+    # enabled after experiancing: https://discourse.nixos.org/t/cant-get-gnupg-to-work-no-pinentry/15373/24?page=2
+    gnupg.agent = {
+      enable = true;
+    };
   };
 
   virtualisation.docker = {
@@ -205,6 +212,11 @@
       enable = true;
       setSocketVariable = true;
     };
+  };
+
+  my-sound = {
+    enable = true;
+    useMusenix = true;
   };
 
   # security.doas.enable = true;

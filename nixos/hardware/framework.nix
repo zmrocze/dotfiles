@@ -16,7 +16,7 @@
       "snd_virmidi" # creates virtual-hardware devices, for wiring for bitwig
     ];
     extraModprobeConfig = ''
-      options snd_virmidi midi_devs=2
+      options snd_virmidi midi_devs=3
     '';
     extraModulePackages = [ ];
   };
