@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-23-05, nixpkgs-24-05, my-lib }: rec {
+{ nixpkgs, nixpkgs-23-05, nixpkgs-24-05, nixpkgs-unstable, my-lib }: rec {
   pkgsFor = system:
     import nixpkgs {
       inherit system;
@@ -8,18 +8,21 @@
         (_: _:
           let
             pkgs2305 = pkgs2305For system;
-            pkgs2405 = pkgs2405For system;
+            # pkgs2405 = pkgs2405For system;
+            pkgsUnstable = pkgsUnstableFor system;
           in {
             inherit (pkgs2305) aliza;
-            inherit (pkgs2405)
-              weasis
-              neural-amp-modeler-lv2; # todo: remove after updating system
-            nixpkgs-23-05.haskellPackages.cabal-plan =
-              pkgs2305.haskellPackages.cabal-plan;
+            # inherit (pkgs2405)
+            #   weasis
+            #   neural-amp-modeler-lv2; # todo: remove after updating system
+            # nixpkgs-23-05.haskellPackages.cabal-plan =
+            #   pkgs2305.haskellPackages.cabal-plan;
+            inherit (pkgsUnstable) bitwig-studio; # newer
           })
       ];
       config = {
-        permittedInsecurePackages = [ "electron-25.9.0" ];
+        permittedInsecurePackages =
+          [ "dotnet-sdk-6.0.428" "dotnet-runtime-6.0.36" ];
         allowUnfree = true;
         allowUnfreePredicate = _: true;
         packageOverrides = pkgs: {
@@ -47,6 +50,14 @@
     };
   pkgs2405For = system:
     import nixpkgs-24-05 {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+    };
+  pkgsUnstableFor = system:
+    import nixpkgs-unstable {
       inherit system;
       config = {
         allowUnfree = true;

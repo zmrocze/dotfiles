@@ -17,7 +17,7 @@
 
     # options username, hostname 
     ../modules/username.nix
-    (import ./audio.nix {inherit inputs;})
+    (import ./audio.nix { inherit inputs; })
     ./sed.nix
   ];
 
@@ -162,25 +162,24 @@
   };
 
   environment = {
-    gnome.excludePackages = (with pkgs;
-      [
-        # gnome-photos
-        # gnome-tour
-        gnome-console
-        # cheese # webcam tool
-        # gnome-music
-        gedit # text editor
-        epiphany # web browser
-        geary # email reader
-        # gnome-characters
-        tali # poker game
-        iagno # go game
-        hitori # sudoku game
-        atomix # puzzle game
-        yelp # Help view
-        gnome-contacts
-        # gnome-initial-setup
-      ]);
+    gnome.excludePackages = with pkgs; [
+      # gnome-photos
+      # gnome-tour
+      gnome-console
+      # cheese # webcam tool
+      # gnome-music
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      # gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      yelp # Help view
+      gnome-contacts
+      # gnome-initial-setup
+    ];
 
     etc."xdg/user-dirs.defaults".source = etc/user-dirs.defaults;
 
@@ -201,9 +200,7 @@
     dconf.enable = true;
 
     # enabled after experiancing: https://discourse.nixos.org/t/cant-get-gnupg-to-work-no-pinentry/15373/24?page=2
-    gnupg.agent = {
-      enable = true;
-    };
+    gnupg.agent = { enable = true; };
   };
 
   virtualisation.docker = {

@@ -3,7 +3,7 @@
 
   config = {
 
-    home.packages = with pkgs; [ gnome.gnome-tweaks ];
+    home.packages = with pkgs; [ gnome-tweaks ];
 
     gtk = {
       enable = true;

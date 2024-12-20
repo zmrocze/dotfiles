@@ -4,12 +4,13 @@
 # # To show incoming MIDI messages, run `aseqdump -p xxx` with the port name shown by `aseqdump -l`.
 # 
 
-{inputs}: {config, lib, ... }: with lib; with types; {
+{ inputs }:
+{ config, lib, ... }:
+with lib;
+with types; {
   # package helvum
 
-  imports = [
-    inputs.musnix.nixosModules.musnix
-  ];
+  imports = [ inputs.musnix.nixosModules.musnix ];
 
   options.my-sound = {
     enable = mkEnableOption "My sound configuration: pipewire + realtime";
@@ -42,7 +43,7 @@
         bluetooth.enable = true;
       };
     }
-    (mkIf (! config.my-sound.useMusenix ) {
+    (mkIf (!config.my-sound.useMusenix) {
       security.rtkit.enable = true;
       users.users.${config.username}.extraGroups = [ "rtkit" ];
     })

@@ -5,13 +5,14 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-23-05.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
     nur.url = "github:nix-community/NUR";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
@@ -35,6 +36,8 @@
       url = "github:tymm/zsh-directory-history?ref=master";
       flake = false;
     };
+
+    musnix.url = "github:musnix/musnix";
     # zsh-autocomplete = {
     #   url = "github:marlonrichert/zsh-autocomplete";
     #   flake = false;
@@ -42,12 +45,12 @@
   };
 
   outputs = { nixpkgs, nixpkgs-23-05, home-manager, flake-parts, my-lib
-    , nixpkgs-24-05, ... }@inputs:
+    , nixpkgs-24-05, nixpkgs-unstable, ... }@inputs:
     let
       local-lib' = import ./lib { inherit inputs; };
       local-lib = local-lib'.pure // my-lib.lib;
       inherit (import ./pkgs {
-        inherit nixpkgs nixpkgs-23-05 nixpkgs-24-05 my-lib;
+        inherit nixpkgs nixpkgs-23-05 nixpkgs-24-05 nixpkgs-unstable my-lib;
       })
         pkgsFor;
       hostname = "omen";
