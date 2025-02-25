@@ -57,7 +57,7 @@
         nixos-generators
         jupyter
         usbutils
-        # uv # python pip
+        uv # python pip
         nix-melt
         nix-tree
         nix-prefetch-git
@@ -94,6 +94,7 @@
         mixxx # dj
         neural-amp-modeler-lv2 # guitar amp
         patchage # graph view
+        paulstretch # time stretcher
         reaper
         surge # wavetable synth https://surge-synthesizer.github.io/
         qjackctl # graph view

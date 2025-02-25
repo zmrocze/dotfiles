@@ -8,7 +8,7 @@ alias ls=exa
 alias ccat="bat -pp"
 alias cat="bat --style=header,plain"
 alias ps=procs
-# alias rm=rip
+alias rm=rip
 alias -g mi="micro"
 # alias sudo="doas"
 alias -g json="python3 -m json.tool"
