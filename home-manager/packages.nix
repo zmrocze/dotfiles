@@ -8,6 +8,8 @@
           bat
           bash
           bottom
+          dust
+          dutree
           efibootmgr
           eza
           fd
@@ -87,6 +89,7 @@
         drumkv1 # drum machine
         glava # visualizer
         guitarix # guitar amp
+        gxplugins-lv2 # guitarix lv2 plugins
         hydrogen # drum machine
         helvum # graph view
         jackmix # mixer
