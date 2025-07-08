@@ -30,6 +30,8 @@
           openssl
           procs
           pv
+          puredata
+          plugdata
           rm-improved
           socat
           traceroute
@@ -48,6 +50,7 @@
         cpulimit
         cryptsetup # software encryption
         # dust
+        devenv
         flatpak
         f2fs-tools
         gcc13
