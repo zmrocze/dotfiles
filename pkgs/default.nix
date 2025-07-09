@@ -9,7 +9,7 @@
           let
             pkgs2305 = pkgs2305For system;
             # pkgs2405 = pkgs2405For system;
-            pkgsUnstable = pkgsUnstableFor system;
+            # pkgsUnstable = pkgsUnstableFor system;
           in {
             inherit (pkgs2305) aliza;
             # inherit (pkgs2405)
@@ -17,7 +17,7 @@
             #   neural-amp-modeler-lv2; # todo: remove after updating system
             # nixpkgs-23-05.haskellPackages.cabal-plan =
             #   pkgs2305.haskellPackages.cabal-plan;
-            inherit (pkgsUnstable) bitwig-studio; # newer
+            # inherit (pkgsUnstable) bitwig-studio; # newer
           })
       ];
       config = {
