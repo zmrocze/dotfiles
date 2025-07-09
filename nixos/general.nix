@@ -136,10 +136,12 @@
       # Enable the GNOME Desktop Environment.
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
-      # Configure keymap in X11
-      layout = "pl";
       # TODO: what is this?
-      xkbVariant = "";
+      xkb = {
+        variant = "";
+        # Configure keymap in X11
+        layout = "pl";
+      };
     };
 
     printing.enable = true;

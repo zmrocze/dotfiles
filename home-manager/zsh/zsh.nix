@@ -13,7 +13,8 @@
     # option definitions
     programs.zsh = {
       enable = true;
-      initExtra = builtins.readFile ./zshrc + builtins.readFile ./functions.zsh;
+      initContent = builtins.readFile ./zshrc
+        + builtins.readFile ./functions.zsh;
       # + builtins.readFile ./p10k.zsh;
       # initExtraFirst
       # initExtraBeforeCompInit
