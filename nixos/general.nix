@@ -217,8 +217,8 @@
 
   my-sound = {
     enable = true;
-    # useMusenix = true;
-    useMusenix = false;
+    useMusenix = true;
+    # useMusenix = false;
   };
 
   # security.doas.enable = true;
