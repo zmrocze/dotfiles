@@ -52,21 +52,15 @@
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo="
         "cache.iog.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-        "mlabs.cachix.org-1:gStKdEqNKcrlSQw5iMW6wFCj3+b+1ASpBVY2SYuNV2M="
       ];
       substituters = [
         "https://cache.iog.io"
         "https://cache.nixos.org"
         "https://iohk.cachix.org"
-        "https://mlabs.cachix.org"
       ];
       extra-substituters = [ "https://devenv.cachix.org" ];
       extra-trusted-public-keys =
         [ "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
-
-      # extra-substituters = [ "https://mlabs.cachix.org" ];
-      # extra-trusted-public-keys =
-      #   [ "mlabs.cachix.org-1:gStKdEqNKcrlSQw5iMW6wFCj3+b+1ASpBVY2SYuNV2M=" ];
     };
   };
 
