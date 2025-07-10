@@ -8,7 +8,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-23-05.url = "github:nixos/nixpkgs/nixos-23.05";
-    nixpkgs-24-05.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-24-11.url = "github:nixos/nixpkgs/nixos-24.11";
     nur.url = "github:nix-community/NUR";
 
     # Home manager
@@ -45,12 +45,12 @@
   };
 
   outputs = { nixpkgs, nixpkgs-23-05, home-manager, flake-parts, my-lib
-    , nixpkgs-24-05, nixpkgs-unstable, ... }@inputs:
+    , nixpkgs-24-11, nixpkgs-unstable, ... }@inputs:
     let
       local-lib' = import ./lib { inherit inputs; };
       local-lib = local-lib'.pure // my-lib.lib;
       inherit (import ./pkgs {
-        inherit nixpkgs nixpkgs-23-05 nixpkgs-24-05 nixpkgs-unstable my-lib;
+        inherit nixpkgs nixpkgs-23-05 nixpkgs-24-11 nixpkgs-unstable my-lib;
       })
         pkgsFor;
       hostname = "omen";

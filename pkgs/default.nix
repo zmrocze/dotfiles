@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs-23-05, nixpkgs-24-05, nixpkgs-unstable, my-lib }: rec {
+{ nixpkgs, nixpkgs-23-05, nixpkgs-24-11, nixpkgs-unstable, my-lib }: rec {
   pkgsFor = system:
     import nixpkgs {
       inherit system;
@@ -8,13 +8,12 @@
         (_: _:
           let
             pkgs2305 = pkgs2305For system;
+            pkgs2411 = pkgs2411For system;
             # pkgs2405 = pkgs2405For system;
             # pkgsUnstable = pkgsUnstableFor system;
           in {
             inherit (pkgs2305) aliza;
-            # inherit (pkgs2405)
-            #   weasis
-            #   neural-amp-modeler-lv2; # todo: remove after updating system
+            inherit (pkgs2411) sedutil;
             # nixpkgs-23-05.haskellPackages.cabal-plan =
             #   pkgs2305.haskellPackages.cabal-plan;
             # inherit (pkgsUnstable) bitwig-studio; # newer
@@ -25,7 +24,21 @@
           [ "dotnet-sdk-6.0.428" "dotnet-runtime-6.0.36" ];
         allowUnfree = true;
         allowUnfreePredicate = _: true;
-        packageOverrides = pkgs: {
+      };
+    };
+  pkgs2305For = system:
+    import nixpkgs-23-05 {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = _: true;
+      };
+    };
+  pkgs2411For = system:
+    import nixpkgs-24-11 {
+      inherit system;
+      overlays = [
+        (_: pkgs: {
           sedutil = pkgs.sedutil.overrideAttrs (oldAttrs: {
             patches = (oldAttrs.patches or [ ]) ++ [
               # Add support for enabling unlocking when resuming from sleep
@@ -37,20 +50,8 @@
               })
             ];
           });
-        };
-      };
-    };
-  pkgs2305For = system:
-    import nixpkgs-23-05 {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = _: true;
-      };
-    };
-  pkgs2405For = system:
-    import nixpkgs-24-05 {
-      inherit system;
+        })
+      ];
       config = {
         allowUnfree = true;
         allowUnfreePredicate = _: true;

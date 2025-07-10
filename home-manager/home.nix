@@ -1,9 +1,13 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ config, inputs, username, ... }: {
+{ username, pkgs, ... }: {
   # You can import other home-manager modules here
-  imports =
-    [ ./packages.nix zsh/zsh.nix gnome/gnome.nix inputs.nur.nixosModules.nur ];
+  imports = [
+    ./packages.nix
+    zsh/zsh.nix
+    gnome/gnome.nix
+    #  inputs.nur.nixosModules.nur 
+  ];
 
   home = {
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -30,8 +34,9 @@
         core.editor = "micro";
         credential = {
           credentialStore = "secretservice";
-          helper =
-            "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager";
+          helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
+          # "${config.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager";
+
         };
       };
     };

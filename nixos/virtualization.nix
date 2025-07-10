@@ -10,7 +10,7 @@
 
     boot = {
       initrd.availableKernelModules = [
-        "kvm_intel"
+        "kvm_intel" # dont remember why
         # "kvm_amd"
       ];
       kernelModules = [ "kvm-intel" ];
