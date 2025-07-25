@@ -59,6 +59,7 @@
         cachix
         difftastic
         graphviz
+        nixai # cli ai assistant with nixos context
         nixos-generators
         jupyter
         usbutils

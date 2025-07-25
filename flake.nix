@@ -22,6 +22,8 @@
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
 
+    nixai.url = "github:olafkfreund/nix-ai-help";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
@@ -45,12 +47,13 @@
   };
 
   outputs = { nixpkgs, nixpkgs-23-05, home-manager, flake-parts, my-lib
-    , nixpkgs-24-11, nixpkgs-unstable, ... }@inputs:
+    , nixpkgs-24-11, nixpkgs-unstable, nixai, ... }@inputs:
     let
       local-lib' = import ./lib { inherit inputs; };
       local-lib = local-lib'.pure // my-lib.lib;
       inherit (import ./pkgs {
-        inherit nixpkgs nixpkgs-23-05 nixpkgs-24-11 nixpkgs-unstable my-lib;
+        inherit nixpkgs nixpkgs-23-05 nixpkgs-24-11 nixpkgs-unstable my-lib
+          nixai;
       })
         pkgsFor;
       hostname = "omen";
