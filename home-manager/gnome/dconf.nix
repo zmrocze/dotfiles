@@ -51,7 +51,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      favorite-apps = [ "firefox.desktop" "gnome-terminal.desktop" "org.gnome.Nautilus.desktop" "spotify.desktop" ];
+      favorite-apps = [ "firefox.desktop" "waveterm.desktop" "gnome-terminal.desktop" "org.gnome.Nautilus.desktop" "spotify.desktop" ];
     };
 
     "org/freedesktop/tracker/miner/files" = {

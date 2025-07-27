@@ -23,7 +23,7 @@
  - [ ] install xclip, check micro copy
  - [ ] zsh slow autocomplete (file, commands)
  - [x] luks for barplus
- - [ ] fix uses of my-lib, local-lib etc. its all in the overriden pkgs
+ - [x] fix uses of my-lib, local-lib etc. its all in the overriden pkgs
  - [ ] check zsh error:
 
 [powerlevel10k] fetching gitstatusd .. |                                                            

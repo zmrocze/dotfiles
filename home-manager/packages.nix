@@ -47,6 +47,7 @@
           zip
         ];
       in coreutils ++ [
+        aichat
         cpulimit
         cryptsetup # software encryption
         # dust
@@ -126,7 +127,7 @@
         aliza # mri scans
         firefox
         dconf-editor
-        gnome-terminal
+        gnome-terminal # terminal emulator
         gimp
         gthumb
         gparted
@@ -145,6 +146,7 @@
         tor-browser
         ungoogled-chromium
         vscode
+        waveterm # terminal emulator
         weasis
         wpsoffice
         wireshark
